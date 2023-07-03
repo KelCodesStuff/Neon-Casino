@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BA662F0C2A5339CE003377DD /* Slot_MachineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F0B2A5339CE003377DD /* Slot_MachineApp.swift */; };
+		BA662F0E2A5339CE003377DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F0D2A5339CE003377DD /* ContentView.swift */; };
+		BA662F102A5339D0003377DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA662F0F2A5339D0003377DD /* Assets.xcassets */; };
+		BA662F132A5339D0003377DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA662F122A5339D0003377DD /* Preview Assets.xcassets */; };
+		BA662F152A5339D0003377DD /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F142A5339D0003377DD /* Persistence.swift */; };
+		BA662F182A5339D0003377DD /* Slot_Machine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA662F162A5339D0003377DD /* Slot_Machine.xcdatamodeld */; };
+		BA662F222A5339D0003377DD /* Slot_MachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F212A5339D0003377DD /* Slot_MachineTests.swift */; };
+		BA662F2C2A5339D0003377DD /* Slot_MachineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F2B2A5339D0003377DD /* Slot_MachineUITests.swift */; };
+		BA662F2E2A5339D0003377DD /* Slot_MachineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F2D2A5339D0003377DD /* Slot_MachineUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA662F1E2A5339D0003377DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA662F002A5339CE003377DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA662F072A5339CE003377DD;
+			remoteInfo = "Slot Machine";
+		};
+		BA662F282A5339D0003377DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA662F002A5339CE003377DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA662F072A5339CE003377DD;
+			remoteInfo = "Slot Machine";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BA662F082A5339CE003377DD /* Slot Machine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slot Machine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA662F0B2A5339CE003377DD /* Slot_MachineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot_MachineApp.swift; sourceTree = "<group>"; };
+		BA662F0D2A5339CE003377DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BA662F0F2A5339D0003377DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BA662F122A5339D0003377DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BA662F142A5339D0003377DD /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		BA662F172A5339D0003377DD /* Slot_Machine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Slot_Machine.xcdatamodel; sourceTree = "<group>"; };
+		BA662F1D2A5339D0003377DD /* Slot MachineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Slot MachineTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA662F212A5339D0003377DD /* Slot_MachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot_MachineTests.swift; sourceTree = "<group>"; };
+		BA662F272A5339D0003377DD /* Slot MachineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Slot MachineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA662F2B2A5339D0003377DD /* Slot_MachineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot_MachineUITests.swift; sourceTree = "<group>"; };
+		BA662F2D2A5339D0003377DD /* Slot_MachineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot_MachineUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BA662F052A5339CE003377DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA662F1A2A5339D0003377DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA662F242A5339D0003377DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BA662EFF2A5339CE003377DD = {
+			isa = PBXGroup;
+			children = (
+				BA662F0A2A5339CE003377DD /* Slot Machine */,
+				BA662F202A5339D0003377DD /* Slot MachineTests */,
+				BA662F2A2A5339D0003377DD /* Slot MachineUITests */,
+				BA662F092A5339CE003377DD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BA662F092A5339CE003377DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA662F082A5339CE003377DD /* Slot Machine.app */,
+				BA662F1D2A5339D0003377DD /* Slot MachineTests.xctest */,
+				BA662F272A5339D0003377DD /* Slot MachineUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA662F0A2A5339CE003377DD /* Slot Machine */ = {
+			isa = PBXGroup;
+			children = (
+				BA662F0B2A5339CE003377DD /* Slot_MachineApp.swift */,
+				BA662F0D2A5339CE003377DD /* ContentView.swift */,
+				BA662F0F2A5339D0003377DD /* Assets.xcassets */,
+				BA662F142A5339D0003377DD /* Persistence.swift */,
+				BA662F162A5339D0003377DD /* Slot_Machine.xcdatamodeld */,
+				BA662F112A5339D0003377DD /* Preview Content */,
+			);
+			path = "Slot Machine";
+			sourceTree = "<group>";
+		};
+		BA662F112A5339D0003377DD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BA662F122A5339D0003377DD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BA662F202A5339D0003377DD /* Slot MachineTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA662F212A5339D0003377DD /* Slot_MachineTests.swift */,
+			);
+			path = "Slot MachineTests";
+			sourceTree = "<group>";
+		};
+		BA662F2A2A5339D0003377DD /* Slot MachineUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BA662F2B2A5339D0003377DD /* Slot_MachineUITests.swift */,
+				BA662F2D2A5339D0003377DD /* Slot_MachineUITestsLaunchTests.swift */,
+			);
+			path = "Slot MachineUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA662F072A5339CE003377DD /* Slot Machine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA662F312A5339D0003377DD /* Build configuration list for PBXNativeTarget "Slot Machine" */;
+			buildPhases = (
+				BA662F042A5339CE003377DD /* Sources */,
+				BA662F052A5339CE003377DD /* Frameworks */,
+				BA662F062A5339CE003377DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Slot Machine";
+			productName = "Slot Machine";
+			productReference = BA662F082A5339CE003377DD /* Slot Machine.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BA662F1C2A5339D0003377DD /* Slot MachineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA662F342A5339D0003377DD /* Build configuration list for PBXNativeTarget "Slot MachineTests" */;
+			buildPhases = (
+				BA662F192A5339D0003377DD /* Sources */,
+				BA662F1A2A5339D0003377DD /* Frameworks */,
+				BA662F1B2A5339D0003377DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA662F1F2A5339D0003377DD /* PBXTargetDependency */,
+			);
+			name = "Slot MachineTests";
+			productName = "Slot MachineTests";
+			productReference = BA662F1D2A5339D0003377DD /* Slot MachineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BA662F262A5339D0003377DD /* Slot MachineUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA662F372A5339D0003377DD /* Build configuration list for PBXNativeTarget "Slot MachineUITests" */;
+			buildPhases = (
+				BA662F232A5339D0003377DD /* Sources */,
+				BA662F242A5339D0003377DD /* Frameworks */,
+				BA662F252A5339D0003377DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA662F292A5339D0003377DD /* PBXTargetDependency */,
+			);
+			name = "Slot MachineUITests";
+			productName = "Slot MachineUITests";
+			productReference = BA662F272A5339D0003377DD /* Slot MachineUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BA662F002A5339CE003377DD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					BA662F072A5339CE003377DD = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					BA662F1C2A5339D0003377DD = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = BA662F072A5339CE003377DD;
+					};
+					BA662F262A5339D0003377DD = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = BA662F072A5339CE003377DD;
+					};
+				};
+			};
+			buildConfigurationList = BA662F032A5339CE003377DD /* Build configuration list for PBXProject "Slot Machine" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BA662EFF2A5339CE003377DD;
+			productRefGroup = BA662F092A5339CE003377DD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA662F072A5339CE003377DD /* Slot Machine */,
+				BA662F1C2A5339D0003377DD /* Slot MachineTests */,
+				BA662F262A5339D0003377DD /* Slot MachineUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA662F062A5339CE003377DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA662F132A5339D0003377DD /* Preview Assets.xcassets in Resources */,
+				BA662F102A5339D0003377DD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA662F1B2A5339D0003377DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA662F252A5339D0003377DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BA662F042A5339CE003377DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA662F152A5339D0003377DD /* Persistence.swift in Sources */,
+				BA662F0E2A5339CE003377DD /* ContentView.swift in Sources */,
+				BA662F0C2A5339CE003377DD /* Slot_MachineApp.swift in Sources */,
+				BA662F182A5339D0003377DD /* Slot_Machine.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA662F192A5339D0003377DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA662F222A5339D0003377DD /* Slot_MachineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA662F232A5339D0003377DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA662F2E2A5339D0003377DD /* Slot_MachineUITestsLaunchTests.swift in Sources */,
+				BA662F2C2A5339D0003377DD /* Slot_MachineUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA662F1F2A5339D0003377DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA662F072A5339CE003377DD /* Slot Machine */;
+			targetProxy = BA662F1E2A5339D0003377DD /* PBXContainerItemProxy */;
+		};
+		BA662F292A5339D0003377DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA662F072A5339CE003377DD /* Slot Machine */;
+			targetProxy = BA662F282A5339D0003377DD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BA662F2F2A5339D0003377DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BA662F302A5339D0003377DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BA662F322A5339D0003377DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Slot Machine/Preview Content\"";
+				DEVELOPMENT_TEAM = WC92Z884R6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kreid.Slot-Machine";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BA662F332A5339D0003377DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Slot Machine/Preview Content\"";
+				DEVELOPMENT_TEAM = WC92Z884R6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kreid.Slot-Machine";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BA662F352A5339D0003377DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WC92Z884R6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kreid.Slot-MachineTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slot Machine.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Slot Machine";
+			};
+			name = Debug;
+		};
+		BA662F362A5339D0003377DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WC92Z884R6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kreid.Slot-MachineTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slot Machine.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Slot Machine";
+			};
+			name = Release;
+		};
+		BA662F382A5339D0003377DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WC92Z884R6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kreid.Slot-MachineUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Slot Machine";
+			};
+			name = Debug;
+		};
+		BA662F392A5339D0003377DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WC92Z884R6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kreid.Slot-MachineUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Slot Machine";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA662F032A5339CE003377DD /* Build configuration list for PBXProject "Slot Machine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA662F2F2A5339D0003377DD /* Debug */,
+				BA662F302A5339D0003377DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA662F312A5339D0003377DD /* Build configuration list for PBXNativeTarget "Slot Machine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA662F322A5339D0003377DD /* Debug */,
+				BA662F332A5339D0003377DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA662F342A5339D0003377DD /* Build configuration list for PBXNativeTarget "Slot MachineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA662F352A5339D0003377DD /* Debug */,
+				BA662F362A5339D0003377DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA662F372A5339D0003377DD /* Build configuration list for PBXNativeTarget "Slot MachineUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA662F382A5339D0003377DD /* Debug */,
+				BA662F392A5339D0003377DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BA662F162A5339D0003377DD /* Slot_Machine.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BA662F172A5339D0003377DD /* Slot_Machine.xcdatamodel */,
+			);
+			currentVersion = BA662F172A5339D0003377DD /* Slot_Machine.xcdatamodel */;
+			path = Slot_Machine.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BA662F002A5339CE003377DD /* Project object */;
+}
