@@ -1,9 +1,9 @@
 Neon Casino
 ======
+[![CircleCI](https://circleci.com/gh/KelCodesStuff/Neon-Casino.svg?style=shield&circle-token=4d334ff549a0ff07a72acbd9727bc70028b54c77)](https://app.circleci.com/pipelines/github/KelCodesStuff/Neon-Casino)
+
 <img src="https://img.shields.io/badge/Swift-5.8-orange.svg"/>
 <img src="https://img.shields.io/badge/Platforms-iOS-brightgreen.svg?style=flat" alt="Mac + Linux"/>
-
-[![CircleCI](https://circleci.com/gh/KelCodesStuff/Prevent-iOS.svg?style=shield&circle-token=11d3bff3c5b6ca9a3c645fd8a6f08b07e5065f64)](https://app.circleci.com/pipelines/github/KelCodesStuff/Prevent-iOS)
 
 ![Platforms](https://img.shields.io/badge/Platform%20Compatibility-iOS%2015+%20|%20macOS%2012+-red?logo=apple&?color=red)
 
