@@ -7,15 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA662F0C2A5339CE003377DD /* Slot_MachineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F0B2A5339CE003377DD /* Slot_MachineApp.swift */; };
-		BA662F0E2A5339CE003377DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F0D2A5339CE003377DD /* ContentView.swift */; };
-		BA662F102A5339D0003377DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA662F0F2A5339D0003377DD /* Assets.xcassets */; };
-		BA662F132A5339D0003377DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA662F122A5339D0003377DD /* Preview Assets.xcassets */; };
-		BA662F152A5339D0003377DD /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F142A5339D0003377DD /* Persistence.swift */; };
-		BA662F182A5339D0003377DD /* Slot_Machine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA662F162A5339D0003377DD /* Slot_Machine.xcdatamodeld */; };
 		BA662F222A5339D0003377DD /* Slot_MachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F212A5339D0003377DD /* Slot_MachineTests.swift */; };
 		BA662F2C2A5339D0003377DD /* Slot_MachineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F2B2A5339D0003377DD /* Slot_MachineUITests.swift */; };
 		BA662F2E2A5339D0003377DD /* Slot_MachineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F2D2A5339D0003377DD /* Slot_MachineUITestsLaunchTests.swift */; };
+		BA7D766D2A54CD68009CE4E0 /* NeonCasino.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA7D766A2A54CD68009CE4E0 /* NeonCasino.xcdatamodeld */; };
+		BA7D766E2A54CD68009CE4E0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D766C2A54CD68009CE4E0 /* Persistence.swift */; };
+		BA7D76702A55F1D0009CE4E0 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D766F2A55F1D0009CE4E0 /* GameOverView.swift */; };
+		BAB5B9CA2A54CBD00074DD76 /* bet-chip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAB5B9C22A54CBD00074DD76 /* bet-chip.mp3 */; };
+		BAB5B9CB2A54CBD00074DD76 /* rise-up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAB5B9C32A54CBD00074DD76 /* rise-up.mp3 */; };
+		BAB5B9CC2A54CBD00074DD76 /* game-over.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAB5B9C42A54CBD00074DD76 /* game-over.mp3 */; };
+		BAB5B9CD2A54CBD00074DD76 /* high-score.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAB5B9C52A54CBD00074DD76 /* high-score.mp3 */; };
+		BAB5B9CE2A54CBD00074DD76 /* chime-up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAB5B9C62A54CBD00074DD76 /* chime-up.mp3 */; };
+		BAB5B9CF2A54CBD00074DD76 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAB5B9C72A54CBD00074DD76 /* win.mp3 */; };
+		BAB5B9D02A54CBD00074DD76 /* spin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAB5B9C82A54CBD00074DD76 /* spin.mp3 */; };
+		BAB5B9D12A54CBD00074DD76 /* background-music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAB5B9C92A54CBD00074DD76 /* background-music.mp3 */; };
+		BAB5B9D62A54CBF50074DD76 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9D22A54CBF50074DD76 /* LogoView.swift */; };
+		BAB5B9D72A54CBF50074DD76 /* ReelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9D32A54CBF50074DD76 /* ReelView.swift */; };
+		BAB5B9D82A54CBF50074DD76 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9D42A54CBF50074DD76 /* ContentView.swift */; };
+		BAB5B9D92A54CBF50074DD76 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9D52A54CBF50074DD76 /* InfoView.swift */; };
+		BAB5B9DD2A54CC090074DD76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9DA2A54CC090074DD76 /* Extensions.swift */; };
+		BAB5B9DE2A54CC090074DD76 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9DB2A54CC090074DD76 /* Modifiers.swift */; };
+		BAB5B9DF2A54CC090074DD76 /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9DC2A54CC090074DD76 /* PlaySound.swift */; };
+		BAB5B9E22A54CC160074DD76 /* Slot_MachineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9E02A54CC160074DD76 /* Slot_MachineApp.swift */; };
+		BAB5B9E32A54CC160074DD76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAB5B9E12A54CC160074DD76 /* Assets.xcassets */; };
+		BAB5B9E52A54CC330074DD76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAB5B9E42A54CC330074DD76 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,18 +51,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BA662F082A5339CE003377DD /* Slot Machine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slot Machine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA662F0B2A5339CE003377DD /* Slot_MachineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot_MachineApp.swift; sourceTree = "<group>"; };
-		BA662F0D2A5339CE003377DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		BA662F0F2A5339D0003377DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BA662F122A5339D0003377DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BA662F142A5339D0003377DD /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		BA662F172A5339D0003377DD /* Slot_Machine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Slot_Machine.xcdatamodel; sourceTree = "<group>"; };
-		BA662F1D2A5339D0003377DD /* Slot MachineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Slot MachineTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA662F082A5339CE003377DD /* Neon Casino.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Neon Casino.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA662F1D2A5339D0003377DD /* Neon CasinoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Neon CasinoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA662F212A5339D0003377DD /* Slot_MachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot_MachineTests.swift; sourceTree = "<group>"; };
-		BA662F272A5339D0003377DD /* Slot MachineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Slot MachineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA662F272A5339D0003377DD /* Neon CasinoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Neon CasinoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA662F2B2A5339D0003377DD /* Slot_MachineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot_MachineUITests.swift; sourceTree = "<group>"; };
 		BA662F2D2A5339D0003377DD /* Slot_MachineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot_MachineUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BA7D766B2A54CD68009CE4E0 /* Slot_Machine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Slot_Machine.xcdatamodel; sourceTree = "<group>"; };
+		BA7D766C2A54CD68009CE4E0 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		BA7D766F2A55F1D0009CE4E0 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
+		BAB5B9C22A54CBD00074DD76 /* bet-chip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "bet-chip.mp3"; path = "Neon Casino/Sounds/bet-chip.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C32A54CBD00074DD76 /* rise-up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "rise-up.mp3"; path = "Neon Casino/Sounds/rise-up.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C42A54CBD00074DD76 /* game-over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "game-over.mp3"; path = "Neon Casino/Sounds/game-over.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C52A54CBD00074DD76 /* high-score.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "high-score.mp3"; path = "Neon Casino/Sounds/high-score.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C62A54CBD00074DD76 /* chime-up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "chime-up.mp3"; path = "Neon Casino/Sounds/chime-up.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C72A54CBD00074DD76 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = win.mp3; path = "Neon Casino/Sounds/win.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C82A54CBD00074DD76 /* spin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = spin.mp3; path = "Neon Casino/Sounds/spin.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C92A54CBD00074DD76 /* background-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "background-music.mp3"; path = "Neon Casino/Sounds/background-music.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9D22A54CBF50074DD76 /* LogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogoView.swift; path = "Neon Casino/Views/LogoView.swift"; sourceTree = SOURCE_ROOT; };
+		BAB5B9D32A54CBF50074DD76 /* ReelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReelView.swift; path = "Neon Casino/Views/ReelView.swift"; sourceTree = SOURCE_ROOT; };
+		BAB5B9D42A54CBF50074DD76 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "Neon Casino/Views/ContentView.swift"; sourceTree = SOURCE_ROOT; };
+		BAB5B9D52A54CBF50074DD76 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoView.swift; path = "Neon Casino/Views/InfoView.swift"; sourceTree = SOURCE_ROOT; };
+		BAB5B9DA2A54CC090074DD76 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = "Neon Casino/Helpers/Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		BAB5B9DB2A54CC090074DD76 /* Modifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Modifiers.swift; path = "Neon Casino/Helpers/Modifiers.swift"; sourceTree = SOURCE_ROOT; };
+		BAB5B9DC2A54CC090074DD76 /* PlaySound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySound.swift; path = "Neon Casino/Helpers/PlaySound.swift"; sourceTree = SOURCE_ROOT; };
+		BAB5B9E02A54CC160074DD76 /* Slot_MachineApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Slot_MachineApp.swift; path = "Neon Casino/Support Files/Slot_MachineApp.swift"; sourceTree = SOURCE_ROOT; };
+		BAB5B9E12A54CC160074DD76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Neon Casino/Support Files/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		BAB5B9E42A54CC330074DD76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Preview Assets.xcassets"; path = "Neon Casino/Preview Content/Preview Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +108,9 @@
 		BA662EFF2A5339CE003377DD = {
 			isa = PBXGroup;
 			children = (
-				BA662F0A2A5339CE003377DD /* Slot Machine */,
-				BA662F202A5339D0003377DD /* Slot MachineTests */,
-				BA662F2A2A5339D0003377DD /* Slot MachineUITests */,
+				BA662F0A2A5339CE003377DD /* Neon Casino */,
+				BA662F202A5339D0003377DD /* NeonCasinoTests */,
+				BA662F2A2A5339D0003377DD /* NeonCasinoUITests */,
 				BA662F092A5339CE003377DD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,57 +118,112 @@
 		BA662F092A5339CE003377DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA662F082A5339CE003377DD /* Slot Machine.app */,
-				BA662F1D2A5339D0003377DD /* Slot MachineTests.xctest */,
-				BA662F272A5339D0003377DD /* Slot MachineUITests.xctest */,
+				BA662F082A5339CE003377DD /* Neon Casino.app */,
+				BA662F1D2A5339D0003377DD /* Neon CasinoTests.xctest */,
+				BA662F272A5339D0003377DD /* Neon CasinoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BA662F0A2A5339CE003377DD /* Slot Machine */ = {
+		BA662F0A2A5339CE003377DD /* Neon Casino */ = {
 			isa = PBXGroup;
 			children = (
-				BA662F0B2A5339CE003377DD /* Slot_MachineApp.swift */,
-				BA662F0D2A5339CE003377DD /* ContentView.swift */,
-				BA662F0F2A5339D0003377DD /* Assets.xcassets */,
-				BA662F142A5339D0003377DD /* Persistence.swift */,
-				BA662F162A5339D0003377DD /* Slot_Machine.xcdatamodeld */,
+				BA662F3A2A534214003377DD /* Views */,
+				BA662F3B2A53421C003377DD /* Helpers */,
+				BA662F5F2A5347A7003377DD /* Data */,
+				BA662F3C2A534228003377DD /* Sounds */,
+				BA662F3D2A53422F003377DD /* Support Files */,
 				BA662F112A5339D0003377DD /* Preview Content */,
 			);
-			path = "Slot Machine";
+			path = "Neon Casino";
 			sourceTree = "<group>";
 		};
 		BA662F112A5339D0003377DD /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				BA662F122A5339D0003377DD /* Preview Assets.xcassets */,
+				BAB5B9E42A54CC330074DD76 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		BA662F202A5339D0003377DD /* Slot MachineTests */ = {
+		BA662F202A5339D0003377DD /* NeonCasinoTests */ = {
 			isa = PBXGroup;
 			children = (
 				BA662F212A5339D0003377DD /* Slot_MachineTests.swift */,
 			);
-			path = "Slot MachineTests";
+			path = NeonCasinoTests;
 			sourceTree = "<group>";
 		};
-		BA662F2A2A5339D0003377DD /* Slot MachineUITests */ = {
+		BA662F2A2A5339D0003377DD /* NeonCasinoUITests */ = {
 			isa = PBXGroup;
 			children = (
 				BA662F2B2A5339D0003377DD /* Slot_MachineUITests.swift */,
 				BA662F2D2A5339D0003377DD /* Slot_MachineUITestsLaunchTests.swift */,
 			);
-			path = "Slot MachineUITests";
+			path = NeonCasinoUITests;
+			sourceTree = "<group>";
+		};
+		BA662F3A2A534214003377DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BAB5B9D42A54CBF50074DD76 /* ContentView.swift */,
+				BAB5B9D32A54CBF50074DD76 /* ReelView.swift */,
+				BAB5B9D22A54CBF50074DD76 /* LogoView.swift */,
+				BAB5B9D52A54CBF50074DD76 /* InfoView.swift */,
+				BA7D766F2A55F1D0009CE4E0 /* GameOverView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BA662F3B2A53421C003377DD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BAB5B9DB2A54CC090074DD76 /* Modifiers.swift */,
+				BAB5B9DC2A54CC090074DD76 /* PlaySound.swift */,
+				BAB5B9DA2A54CC090074DD76 /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BA662F3C2A534228003377DD /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				BAB5B9C92A54CBD00074DD76 /* background-music.mp3 */,
+				BAB5B9C22A54CBD00074DD76 /* bet-chip.mp3 */,
+				BAB5B9C62A54CBD00074DD76 /* chime-up.mp3 */,
+				BAB5B9C42A54CBD00074DD76 /* game-over.mp3 */,
+				BAB5B9C52A54CBD00074DD76 /* high-score.mp3 */,
+				BAB5B9C32A54CBD00074DD76 /* rise-up.mp3 */,
+				BAB5B9C82A54CBD00074DD76 /* spin.mp3 */,
+				BAB5B9C72A54CBD00074DD76 /* win.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		BA662F3D2A53422F003377DD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BAB5B9E12A54CC160074DD76 /* Assets.xcassets */,
+				BAB5B9E02A54CC160074DD76 /* Slot_MachineApp.swift */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		BA662F5F2A5347A7003377DD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BA7D766C2A54CD68009CE4E0 /* Persistence.swift */,
+				BA7D766A2A54CD68009CE4E0 /* NeonCasino.xcdatamodeld */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BA662F072A5339CE003377DD /* Slot Machine */ = {
+		BA662F072A5339CE003377DD /* Neon Casino */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA662F312A5339D0003377DD /* Build configuration list for PBXNativeTarget "Slot Machine" */;
+			buildConfigurationList = BA662F312A5339D0003377DD /* Build configuration list for PBXNativeTarget "Neon Casino" */;
 			buildPhases = (
 				BA662F042A5339CE003377DD /* Sources */,
 				BA662F052A5339CE003377DD /* Frameworks */,
@@ -148,14 +233,14 @@
 			);
 			dependencies = (
 			);
-			name = "Slot Machine";
+			name = "Neon Casino";
 			productName = "Slot Machine";
-			productReference = BA662F082A5339CE003377DD /* Slot Machine.app */;
+			productReference = BA662F082A5339CE003377DD /* Neon Casino.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BA662F1C2A5339D0003377DD /* Slot MachineTests */ = {
+		BA662F1C2A5339D0003377DD /* Neon CasinoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA662F342A5339D0003377DD /* Build configuration list for PBXNativeTarget "Slot MachineTests" */;
+			buildConfigurationList = BA662F342A5339D0003377DD /* Build configuration list for PBXNativeTarget "Neon CasinoTests" */;
 			buildPhases = (
 				BA662F192A5339D0003377DD /* Sources */,
 				BA662F1A2A5339D0003377DD /* Frameworks */,
@@ -166,14 +251,14 @@
 			dependencies = (
 				BA662F1F2A5339D0003377DD /* PBXTargetDependency */,
 			);
-			name = "Slot MachineTests";
+			name = "Neon CasinoTests";
 			productName = "Slot MachineTests";
-			productReference = BA662F1D2A5339D0003377DD /* Slot MachineTests.xctest */;
+			productReference = BA662F1D2A5339D0003377DD /* Neon CasinoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BA662F262A5339D0003377DD /* Slot MachineUITests */ = {
+		BA662F262A5339D0003377DD /* Neon CasinoUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA662F372A5339D0003377DD /* Build configuration list for PBXNativeTarget "Slot MachineUITests" */;
+			buildConfigurationList = BA662F372A5339D0003377DD /* Build configuration list for PBXNativeTarget "Neon CasinoUITests" */;
 			buildPhases = (
 				BA662F232A5339D0003377DD /* Sources */,
 				BA662F242A5339D0003377DD /* Frameworks */,
@@ -184,9 +269,9 @@
 			dependencies = (
 				BA662F292A5339D0003377DD /* PBXTargetDependency */,
 			);
-			name = "Slot MachineUITests";
+			name = "Neon CasinoUITests";
 			productName = "Slot MachineUITests";
-			productReference = BA662F272A5339D0003377DD /* Slot MachineUITests.xctest */;
+			productReference = BA662F272A5339D0003377DD /* Neon CasinoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -212,7 +297,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BA662F032A5339CE003377DD /* Build configuration list for PBXProject "Slot Machine" */;
+			buildConfigurationList = BA662F032A5339CE003377DD /* Build configuration list for PBXProject "Neon Casino" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -225,9 +310,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BA662F072A5339CE003377DD /* Slot Machine */,
-				BA662F1C2A5339D0003377DD /* Slot MachineTests */,
-				BA662F262A5339D0003377DD /* Slot MachineUITests */,
+				BA662F072A5339CE003377DD /* Neon Casino */,
+				BA662F1C2A5339D0003377DD /* Neon CasinoTests */,
+				BA662F262A5339D0003377DD /* Neon CasinoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -237,8 +322,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA662F132A5339D0003377DD /* Preview Assets.xcassets in Resources */,
-				BA662F102A5339D0003377DD /* Assets.xcassets in Resources */,
+				BAB5B9E52A54CC330074DD76 /* Preview Assets.xcassets in Resources */,
+				BAB5B9E32A54CC160074DD76 /* Assets.xcassets in Resources */,
+				BAB5B9CC2A54CBD00074DD76 /* game-over.mp3 in Resources */,
+				BAB5B9CF2A54CBD00074DD76 /* win.mp3 in Resources */,
+				BAB5B9D02A54CBD00074DD76 /* spin.mp3 in Resources */,
+				BAB5B9CE2A54CBD00074DD76 /* chime-up.mp3 in Resources */,
+				BAB5B9D12A54CBD00074DD76 /* background-music.mp3 in Resources */,
+				BAB5B9CD2A54CBD00074DD76 /* high-score.mp3 in Resources */,
+				BAB5B9CB2A54CBD00074DD76 /* rise-up.mp3 in Resources */,
+				BAB5B9CA2A54CBD00074DD76 /* bet-chip.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,10 +356,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA662F152A5339D0003377DD /* Persistence.swift in Sources */,
-				BA662F0E2A5339CE003377DD /* ContentView.swift in Sources */,
-				BA662F0C2A5339CE003377DD /* Slot_MachineApp.swift in Sources */,
-				BA662F182A5339D0003377DD /* Slot_Machine.xcdatamodeld in Sources */,
+				BAB5B9DD2A54CC090074DD76 /* Extensions.swift in Sources */,
+				BA7D76702A55F1D0009CE4E0 /* GameOverView.swift in Sources */,
+				BA7D766D2A54CD68009CE4E0 /* NeonCasino.xcdatamodeld in Sources */,
+				BAB5B9D82A54CBF50074DD76 /* ContentView.swift in Sources */,
+				BAB5B9E22A54CC160074DD76 /* Slot_MachineApp.swift in Sources */,
+				BAB5B9D62A54CBF50074DD76 /* LogoView.swift in Sources */,
+				BAB5B9DF2A54CC090074DD76 /* PlaySound.swift in Sources */,
+				BAB5B9DE2A54CC090074DD76 /* Modifiers.swift in Sources */,
+				BAB5B9D72A54CBF50074DD76 /* ReelView.swift in Sources */,
+				BAB5B9D92A54CBF50074DD76 /* InfoView.swift in Sources */,
+				BA7D766E2A54CD68009CE4E0 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,12 +392,12 @@
 /* Begin PBXTargetDependency section */
 		BA662F1F2A5339D0003377DD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BA662F072A5339CE003377DD /* Slot Machine */;
+			target = BA662F072A5339CE003377DD /* Neon Casino */;
 			targetProxy = BA662F1E2A5339D0003377DD /* PBXContainerItemProxy */;
 		};
 		BA662F292A5339D0003377DD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BA662F072A5339CE003377DD /* Slot Machine */;
+			target = BA662F072A5339CE003377DD /* Neon Casino */;
 			targetProxy = BA662F282A5339D0003377DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -424,21 +524,23 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Slot Machine/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Neon Casino/Preview Content\"";
 				DEVELOPMENT_TEAM = WC92Z884R6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Neon Casino";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.casino-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kreid.Slot-Machine";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kreid.Neon-Casino";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -453,21 +555,23 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Slot Machine/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Neon Casino/Preview Content\"";
 				DEVELOPMENT_TEAM = WC92Z884R6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Neon Casino";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.casino-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kreid.Slot-Machine";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kreid.Neon-Casino";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -491,7 +595,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slot Machine.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Slot Machine";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Neon Casino.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Neon Casino";
 			};
 			name = Debug;
 		};
@@ -511,7 +615,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slot Machine.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Slot Machine";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Neon Casino.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Neon Casino";
 			};
 			name = Release;
 		};
@@ -554,7 +658,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BA662F032A5339CE003377DD /* Build configuration list for PBXProject "Slot Machine" */ = {
+		BA662F032A5339CE003377DD /* Build configuration list for PBXProject "Neon Casino" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA662F2F2A5339D0003377DD /* Debug */,
@@ -563,7 +667,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA662F312A5339D0003377DD /* Build configuration list for PBXNativeTarget "Slot Machine" */ = {
+		BA662F312A5339D0003377DD /* Build configuration list for PBXNativeTarget "Neon Casino" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA662F322A5339D0003377DD /* Debug */,
@@ -572,7 +676,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA662F342A5339D0003377DD /* Build configuration list for PBXNativeTarget "Slot MachineTests" */ = {
+		BA662F342A5339D0003377DD /* Build configuration list for PBXNativeTarget "Neon CasinoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA662F352A5339D0003377DD /* Debug */,
@@ -581,7 +685,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA662F372A5339D0003377DD /* Build configuration list for PBXNativeTarget "Slot MachineUITests" */ = {
+		BA662F372A5339D0003377DD /* Build configuration list for PBXNativeTarget "Neon CasinoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA662F382A5339D0003377DD /* Debug */,
@@ -593,13 +697,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		BA662F162A5339D0003377DD /* Slot_Machine.xcdatamodeld */ = {
+		BA7D766A2A54CD68009CE4E0 /* NeonCasino.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				BA662F172A5339D0003377DD /* Slot_Machine.xcdatamodel */,
+				BA7D766B2A54CD68009CE4E0 /* Slot_Machine.xcdatamodel */,
 			);
-			currentVersion = BA662F172A5339D0003377DD /* Slot_Machine.xcdatamodel */;
-			path = Slot_Machine.xcdatamodeld;
+			currentVersion = BA7D766B2A54CD68009CE4E0 /* Slot_Machine.xcdatamodel */;
+			path = NeonCasino.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
