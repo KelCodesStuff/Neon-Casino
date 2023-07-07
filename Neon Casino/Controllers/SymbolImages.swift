@@ -6,72 +6,29 @@
 //
 
 enum SymbolImages: String {
-    case bar
-    case bell
-    case cherry
-    case clover
-    case club
-    case crown
-    case diamond
-    case fruit
-    case grapes
-    case heart
-    case horseshoe
-    case jewel
-    case lemon
-    case money
-    case question
-    case seven
-    case spade
-    case star
-    case strawberry
-    case watermelon
-    case win
+    case barSymbol = "bar-symbol"
+    case bellSymbol = "bell-symbol"
+    case cherrySymbol = "cherry-symbol"
+    case cloverSymbol = "clover-symbol"
+    case clubSymbol = "club-symbol"
+    case crownSymbol = "crown-symbol"
+    case diamondSymbol = "diamond-symbol"
+    case fruitSymbol = "fruit-symbol"
+    case grapesSymbol = "grapes-symbol"
+    case heartSymbol = "heart-symbol"
+    case horseshoeSymbol = "horseshoe-symbol"
+    case jewelSymbol = "jewel-symbol"
+    case lemonSymbol = "lemon-symbol"
+    case moneySymbol = "money-symbol"
+    case questionSymbol = "question-symbol"
+    case sevenSymbol = "seven-symbol"
+    case spadeSymbol = "spade-symbol"
+    case starSymbol = "star-symbol"
+    case strawberrySymbol = "strawberry-symbol"
+    case watermelonSymbol = "watermelon-symbol"
+    case winSymbol = "win-symbol"
     
     var symbolName: String {
-        switch self {
-        case .bar:
-            return "bar"
-        case .bell:
-            return "bell"
-        case .cherry:
-            return "cherry"
-        case .clover:
-            return "clover"
-        case .club:
-            return "club"
-        case .crown:
-            return "crown"
-        case .diamond:
-            return "diamond"
-        case .fruit:
-            return "fruit"
-        case .grapes:
-            return "grapes"
-        case .heart:
-            return "heart"
-        case .horseshoe:
-            return "horseshoe"
-        case .jewel:
-            return "jewel"
-        case .lemon:
-            return "lemon"
-        case .money:
-            return "money"
-        case .question:
-            return "question"
-        case .seven:
-            return "seven"
-        case .spade:
-            return "spade"
-        case .star:
-            return "star"
-        case .strawberry:
-            return "strawberry"
-        case .watermelon:
-            return "watermelon"
-        case .win:
-            return "win"
-        }
+        return self.rawValue
     }
 }
