@@ -52,7 +52,7 @@ struct ScoreCapsuleModifier: ViewModifier {
             .padding(.horizontal, 16)
             .background(
                 Capsule()
-                    .foregroundColor(Color("ColorBlackTransparent")))
+                    .foregroundColor(Color("ColorTransparentBlack")))
     }
 }
 
