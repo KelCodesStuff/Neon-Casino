@@ -11,7 +11,7 @@ struct ContentView: View {
     @StateObject private var viewModel = GameViewModel()
     
     // MARK: - Properties
-    @State private var credits = 1000
+    @State private var money = 1000
     @State private var showInfoView = false
     @State private var showGameOverModal = false
 
