@@ -9,14 +9,16 @@ import SwiftUI
 
 struct SlotMachineView: View {
     // Symbols array
-    let symbols: [SymbolImages] = [.bar, .bell, .cherry, .clover, .club, .crown, .diamond, .fruit, .grapes, .heart, .horseshoe, .jewel, .lemon, .money, .question, .seven, .spade, .star, .strawberry, .watermelon, .win]
+    let symbols: [SymbolImages] = [.barSymbol, .bellSymbol, .cherrySymbol, .cloverSymbol, .clubSymbol, .crownSymbol, .diamondSymbol, .fruitSymbol, .grapesSymbol, .heartSymbol, .horseshoeSymbol, .jewelSymbol, .lemonSymbol, .moneySymbol, .questionSymbol, .sevenSymbol, .spadeSymbol, .starSymbol, .strawberrySymbol, .watermelonSymbol, .winSymbol]
     
     let haptics = UINotificationFeedbackGenerator()
     
     // MARK: - Properties
     @State private var highScore = UserDefaults.standard.integer(forKey: "HighScore")
     @State private var jackpot = UserDefaults.standard.integer(forKey: "Jackpot")
-    @State private var credits = 100
+    
+    @State private var money = 100
+    @State private var moneyWon = 0
     @State private var betAmount = 5
     @State private var reels = [0, 1, 2, 3, 4, 5, 6, 7, 8]
     
@@ -27,8 +29,10 @@ struct SlotMachineView: View {
     
     @State private var animatingSymbol = false
     @State private var showInfoView = false
-    @State private var showGameOverAlert = false
-    @State private var showGameOverModal = false
+    
+    @State private var showAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
     
     // MARK: - Functions
     func setBetAmount(_ amount: Int) {
@@ -52,24 +56,68 @@ struct SlotMachineView: View {
     
     // Check if player won
     func checkWinning() {
-        let firstSymbol = reels[0]
-        var allEqual = true
         
-        for symbol in reels {
-            if symbol != firstSymbol {
-                allEqual = false
-                break
+        // MARK: - Test Winning
+//        let winningCombination: [Int] = [0, 1, 2] // Modify this to include the jackpot symbol in the winning combination
+        // Update the reels to force the winning combination
+//        reels[winningCombination[0]] = symbols.firstIndex(of: .moneySymbol)!
+//        reels[winningCombination[1]] = symbols.firstIndex(of: .moneySymbol)!
+//        reels[winningCombination[2]] = symbols.firstIndex(of: .moneySymbol)!
+        // MARK: - Test Winning
+        
+        // Define winning combinations and their respective payouts
+        let winningCombinations: [[Int]] = [
+            [0, 1, 2],  // Top row
+            [3, 4, 5],  // Middle row
+            [6, 7, 8],  // Bottom row
+            [0, 4, 8],  // Diagonal from top-left to bottom-right
+            [2, 4, 6]   // Diagonal from top-right to bottom-left
+        ]
+        
+        let payouts: [SymbolImages: Int] = [
+            .moneySymbol: 500,      // Payout for three "money" symbols
+            .jewelSymbol: 400,     // Payout for three "jewel" symbols
+            .crownSymbol: 300,   // Payout for three "crown" symbols
+            .spadeSymbol: 200,   // Payout for three "spade" symbols
+            // Add more symbols and corresponding payouts as needed
+        ]
+        
+        var totalPayout = 0
+        var transferJackpot = false
+
+        // Check if any winning combination matches the current reel positions
+        for combination in winningCombinations {
+            let symbol = symbols[reels[combination[0]]]
+
+            if reels[combination[0]] == reels[combination[1]] && reels[combination[1]] == reels[combination[2]] && symbol != .winSymbol {
+                if let payout = payouts[symbol] {
+                    totalPayout += payout
+                    if symbol == .winSymbol {
+                        transferJackpot = true
+                    }
+                }
             }
         }
-        
-        if allEqual {
+
+        if totalPayout > 0 {
             // Player Wins
-            playerWins()
+            playerWins(totalPayout: totalPayout)
             
             // New HighScore
-            if credits > highScore {
+            if money > highScore {
                 newHighScore()
             } else {
+                playSound(sound: "win", type: "mp3")
+            }
+
+            // Player wins the jackpot
+            if transferJackpot {
+                money += jackpot
+                jackpot = 0
+                UserDefaults.standard.set(jackpot, forKey: "Jackpot")
+                showAlert = true
+                alertTitle = "Jackpot!"
+                alertMessage = "Congratulations! You won $\(jackpot) dollars!"
                 playSound(sound: "win", type: "mp3")
             }
         } else {
@@ -78,9 +126,34 @@ struct SlotMachineView: View {
         }
     }
     
-    // Player Won
-    func playerWins() {
-        credits += betAmount * 100
+    // Player Wins
+    func playerWins(totalPayout: Int) {
+        moneyWon = totalPayout * betAmount
+        money += moneyWon
+        showAlert = true
+        alertTitle = "Congratulations!"
+        alertMessage = "You won $\(moneyWon) dollars!"
+        playSound(sound: "win", type: "mp3")
+    }
+    
+    // Player Loses
+    func playerLoses() {
+        money -= betAmount
+        if money < 0 {
+            money = 0
+        }
+    }
+    
+    // Game Over
+    func isGameOver() {
+        if money <= 0 {
+            showAlert = true
+            alertTitle = "Game Over"
+            alertMessage = "You are out of money."
+            money = 100
+            setBetAmount(5)
+            playSound(sound: "game-over", type: "mp3")
+        }
     }
     
     // New Jackpot
@@ -91,32 +164,15 @@ struct SlotMachineView: View {
     
     // New High Score
     func newHighScore() {
-        highScore = credits
+        highScore = money
         // Saves data locally
         UserDefaults.standard.set(highScore, forKey: "HighScore")
         playSound(sound: "high-score", type: "mp3")
     }
     
-    // Player Loses
-    func playerLoses() {
-        credits -= betAmount
-        if credits < 0 {
-            credits = 0
-        }
-    }
-    
-    // Game Over
-    func isGameOver() {
-        if credits <= 0 {
-            showGameOverAlert = true
-            showGameOverModal = true
-            playSound(sound: "game-over", type: "mp3")
-        }
-    }
-    
     // Reset Game
     func resetGame() {
-        credits = 100
+        money = 100
         setBetAmount(5)
     }
     
@@ -131,10 +187,10 @@ struct SlotMachineView: View {
             
             HStack {
                 HStack {
-                    Text("Your\nCredits".uppercased())
+                    Text("money".uppercased())
                         .modifier(ScoreLabelModifier())
                         .multilineTextAlignment(.trailing)
-                    Text("\(credits)")
+                    Text("$\(money)")
                         .modifier(ScoreNumberModifier())
                 }
                 .modifier(ScoreCapsuleModifier())
@@ -389,74 +445,17 @@ struct SlotMachineView: View {
         }
         .frame(maxWidth: 100)
         
-        // Game Over Alert
-        .alert(isPresented: $showGameOverAlert) {
+        // Combined Alert
+        .alert(isPresented: $showAlert) {
             Alert(
-                title: Text("Game Over"),
-                message: Text("You are out of credits!"),
-                dismissButton: .default(
-                    Text("OK"),
-                    action: {
-                        resetGame()
-                    }
-                )
+                title: Text(alertTitle),
+                message: Text(alertMessage),
+                dismissButton: .default(Text("OK"))
             )
         }
     }
 }
 
-
-/*
-        // MARK: - Game over modal
-        if showGameOverModal {
-            ZStack {
-                Color(.black)
-                    .ignoresSafeArea(.all)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                VStack {
-                    Text("GAME OVER")
-                        .font(.system(.title, design: .rounded))
-                        .fontWeight(.heavy)
-                        .foregroundColor(Color.white)
-                        .padding()
-                        .frame(minWidth: 280, idealWidth: 280, maxWidth: 320)
-                        .background(Color("ColorGreen"))
-                    
-                    Spacer()
-                    VStack {
-                        Image("main-logo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 150)
-                        Text("No more credits!\n Play again!")
-                            .font(.system(.body, design: .rounded))
-                            .foregroundColor(Color.white)
-                            .multilineTextAlignment(.center)
-                        Button {
-                            self.showGameOverModal = false
-                            self.credits = 100
-                        } label: {
-                            Text("New Game".uppercased())
-                                .foregroundColor(Color.white)
-                        }
-                        .padding(.vertical,10)
-                        .padding(.horizontal, 20)
-                        .background(
-                            Capsule()
-                                .strokeBorder(lineWidth: 2)
-                                .foregroundColor(Color("ColorWhite"))
-                        )
-                    }
-                    Spacer()
-                }
-                .frame(minWidth: 280, idealWidth: 280, maxWidth: 320, minHeight: 280, idealHeight: 300, maxHeight: 350, alignment: .center)
-                .background(Color("ColorGold"))
-                .cornerRadius(20)
-            }.onAppear(perform: {
-                playSound(sound: "drum-music", type: "mp3")
-              })
-        }
-*/
 
 struct SlotMachineView_Previews: PreviewProvider {
     static var previews: some View {
