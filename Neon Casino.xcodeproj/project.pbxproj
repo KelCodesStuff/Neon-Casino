@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA5794012A576ACF00113D31 /* SlotMachineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5794002A576ACF00113D31 /* SlotMachineView.swift */; };
+		BA5794052A576B2800113D31 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5794042A576B2800113D31 /* BackgroundView.swift */; };
+		BA5794072A576CB400113D31 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5794062A576CB400113D31 /* GameViewModel.swift */; };
+		BA5794092A576D0600113D31 /* SymbolImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5794082A576D0600113D31 /* SymbolImages.swift */; };
 		BA662F222A5339D0003377DD /* Slot_MachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F212A5339D0003377DD /* Slot_MachineTests.swift */; };
 		BA662F2C2A5339D0003377DD /* Slot_MachineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F2B2A5339D0003377DD /* Slot_MachineUITests.swift */; };
 		BA662F2E2A5339D0003377DD /* Slot_MachineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA662F2D2A5339D0003377DD /* Slot_MachineUITestsLaunchTests.swift */; };
 		BA7D766D2A54CD68009CE4E0 /* NeonCasino.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA7D766A2A54CD68009CE4E0 /* NeonCasino.xcdatamodeld */; };
 		BA7D766E2A54CD68009CE4E0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D766C2A54CD68009CE4E0 /* Persistence.swift */; };
-		BA7D76702A55F1D0009CE4E0 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D766F2A55F1D0009CE4E0 /* GameOverView.swift */; };
 		BAB5B9CA2A54CBD00074DD76 /* bet-chip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAB5B9C22A54CBD00074DD76 /* bet-chip.mp3 */; };
 		BAB5B9CB2A54CBD00074DD76 /* rise-up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAB5B9C32A54CBD00074DD76 /* rise-up.mp3 */; };
 		BAB5B9CC2A54CBD00074DD76 /* game-over.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAB5B9C42A54CBD00074DD76 /* game-over.mp3 */; };
@@ -25,7 +28,6 @@
 		BAB5B9D72A54CBF50074DD76 /* ReelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9D32A54CBF50074DD76 /* ReelView.swift */; };
 		BAB5B9D82A54CBF50074DD76 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9D42A54CBF50074DD76 /* ContentView.swift */; };
 		BAB5B9D92A54CBF50074DD76 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9D52A54CBF50074DD76 /* InfoView.swift */; };
-		BAB5B9DD2A54CC090074DD76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9DA2A54CC090074DD76 /* Extensions.swift */; };
 		BAB5B9DE2A54CC090074DD76 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9DB2A54CC090074DD76 /* Modifiers.swift */; };
 		BAB5B9DF2A54CC090074DD76 /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9DC2A54CC090074DD76 /* PlaySound.swift */; };
 		BAB5B9E22A54CC160074DD76 /* Slot_MachineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5B9E02A54CC160074DD76 /* Slot_MachineApp.swift */; };
@@ -51,6 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA5794002A576ACF00113D31 /* SlotMachineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotMachineView.swift; sourceTree = "<group>"; };
+		BA5794042A576B2800113D31 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		BA5794062A576CB400113D31 /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		BA5794082A576D0600113D31 /* SymbolImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolImages.swift; sourceTree = "<group>"; };
 		BA662F082A5339CE003377DD /* Neon Casino.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Neon Casino.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA662F1D2A5339D0003377DD /* Neon CasinoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Neon CasinoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA662F212A5339D0003377DD /* Slot_MachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot_MachineTests.swift; sourceTree = "<group>"; };
@@ -59,7 +65,6 @@
 		BA662F2D2A5339D0003377DD /* Slot_MachineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot_MachineUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BA7D766B2A54CD68009CE4E0 /* Slot_Machine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Slot_Machine.xcdatamodel; sourceTree = "<group>"; };
 		BA7D766C2A54CD68009CE4E0 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		BA7D766F2A55F1D0009CE4E0 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		BAB5B9C22A54CBD00074DD76 /* bet-chip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "bet-chip.mp3"; path = "Neon Casino/Sounds/bet-chip.mp3"; sourceTree = SOURCE_ROOT; };
 		BAB5B9C32A54CBD00074DD76 /* rise-up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "rise-up.mp3"; path = "Neon Casino/Sounds/rise-up.mp3"; sourceTree = SOURCE_ROOT; };
 		BAB5B9C42A54CBD00074DD76 /* game-over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "game-over.mp3"; path = "Neon Casino/Sounds/game-over.mp3"; sourceTree = SOURCE_ROOT; };
@@ -72,7 +77,6 @@
 		BAB5B9D32A54CBF50074DD76 /* ReelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReelView.swift; path = "Neon Casino/Views/ReelView.swift"; sourceTree = SOURCE_ROOT; };
 		BAB5B9D42A54CBF50074DD76 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "Neon Casino/Views/ContentView.swift"; sourceTree = SOURCE_ROOT; };
 		BAB5B9D52A54CBF50074DD76 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoView.swift; path = "Neon Casino/Views/InfoView.swift"; sourceTree = SOURCE_ROOT; };
-		BAB5B9DA2A54CC090074DD76 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = "Neon Casino/Helpers/Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		BAB5B9DB2A54CC090074DD76 /* Modifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Modifiers.swift; path = "Neon Casino/Helpers/Modifiers.swift"; sourceTree = SOURCE_ROOT; };
 		BAB5B9DC2A54CC090074DD76 /* PlaySound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySound.swift; path = "Neon Casino/Helpers/PlaySound.swift"; sourceTree = SOURCE_ROOT; };
 		BAB5B9E02A54CC160074DD76 /* Slot_MachineApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Slot_MachineApp.swift; path = "Neon Casino/Support Files/Slot_MachineApp.swift"; sourceTree = SOURCE_ROOT; };
@@ -105,6 +109,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA5793FE2A576A0D00113D31 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BA5794062A576CB400113D31 /* GameViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BA5793FF2A576A1300113D31 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BA5794082A576D0600113D31 /* SymbolImages.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		BA662EFF2A5339CE003377DD = {
 			isa = PBXGroup;
 			children = (
@@ -128,7 +148,9 @@
 		BA662F0A2A5339CE003377DD /* Neon Casino */ = {
 			isa = PBXGroup;
 			children = (
+				BA5793FE2A576A0D00113D31 /* Models */,
 				BA662F3A2A534214003377DD /* Views */,
+				BA5793FF2A576A1300113D31 /* Controllers */,
 				BA662F3B2A53421C003377DD /* Helpers */,
 				BA662F5F2A5347A7003377DD /* Data */,
 				BA662F3C2A534228003377DD /* Sounds */,
@@ -167,10 +189,11 @@
 			isa = PBXGroup;
 			children = (
 				BAB5B9D42A54CBF50074DD76 /* ContentView.swift */,
-				BAB5B9D32A54CBF50074DD76 /* ReelView.swift */,
+				BA5794042A576B2800113D31 /* BackgroundView.swift */,
 				BAB5B9D22A54CBF50074DD76 /* LogoView.swift */,
+				BA5794002A576ACF00113D31 /* SlotMachineView.swift */,
+				BAB5B9D32A54CBF50074DD76 /* ReelView.swift */,
 				BAB5B9D52A54CBF50074DD76 /* InfoView.swift */,
-				BA7D766F2A55F1D0009CE4E0 /* GameOverView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,7 +203,6 @@
 			children = (
 				BAB5B9DB2A54CC090074DD76 /* Modifiers.swift */,
 				BAB5B9DC2A54CC090074DD76 /* PlaySound.swift */,
-				BAB5B9DA2A54CC090074DD76 /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -356,16 +378,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAB5B9DD2A54CC090074DD76 /* Extensions.swift in Sources */,
-				BA7D76702A55F1D0009CE4E0 /* GameOverView.swift in Sources */,
 				BA7D766D2A54CD68009CE4E0 /* NeonCasino.xcdatamodeld in Sources */,
+				BA5794072A576CB400113D31 /* GameViewModel.swift in Sources */,
 				BAB5B9D82A54CBF50074DD76 /* ContentView.swift in Sources */,
 				BAB5B9E22A54CC160074DD76 /* Slot_MachineApp.swift in Sources */,
 				BAB5B9D62A54CBF50074DD76 /* LogoView.swift in Sources */,
 				BAB5B9DF2A54CC090074DD76 /* PlaySound.swift in Sources */,
 				BAB5B9DE2A54CC090074DD76 /* Modifiers.swift in Sources */,
+				BA5794092A576D0600113D31 /* SymbolImages.swift in Sources */,
 				BAB5B9D72A54CBF50074DD76 /* ReelView.swift in Sources */,
 				BAB5B9D92A54CBF50074DD76 /* InfoView.swift in Sources */,
+				BA5794052A576B2800113D31 /* BackgroundView.swift in Sources */,
+				BA5794012A576ACF00113D31 /* SlotMachineView.swift in Sources */,
 				BA7D766E2A54CD68009CE4E0 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
