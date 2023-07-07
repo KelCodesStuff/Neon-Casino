@@ -14,7 +14,7 @@ struct InfoView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
-            LogoView(logoFileName: "slots-logo")
+            LogoView()
             Spacer()
             Form {
                 // Pay table
