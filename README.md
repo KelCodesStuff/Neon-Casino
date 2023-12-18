@@ -9,6 +9,8 @@
 
 [![TestFlight](https://img.shields.io/badge/Join%20The%20TestFlight-blue)](https://testflight.apple.com/)
 
+## What is it?
+
 Neon Casino is an iOS and iPadOS slot machine game that I created for fun. Users are not playing with real money.
 
 This project was created 100% with Swift UI No third party frameworks were used.
