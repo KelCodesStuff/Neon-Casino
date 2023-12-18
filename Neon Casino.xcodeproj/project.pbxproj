@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -66,21 +66,21 @@
 		BA662F2D2A5339D0003377DD /* Slot_MachineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot_MachineUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BA7D766B2A54CD68009CE4E0 /* Slot_Machine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Slot_Machine.xcdatamodel; sourceTree = "<group>"; };
 		BA7D766C2A54CD68009CE4E0 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		BAB5B9C22A54CBD00074DD76 /* bet-chip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "bet-chip.mp3"; path = "Neon Casino/Sounds/bet-chip.mp3"; sourceTree = SOURCE_ROOT; };
-		BAB5B9C32A54CBD00074DD76 /* rise-up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "rise-up.mp3"; path = "Neon Casino/Sounds/rise-up.mp3"; sourceTree = SOURCE_ROOT; };
-		BAB5B9C52A54CBD00074DD76 /* high-score.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "high-score.mp3"; path = "Neon Casino/Sounds/high-score.mp3"; sourceTree = SOURCE_ROOT; };
-		BAB5B9C62A54CBD00074DD76 /* chime-up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "chime-up.mp3"; path = "Neon Casino/Sounds/chime-up.mp3"; sourceTree = SOURCE_ROOT; };
-		BAB5B9C72A54CBD00074DD76 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = win.mp3; path = "Neon Casino/Sounds/win.mp3"; sourceTree = SOURCE_ROOT; };
-		BAB5B9C82A54CBD00074DD76 /* spin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = spin.mp3; path = "Neon Casino/Sounds/spin.mp3"; sourceTree = SOURCE_ROOT; };
-		BAB5B9C92A54CBD00074DD76 /* background-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "background-music.mp3"; path = "Neon Casino/Sounds/background-music.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C22A54CBD00074DD76 /* bet-chip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "bet-chip.mp3"; path = "Neon Casino/Assets/bet-chip.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C32A54CBD00074DD76 /* rise-up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "rise-up.mp3"; path = "Neon Casino/Assets/rise-up.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C52A54CBD00074DD76 /* high-score.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "high-score.mp3"; path = "Neon Casino/Assets/high-score.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C62A54CBD00074DD76 /* chime-up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "chime-up.mp3"; path = "Neon Casino/Assets/chime-up.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C72A54CBD00074DD76 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = win.mp3; path = "Neon Casino/Assets/win.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C82A54CBD00074DD76 /* spin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = spin.mp3; path = "Neon Casino/Assets/spin.mp3"; sourceTree = SOURCE_ROOT; };
+		BAB5B9C92A54CBD00074DD76 /* background-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "background-music.mp3"; path = "Neon Casino/Assets/background-music.mp3"; sourceTree = SOURCE_ROOT; };
 		BAB5B9D22A54CBF50074DD76 /* LogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogoView.swift; path = "Neon Casino/Views/LogoView.swift"; sourceTree = SOURCE_ROOT; };
 		BAB5B9D32A54CBF50074DD76 /* ReelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReelView.swift; path = "Neon Casino/Views/ReelView.swift"; sourceTree = SOURCE_ROOT; };
 		BAB5B9D42A54CBF50074DD76 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "Neon Casino/Views/ContentView.swift"; sourceTree = SOURCE_ROOT; };
 		BAB5B9D52A54CBF50074DD76 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoView.swift; path = "Neon Casino/Views/InfoView.swift"; sourceTree = SOURCE_ROOT; };
 		BAB5B9DB2A54CC090074DD76 /* Modifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Modifiers.swift; path = "Neon Casino/Helpers/Modifiers.swift"; sourceTree = SOURCE_ROOT; };
 		BAB5B9DC2A54CC090074DD76 /* PlaySound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySound.swift; path = "Neon Casino/Helpers/PlaySound.swift"; sourceTree = SOURCE_ROOT; };
-		BAB5B9E02A54CC160074DD76 /* Slot_MachineApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Slot_MachineApp.swift; path = "Neon Casino/Support Files/Slot_MachineApp.swift"; sourceTree = SOURCE_ROOT; };
-		BAB5B9E12A54CC160074DD76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Neon Casino/Support Files/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		BAB5B9E02A54CC160074DD76 /* Slot_MachineApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Slot_MachineApp.swift; path = "Neon Casino/Controllers/Slot_MachineApp.swift"; sourceTree = SOURCE_ROOT; };
+		BAB5B9E12A54CC160074DD76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Neon Casino/Assets/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 		BAB5B9E42A54CC330074DD76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Preview Assets.xcassets"; path = "Neon Casino/Preview Content/Preview Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -121,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				BA5794082A576D0600113D31 /* SymbolImages.swift */,
+				BAB5B9E02A54CC160074DD76 /* Slot_MachineApp.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -153,8 +154,8 @@
 				BA5793FF2A576A1300113D31 /* Controllers */,
 				BA662F3B2A53421C003377DD /* Helpers */,
 				BA662F5F2A5347A7003377DD /* Data */,
-				BA662F3C2A534228003377DD /* Sounds */,
-				BA662F3D2A53422F003377DD /* Support Files */,
+				BA662F3C2A534228003377DD /* Assets */,
+				BA662F3D2A53422F003377DD /* SupportFiles */,
 				BA662F112A5339D0003377DD /* Preview Content */,
 			);
 			path = "Neon Casino";
@@ -207,9 +208,10 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		BA662F3C2A534228003377DD /* Sounds */ = {
+		BA662F3C2A534228003377DD /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BAB5B9E12A54CC160074DD76 /* Assets.xcassets */,
 				BAB5B9C92A54CBD00074DD76 /* background-music.mp3 */,
 				BAB5B9C22A54CBD00074DD76 /* bet-chip.mp3 */,
 				BAB5B9C62A54CBD00074DD76 /* chime-up.mp3 */,
@@ -219,16 +221,14 @@
 				BAB5B9C82A54CBD00074DD76 /* spin.mp3 */,
 				BAB5B9C72A54CBD00074DD76 /* win.mp3 */,
 			);
-			path = Sounds;
+			path = Assets;
 			sourceTree = "<group>";
 		};
-		BA662F3D2A53422F003377DD /* Support Files */ = {
+		BA662F3D2A53422F003377DD /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				BAB5B9E12A54CC160074DD76 /* Assets.xcassets */,
-				BAB5B9E02A54CC160074DD76 /* Slot_MachineApp.swift */,
 			);
-			path = "Support Files";
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 		BA662F5F2A5347A7003377DD /* Data */ = {
@@ -304,7 +304,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1510;
+				ORGANIZATIONNAME = "Kel Reid";
 				TargetAttributes = {
 					BA662F072A5339CE003377DD = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -320,7 +321,7 @@
 				};
 			};
 			buildConfigurationList = BA662F032A5339CE003377DD /* Build configuration list for PBXProject "Neon Casino" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -463,6 +464,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -523,6 +525,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -558,13 +561,14 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kreid.Neon-Casino";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kelreid.Neon-Casino";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -589,13 +593,14 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kreid.Neon-Casino";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kelreid.Neon-Casino";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
