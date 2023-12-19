@@ -5,8 +5,6 @@
 <img src="https://img.shields.io/badge/Swift-5.8-orange.svg"/>
 <img src="https://img.shields.io/badge/Platforms-iOS-brightgreen.svg?style=flat" alt="Mac + Linux"/>
 
-![Platforms](https://img.shields.io/badge/Platform%20Compatibility-iOS%2016+%20|%20iPadOS%2016+-green?logo=apple&?color=green)
-
 [![TestFlight](https://img.shields.io/badge/Join%20The%20TestFlight-blue)](https://testflight.apple.com/)
 
 ## What is it?
