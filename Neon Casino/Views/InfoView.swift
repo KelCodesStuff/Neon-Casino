@@ -81,25 +81,19 @@ struct InfoView: View {
                     }
                 }
                 // About
-                Section(header: Text("About")) {
-                    FormRowView(firstItem: "Platforms", secondItem: "iOS, iPadOS")
-                    FormRowView(firstItem: "Version", secondItem: "1.0.0")
-                    FormRowView(firstItem: "Copyright", secondItem: "@ 2023 Studio757")
-                    
-                    Link(destination: URL(string: "https://example.com/terms")!) {
-                        HStack {
-                            Text("Terms")
-                            Spacer()
-                            Image(systemName: "info.circle")
-                        }
+                Section(header: Text("Information"), footer: Text("")) {
+                    KeyValueRow("Version", value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
+                    Link(destination: URL(string: "https://sites.google.com/view/onevrtech/privacy-policy")!) {
+                        Label("Privacy Policy", systemImage: "hand.raised")
+                            .foregroundColor(Color.green)
                     }
-                    
-                    Link(destination: URL(string: "https://example.com/privacy")!) {
-                        HStack {
-                            Text("Privacy Policy")
-                            Spacer()
-                            Image(systemName: "info.circle")
-                        }
+                    Link(destination: URL(string: "https://sites.google.com/view/onevrtech/terms-of-service")!) {
+                        Label("Terms of Service", systemImage: "note.text")
+                            .foregroundColor(Color.green)
+                    }
+                    Link(destination: URL(string: "https://sites.google.com/view/onevrtech/end-user-license-agreement")!) {
+                        Label("EULA", systemImage: "hand.thumbsup")
+                            .foregroundColor(Color.green)
                     }
                 }
             }
@@ -122,6 +116,15 @@ struct InfoView: View {
         .onAppear(perform: {
             playSound(sound: "background-music", type: "mp3")
         })
+    }
+    
+    // Helper view for key-value pairs
+    private func KeyValueRow(_ key: String, value: String) -> some View {
+        HStack {
+            Text(key)
+            Spacer()
+            Text(value ?? "N/A")
+        }
     }
 }
 
