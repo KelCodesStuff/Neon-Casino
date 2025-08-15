@@ -119,7 +119,7 @@ struct InfoView: View {
     }
     
     // Helper view for key-value pairs
-    private func KeyValueRow(_ key: String, value: String) -> some View {
+    private func KeyValueRow(_ key: String, value: String?) -> some View {
         HStack {
             Text(key)
             Spacer()
