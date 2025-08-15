@@ -1,0 +1,138 @@
+# Workflow name that appears in GitHub Actions UI
+name: Build and Test
+
+# Define when this workflow should be triggered
+on:
+  push:
+    branches: [ main, develop ]  # Run on pushes to main and develop branches
+  pull_request:
+    branches: [ main, develop ]  # Run on PRs targeting main and develop branches
+
+# Global environment variables used throughout the workflow
+env:
+  PROJECT_NAME: Neon Casino.xcodeproj  # Xcode project file name
+  SCHEME_NAME: Neon Casino            # Xcode scheme to build and test
+  DESTINATION: 'platform=iOS Simulator,name=iPhone 16 Pro Max,OS=latest'  # Simulator configuration
+
+# Define the jobs to run
+jobs:
+  # Build job: Compiles the project
+  build:
+    runs-on: macos-latest  # Use latest macOS runner
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4  # Fetch repository content
+
+      - name: Select Xcode Version
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.1.0'  # Specify Xcode version for consistency
+
+      # Cache Swift Package Manager dependencies to speed up builds
+      - name: Cache SPM Packages
+        id: cache-spm
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/Library/Caches/org.swift.swiftpm
+            ${{ github.workspace }}/.build
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      # Create GoogleService-Info.plist from secret
+      - name: Create GoogleService-Info.plist
+        run: |
+          mkdir -p Config
+          echo "${{ secrets.GOOGLE_SERVICE_INFO_PLIST }}" > Config/GoogleService-Info.plist
+
+      # Build the project without code signing for CI purposes
+      - name: Build
+        run: |
+          xcodebuild clean build \
+            -project "${{ env.PROJECT_NAME }}" \
+            -scheme "${{ env.SCHEME_NAME }}" \
+            -destination "${{ env.DESTINATION }}" \
+            -configuration Debug \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO
+
+  # Test job: Runs different test suites in parallel
+  test:
+    needs: build  # Only run tests after successful build
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false  # Continue running other tests even if one fails
+      matrix:
+        test-plan: [
+        { name: 'UI-Tests', output: 'UITests' },        # UI Test suite
+        { name: 'Unit-Tests', output: 'UnitTests' },       # Unit Test suite
+        ]
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Select Xcode Version
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.1.0'
+
+      # Reuse cached dependencies from build job
+      - name: Cache SPM Packages
+        id: cache-spm
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/Library/Caches/org.swift.swiftpm
+            ${{ github.workspace }}/.build
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      # Create GoogleService-Info.plist from secret
+      - name: Create GoogleService-Info.plist
+        run: |
+          mkdir -p Config
+          echo "${{ secrets.GOOGLE_SERVICE_INFO_PLIST }}" > Config/GoogleService-Info.plist
+
+      # Execute test plan and generate test results
+      - name: Run ${{ matrix.test-plan.name }}
+        run: |
+          xcodebuild test \
+            -project "${{ env.PROJECT_NAME }}" \
+            -scheme "${{ env.SCHEME_NAME }}" \
+            -destination "${{ env.DESTINATION }}" \
+            -configuration Debug \
+            -enableCodeCoverage YES \
+            -testPlan "${{ matrix.test-plan.name }}" \
+            -resultBundlePath ${{ matrix.test-plan.output }}.xcresult
+
+      # Generate code coverage report in JSON format
+      - name: Generate Coverage Report
+        run: |
+          xcrun xccov view --report --json ${{ matrix.test-plan.output }}.xcresult > ${{ matrix.test-plan.output }}-coverage.json
+
+      # Store test results and coverage reports as artifacts
+      - name: Store Test Results and Coverage
+        uses: actions/upload-artifact@v4
+        if: always()  # Upload artifacts even if tests fail
+        with:
+          name: ${{ matrix.test-plan.output }}-results
+          path: |
+            ${{ matrix.test-plan.output }}.xcresult
+            ${{ matrix.test-plan.output }}-coverage.json
+
+      # --- Optional: Fastlane Integration (for more advanced build/release automation) ---
+      # - name: Run Fastlane
+      #   run: bundle exec fastlane your_lane_name
+      #   env:
+      #     FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+      #     MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+
+      # --- Optional: Upload Artifacts ---
+      # - name: Upload IPA
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: NeonCasino.ipa
+      #     path: path/to/your/ipa/file.ipa
