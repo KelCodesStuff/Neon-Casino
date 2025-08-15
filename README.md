@@ -1,6 +1,6 @@
 # Neon Casino
 
-[![Build and Test](https://github.com/KelCodesStuff/Authenticator/actions/workflows/ios-ci.yml/badge.svg)](https://github.com/KelCodesStuff/Authenticator/actions/workflows/ios-ci.yml)
+[![Build and Test](https://github.com/KelCodesStuff/Neon-Casino/actions/workflows/ios-ci.yml/badge.svg)](https://github.com/KelCodesStuff/Neon-Casino/actions/workflows/ios-ci.yml)
 
 [![TestFlight](https://img.shields.io/badge/Join%20The%20TestFlight-blue)](https://testflight.apple.com/join/PDUIq4bp)
 
