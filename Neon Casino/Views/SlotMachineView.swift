@@ -6,18 +6,20 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct SlotMachineView: View {
     // Symbols array
     let symbols: [SymbolImages] = [.barSymbol, .bellSymbol, .cherrySymbol, .cloverSymbol, .clubSymbol, .crownSymbol, .diamondSymbol, .fruitSymbol, .grapesSymbol, .heartSymbol, .horseshoeSymbol, .jewelSymbol, .lemonSymbol, .moneySymbol, .questionSymbol, .sevenSymbol, .spadeSymbol, .starSymbol, .strawberrySymbol, .watermelonSymbol, .winSymbol]
     
     let haptics = UINotificationFeedbackGenerator()
+    private let defaultJackpot = 100_000
     
     // MARK: - Properties
     @State private var highScore = UserDefaults.standard.integer(forKey: "HighScore")
-    @State private var jackpot = UserDefaults.standard.integer(forKey: "Jackpot")
+    @State private var jackpot = (UserDefaults.standard.object(forKey: "Jackpot") as? Int) ?? 100_000
     
-    @State private var money = 100
+    @State private var money = 1000
     @State private var moneyWon = 0
     @State private var betAmount = 5
     @State private var reels = [0, 1, 2, 3, 4, 5, 6, 7, 8]
@@ -47,56 +49,64 @@ struct SlotMachineView: View {
     
     // Function to spin the reels
     func spinReels() {
-        reels = reels.map({ _ in
-            Int.random(in: 0...symbols.count - 1)
-        })
+        // Deterministic behavior for UI tests via launch environment
+        let env = ProcessInfo.processInfo.environment
+        if let force = env["UITEST_FORCE"] {
+            if force == "win_money", let moneyIndex = symbols.firstIndex(of: .moneySymbol) {
+                // Force ONLY the top row to be a win; ensure no other winning lines
+                let x = (moneyIndex + 1) % symbols.count
+                let y = (moneyIndex + 2) % symbols.count
+                reels = [
+                    moneyIndex, moneyIndex, moneyIndex, // top row win
+                    x, y, x,                             // middle row non-win
+                    y, x, y                              // bottom row non-win; diagonals broken
+                ]
+            } else if force == "jackpot", let winIndex = symbols.firstIndex(of: .winSymbol) {
+                // Force jackpot on top row; others non-winning
+                let x = (winIndex + 1) % symbols.count
+                let y = (winIndex + 2) % symbols.count
+                reels = [
+                    winIndex, winIndex, winIndex,
+                    x, y, x,
+                    y, x, y
+                ]
+            } else if force == "loss" {
+                // Ensure there are no three-of-a-kind on any winning line
+                let a = 0
+                let b = min(1, symbols.count - 1)
+                let c = min(2, symbols.count - 1)
+                reels = [
+                    a, b, c,
+                    b, c, a,
+                    c, a, b
+                ]
+            } else {
+                reels = reels.map({ _ in Int.random(in: 0...symbols.count - 1) })
+            }
+        } else {
+            reels = reels.map({ _ in Int.random(in: 0...symbols.count - 1) })
+        }
         playSound(sound: "spin", type: "mp3")
         haptics.notificationOccurred(.success)
     }
     
     // Check if player won
     func checkWinning() {
-        
-        // MARK: - Test Winning
-//        let winningCombination: [Int] = [0, 1, 2] // Modify this to include the jackpot symbol in the winning combination
-        // Update the reels to force the winning combination
-//        reels[winningCombination[0]] = symbols.firstIndex(of: .moneySymbol)!
-//        reels[winningCombination[1]] = symbols.firstIndex(of: .moneySymbol)!
-//        reels[winningCombination[2]] = symbols.firstIndex(of: .moneySymbol)!
-        // MARK: - Test Winning
-        
-        // Define winning combinations and their respective payouts
-        let winningCombinations: [[Int]] = [
-            [0, 1, 2],  // Top row
-            [3, 4, 5],  // Middle row
-            [6, 7, 8],  // Bottom row
-            [0, 4, 8],  // Diagonal from top-left to bottom-right
-            [2, 4, 6]   // Diagonal from top-right to bottom-left
-        ]
-        
-        let payouts: [SymbolImages: Int] = [
-            .moneySymbol: 500,      // Payout for three "money" symbols
-            .jewelSymbol: 400,     // Payout for three "jewel" symbols
-            .crownSymbol: 300,   // Payout for three "crown" symbols
-            .spadeSymbol: 200,   // Payout for three "spade" symbols
-            // Add more symbols and corresponding payouts as needed
-        ]
-        
-        var totalPayout = 0
-        var transferJackpot = false
+        // Evaluate using the rules engine
+        let evaluation = GameRules.evaluate(reels: reels, symbols: symbols)
+        var totalPayout = evaluation.totalPayout
+        let transferJackpot = evaluation.transferJackpot
 
-        // Check if any winning combination matches the current reel positions
-        for combination in winningCombinations {
-            let symbol = symbols[reels[combination[0]]]
-
-            if reels[combination[0]] == reels[combination[1]] && reels[combination[1]] == reels[combination[2]] && symbol != .winSymbol {
-                if let payout = payouts[symbol] {
-                    totalPayout += payout
-                    if symbol == .winSymbol {
-                        transferJackpot = true
-                    }
-                }
-            }
+        // Handle jackpot first (jackpot symbol has no separate symbol payout)
+        if transferJackpot {
+            let awarded = jackpot
+            money += awarded
+            jackpot = defaultJackpot
+            UserDefaults.standard.set(jackpot, forKey: "Jackpot")
+            showAlert = true
+            alertTitle = "Jackpot!"
+            alertMessage = "Congratulations! You won $\(awarded) dollars!"
+            playSound(sound: "win", type: "mp3")
         }
 
         if totalPayout > 0 {
@@ -109,18 +119,7 @@ struct SlotMachineView: View {
             } else {
                 playSound(sound: "win", type: "mp3")
             }
-
-            // Player wins the jackpot
-            if transferJackpot {
-                money += jackpot
-                jackpot = 0
-                UserDefaults.standard.set(jackpot, forKey: "Jackpot")
-                showAlert = true
-                alertTitle = "Jackpot!"
-                alertMessage = "Congratulations! You won $\(jackpot) dollars!"
-                playSound(sound: "win", type: "mp3")
-            }
-        } else {
+        } else if !transferJackpot {
             // Player loses
             playerLoses()
         }
@@ -156,9 +155,11 @@ struct SlotMachineView: View {
         }
     }
     
-    // New Jackpot
-    func updateJackpot(newJackpot: Int) {
-        jackpot = newJackpot
+    // Progressive Jackpot increment: +10% of bet each spin
+    func incrementJackpotForSpin() {
+        let increment = Int(round(Double(betAmount) * 0.10))
+        let newValue = jackpot + increment
+        jackpot = max(newValue, defaultJackpot)
         UserDefaults.standard.set(jackpot, forKey: "Jackpot")
     }
     
@@ -176,6 +177,14 @@ struct SlotMachineView: View {
         setBetAmount(5)
     }
     
+    #if DEBUG
+    // Test-only helper to force reels to specific values
+    func forceReelsForTesting(_ newReels: [Int]) {
+        guard newReels.count == 9 else { return }
+        reels = newReels
+    }
+    #endif
+    
     // MARK: - UI
     var body: some View {
         // Score fields
@@ -184,6 +193,7 @@ struct SlotMachineView: View {
                 .modifier(JackpotLabelModifier())
             Text("$\(jackpot)")
                 .modifier(ScoreNumberModifier())
+                .accessibilityIdentifier("jackpotValueLabel")
             
             HStack {
                 HStack {
@@ -192,6 +202,7 @@ struct SlotMachineView: View {
                         .multilineTextAlignment(.trailing)
                     Text("$\(money)")
                         .modifier(ScoreNumberModifier())
+                        .accessibilityIdentifier("moneyValueLabel")
                 }
                 .modifier(ScoreCapsuleModifier())
                 Spacer()
@@ -427,8 +438,8 @@ struct SlotMachineView: View {
                     // 4. Check Winning
                     self.checkWinning()
                     
-                    // 5. Increment Jackpot
-                    updateJackpot(newJackpot: jackpot + 10)
+                    // 5. Increment Jackpot by 10% of bet
+                    incrementJackpotForSpin()
                     
                     // 6. Game is Over
                     self.isGameOver()
@@ -438,12 +449,13 @@ struct SlotMachineView: View {
                         .renderingMode(.original)
                         .modifier(SpinButtonModifier())
                 }
+                .accessibilityIdentifier("spinButton")
                 .frame(maxWidth: .infinity)
 
                 Spacer()
             }
         }
-        .frame(maxWidth: 100)
+        // Allow natural sizing; parent view may constrain
         
         // Combined Alert
         .alert(isPresented: $showAlert) {
