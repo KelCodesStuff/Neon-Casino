@@ -14,7 +14,8 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:TestPlans/UI-Tests.xctestplan">
+            reference = "container:TestPlans/UI-Tests.xctestplan"
+            default = "YES">
          </TestPlanReference>
          <TestPlanReference
             reference = "container:TestPlans/Unit-Tests.xctestplan">
@@ -27,9 +28,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BA662F1C2A5339D0003377DD"
-               BuildableName = "Neon CasinoUnitTests.xctest"
-               BlueprintName = "Neon CasinoUnitTests"
-               ReferencedContainer = "container:Neon Casino.xcodeproj">
+               BuildableName = "Neon-CasinoUnitTests.xctest"
+               BlueprintName = "Neon-CasinoUnitTests"
+               ReferencedContainer = "container:Neon-Casino.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
