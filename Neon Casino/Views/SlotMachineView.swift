@@ -9,193 +9,18 @@ import SwiftUI
 import UIKit
 
 struct SlotMachineView: View {
-    // Symbols array
-    let symbols: [SymbolImages] = [.barSymbol, .bellSymbol, .cherrySymbol, .cloverSymbol, .clubSymbol, .crownSymbol, .diamondSymbol, .fruitSymbol, .grapesSymbol, .heartSymbol, .horseshoeSymbol, .jewelSymbol, .lemonSymbol, .moneySymbol, .questionSymbol, .sevenSymbol, .spadeSymbol, .starSymbol, .strawberrySymbol, .watermelonSymbol, .winSymbol]
-    
+    @StateObject private var viewModel = GameViewModel()
+
     let haptics = UINotificationFeedbackGenerator()
-    private let defaultJackpot = 100_000
-    
-    // MARK: - Properties
-    @State private var highScore = UserDefaults.standard.integer(forKey: "HighScore")
-    @State private var jackpot = (UserDefaults.standard.object(forKey: "Jackpot") as? Int) ?? 100_000
-    
-    @State private var money = 1000
-    @State private var moneyWon = 0
-    @State private var betAmount = 5
-    @State private var reels = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-    
-    @State private var activeBet5 = true
-    @State private var activeBet10 = false
-    @State private var activeBet25 = false
-    @State private var activeBet50 = false
     
     @State private var animatingSymbol = false
-    @State private var showInfoView = false
-    
     @State private var showAlert = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
-    
-    // MARK: - Functions
-    func setBetAmount(_ amount: Int) {
-        betAmount = amount
-        activeBet5 = (amount == 5)
-        activeBet10 = (amount == 10)
-        activeBet25 = (amount == 25)
-        activeBet50 = (amount == 50)
-        UserDefaults.standard.set(amount, forKey: "BetAmount")
-        playSound(sound: "bet-chip", type: "mp3")
-        haptics.notificationOccurred(.success)
-    }
-    
-    // Function to spin the reels
-    func spinReels() {
-        // Deterministic behavior for UI tests via launch environment
-        let env = ProcessInfo.processInfo.environment
-        if let force = env["UITEST_FORCE"] {
-            if force == "win_money", let moneyIndex = symbols.firstIndex(of: .moneySymbol) {
-                // Force ONLY the top row to be a win; ensure no other winning lines
-                let x = (moneyIndex + 1) % symbols.count
-                let y = (moneyIndex + 2) % symbols.count
-                reels = [
-                    moneyIndex, moneyIndex, moneyIndex, // top row win
-                    x, y, x,                             // middle row non-win
-                    y, x, y                              // bottom row non-win; diagonals broken
-                ]
-            } else if force == "jackpot", let winIndex = symbols.firstIndex(of: .winSymbol) {
-                // Force jackpot on top row; others non-winning
-                let x = (winIndex + 1) % symbols.count
-                let y = (winIndex + 2) % symbols.count
-                reels = [
-                    winIndex, winIndex, winIndex,
-                    x, y, x,
-                    y, x, y
-                ]
-            } else if force == "loss" {
-                // Ensure there are no three-of-a-kind on any winning line
-                let a = 0
-                let b = min(1, symbols.count - 1)
-                let c = min(2, symbols.count - 1)
-                reels = [
-                    a, b, c,
-                    b, c, a,
-                    c, a, b
-                ]
-            } else {
-                reels = reels.map({ _ in Int.random(in: 0...symbols.count - 1) })
-            }
-        } else {
-            reels = reels.map({ _ in Int.random(in: 0...symbols.count - 1) })
-        }
-        playSound(sound: "spin", type: "mp3")
-        haptics.notificationOccurred(.success)
-    }
-    
-    // Check if player won
-    func checkWinning() {
-        // Evaluate using the rules engine
-        let evaluation = GameRules.evaluate(reels: reels, symbols: symbols)
-        var totalPayout = evaluation.totalPayout
-        let transferJackpot = evaluation.transferJackpot
-
-        // Handle jackpot first (jackpot symbol has no separate symbol payout)
-        if transferJackpot {
-            let awarded = jackpot
-            money += awarded
-            jackpot = defaultJackpot
-            UserDefaults.standard.set(jackpot, forKey: "Jackpot")
-            showAlert = true
-            alertTitle = "Jackpot!"
-            alertMessage = "Congratulations! You won $\(awarded) dollars!"
-            playSound(sound: "win", type: "mp3")
-        }
-
-        if totalPayout > 0 {
-            // Player Wins
-            playerWins(totalPayout: totalPayout)
-            
-            // New HighScore
-            if money > highScore {
-                newHighScore()
-            } else {
-                playSound(sound: "win", type: "mp3")
-            }
-        } else if !transferJackpot {
-            // Player loses
-            playerLoses()
-        }
-    }
-    
-    // Player Wins
-    func playerWins(totalPayout: Int) {
-        moneyWon = totalPayout * betAmount
-        money += moneyWon
-        showAlert = true
-        alertTitle = "Congratulations!"
-        alertMessage = "You won $\(moneyWon) dollars!"
-        playSound(sound: "win", type: "mp3")
-    }
-    
-    // Player Loses
-    func playerLoses() {
-        money -= betAmount
-        if money < 0 {
-            money = 0
-        }
-    }
-    
-    // Game Over
-    func isGameOver() {
-        if money <= 0 {
-            showAlert = true
-            alertTitle = "Game Over"
-            alertMessage = "You are out of money."
-            money = 1000
-            setBetAmount(5)
-            playSound(sound: "game-over", type: "mp3")
-        }
-    }
-    
-    // Progressive Jackpot increment: +10% of bet each spin
-    func incrementJackpotForSpin() {
-        let currentStored = max(UserDefaults.standard.integer(forKey: "Jackpot"), defaultJackpot)
-        let storedBet = UserDefaults.standard.integer(forKey: "BetAmount")
-        let betUsed = storedBet > 0 ? storedBet : betAmount
-        let increment = Int(round(Double(betUsed) * 0.10))
-        let newValue = max(currentStored + increment, defaultJackpot)
-        jackpot = newValue
-        UserDefaults.standard.set(newValue, forKey: "Jackpot")
-    }
-    
-    // New High Score
-    func newHighScore() {
-        highScore = money
-        // Saves data locally
-        UserDefaults.standard.set(highScore, forKey: "HighScore")
-        playSound(sound: "high-score", type: "mp3")
-    }
-    
-    // Reset Game
-    func resetGame() {
-        money = 1000
-        setBetAmount(5)
-    }
-    
-    #if DEBUG
-    // Test-only helper to force reels to specific values
-    func forceReelsForTesting(_ newReels: [Int]) {
-        guard newReels.count == 9 else { return }
-        reels = newReels
-    }
-
-    // Test-only helper to force bet without side effects
-    func forceBetAmountForTesting(_ amount: Int) {
-        betAmount = amount
-    }
-
-    // Test-only getter to read current money for assertions
-    func testingCurrentMoney() -> Int { money }
-    #endif
+    @State private var isSpinDisabled = false
+    @State private var currentSpinDuration: Double = 0.7
+    @State private var flashingWinningIndexes: [Int] = []
+    @State private var flashPhase: Bool = false
     
     // MARK: - UI
     var body: some View {
@@ -203,7 +28,7 @@ struct SlotMachineView: View {
         VStack(alignment: .center, spacing: 10) {
             Text("JACKPOT")
                 .modifier(JackpotLabelModifier())
-            Text("$\(jackpot)")
+            Text(currency(viewModel.jackpot))
                 .modifier(ScoreNumberModifier())
                 .accessibilityIdentifier("jackpotValueLabel")
             
@@ -212,14 +37,14 @@ struct SlotMachineView: View {
                     Text("money".uppercased())
                         .modifier(ScoreLabelModifier())
                         .multilineTextAlignment(.trailing)
-                    Text("$\(money)")
+                    Text(currency(viewModel.money))
                         .modifier(ScoreNumberModifier())
                         .accessibilityIdentifier("moneyValueLabel")
                 }
                 .modifier(ScoreCapsuleModifier())
                 Spacer()
                 HStack {
-                    Text("\(highScore)")
+                    Text("\(viewModel.highScore)")
                         .modifier(ScoreNumberModifier())
                         .multilineTextAlignment(.leading)
                     Text("High\nScore".uppercased())
@@ -231,144 +56,24 @@ struct SlotMachineView: View {
         Spacer()
         
         VStack(alignment: .center, spacing: 0) {
-            HStack {
-                // Reel 1 (Row 1)
-                ZStack {
-                    ReelView()
-                    Image(symbols[reels[0]].rawValue)
-                        .resizable()
-                        .modifier(SymbolImageModifier())
-                        .opacity(animatingSymbol ? 1 : 0)
-                        .offset(y: animatingSymbol ? 0 : 50)
-                        .animation(.easeOut(duration: Double.random(in: 0.5...0.7)), value: animatingSymbol)
-                        .onAppear(perform: {
-                            self.animatingSymbol.toggle()
-                            playSound(sound: "rise-up", type: "mp3")
-                        })
-                }
-                
-                // Reel 2 (Row 1)
-                ZStack {
-                    ReelView()
-                    Image(symbols[reels[1]].rawValue)
-                        .resizable()
-                        .modifier(SymbolImageModifier())
-                        .opacity(animatingSymbol ? 1 : 0)
-                        .offset(y: animatingSymbol ? 0 : 50)
-                        .animation(.easeOut(duration: Double.random(in: 0.5...0.7)), value: animatingSymbol)
-                        .onAppear(perform: {
-                            self.animatingSymbol.toggle()
-                            playSound(sound: "rise-up", type: "mp3")
-                        })
-                }
-                
-                // Reel 3 (Row 1)
-                ZStack {
-                    ReelView()
-                    Image(symbols[reels[2]].rawValue)
-                        .resizable()
-                        .modifier(SymbolImageModifier())
-                        .opacity(animatingSymbol ? 1 : 0)
-                        .offset(y: animatingSymbol ? 0 : 50)
-                        .animation(.easeOut(duration: Double.random(in: 0.5...0.7)), value: animatingSymbol)
-                        .onAppear(perform: {
-                            self.animatingSymbol.toggle()
-                            playSound(sound: "rise-up", type: "mp3")
-                        })
-                }
-            }
-            
-            HStack {
-                // Reel 1 (Row 2)
-                ZStack {
-                    ReelView()
-                    Image(symbols[reels[3]].rawValue)
-                        .resizable()
-                        .modifier(SymbolImageModifier())
-                        .opacity(animatingSymbol ? 1 : 0)
-                        .offset(y: animatingSymbol ? 0 : 50)
-                        .animation(.easeOut(duration: Double.random(in: 0.5...0.7)), value: animatingSymbol)
-                        .onAppear(perform: {
-                            self.animatingSymbol.toggle()
-                            playSound(sound: "rise-up", type: "mp3")
-                        })
-                }
-                
-                // Reel 2 (Row 2)
-                ZStack {
-                    ReelView()
-                    Image(symbols[reels[4]].rawValue)
-                        .resizable()
-                        .modifier(SymbolImageModifier())
-                        .opacity(animatingSymbol ? 1 : 0)
-                        .offset(y: animatingSymbol ? 0 : 50)
-                        .animation(.easeOut(duration: Double.random(in: 0.5...0.7)), value: animatingSymbol)
-                        .onAppear(perform: {
-                            self.animatingSymbol.toggle()
-                            playSound(sound: "rise-up", type: "mp3")
-                        })
-                }
-                
-                // Reel 3 (Row 2)
-                ZStack {
-                    ReelView()
-                    Image(symbols[reels[5]].rawValue)
-                        .resizable()
-                        .modifier(SymbolImageModifier())
-                        .opacity(animatingSymbol ? 1 : 0)
-                        .offset(y: animatingSymbol ? 0 : 50)
-                        .animation(.easeOut(duration: Double.random(in: 0.5...0.7)), value: animatingSymbol)
-                        .onAppear(perform: {
-                            self.animatingSymbol.toggle()
-                            playSound(sound: "rise-up", type: "mp3")
-                        })
-                }
-            }
-            
-            HStack {
-                // Reel 1 (Row 3)
-                ZStack {
-                    ReelView()
-                    Image(symbols[reels[6]].rawValue)
-                        .resizable()
-                        .modifier(SymbolImageModifier())
-                        .opacity(animatingSymbol ? 1 : 0)
-                        .offset(y: animatingSymbol ? 0 : 50)
-                        .animation(.easeOut(duration: Double.random(in: 0.5...0.7)), value: animatingSymbol)
-                        .onAppear(perform: {
-                            self.animatingSymbol.toggle()
-                            playSound(sound: "rise-up", type: "mp3")
-                        })
-                }
-                
-                // Reel 2 (Row 3)
-                ZStack {
-                    ReelView()
-                    Image(symbols[reels[7]].rawValue)
-                        .resizable()
-                        .modifier(SymbolImageModifier())
-                        .opacity(animatingSymbol ? 1 : 0)
-                        .offset(y: animatingSymbol ? 0 : 50)
-                        .animation(.easeOut(duration: Double.random(in: 0.5...0.7)), value: animatingSymbol)
-                        .onAppear(perform: {
-                            self.animatingSymbol.toggle()
-                            playSound(sound: "rise-up", type: "mp3")
-                        })
-                }
-                
-                // Reel 3 (Row 3)
-                ZStack {
-                    ReelView()
-                    Image(symbols[reels[8]].rawValue)
-                        .resizable()
-                        .modifier(SymbolImageModifier())
-                        .opacity(animatingSymbol ? 1 : 0)
-                        .offset(y: animatingSymbol ? 0 : 50)
-                        .animation(.easeOut(duration: Double.random(in: 0.5...0.7)), value: animatingSymbol)
-                        .onAppear(perform: {
-                            self.animatingSymbol.toggle()
-                            playSound(sound: "rise-up", type: "mp3")
-                        })
+            ForEach(0..<3, id: \.self) { row in
+                HStack {
+                    ForEach(0..<3, id: \.self) { col in
+                        let index = row * 3 + col
+                        ZStack {
+                            ReelView()
+                            Image(viewModel.symbols[viewModel.reels[index]].rawValue)
+                                .resizable()
+                                .modifier(SymbolImageModifier())
+                                .opacity(animatingSymbol ? 1 : 0)
+                                .offset(y: animatingSymbol ? 0 : 50)
+                                .animation(.easeOut(duration: currentSpinDuration), value: animatingSymbol)
+                        }
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.green.opacity(flashingWinningIndexes.contains(index) ? (flashPhase ? 1.0 : 0.2) : 0), lineWidth: flashingWinningIndexes.contains(index) ? 4 : 0)
+                        )
+                    }
                 }
             }
             Spacer()
@@ -380,7 +85,9 @@ struct SlotMachineView: View {
                 // 5 button
                 HStack(alignment: .center, spacing: 10) {
                     Button(action: {
-                        self.setBetAmount(5)
+                        viewModel.setBetAmount(5)
+                        playSound(sound: "bet-chip", type: "mp3")
+                        haptics.notificationOccurred(.success)
                     }) {
                         Image("5-chip")
                             .resizable()
@@ -393,7 +100,9 @@ struct SlotMachineView: View {
                 // 10 button
                 HStack(alignment: .center, spacing: 10) {
                     Button(action: {
-                        self.setBetAmount(10)
+                        viewModel.setBetAmount(10)
+                        playSound(sound: "bet-chip", type: "mp3")
+                        haptics.notificationOccurred(.success)
                     }) {
                         Image("10-chip")
                             .resizable()
@@ -406,7 +115,9 @@ struct SlotMachineView: View {
                 // 25 button
                 HStack(alignment: .center, spacing: 10) {
                     Button(action: {
-                        self.setBetAmount(25)
+                        viewModel.setBetAmount(25)
+                        playSound(sound: "bet-chip", type: "mp3")
+                        haptics.notificationOccurred(.success)
                     }) {
                         Image("25-chip")
                             .resizable()
@@ -419,7 +130,9 @@ struct SlotMachineView: View {
                 // 50 button
                 HStack(alignment: .center, spacing: 10) {
                     Button(action: {
-                        self.setBetAmount(50)
+                        viewModel.setBetAmount(50)
+                        playSound(sound: "bet-chip", type: "mp3")
+                        haptics.notificationOccurred(.success)
                     }) {
                         Image("50-chip")
                             .resizable()
@@ -434,13 +147,25 @@ struct SlotMachineView: View {
                 Spacer()
                 // MARK: - Spin Button
                 Button(action: {
-                    // 1. Set the default State: No animation
+                    guard !isSpinDisabled else { return }
+                    isSpinDisabled = true
+                    // 1. Set the default State: No animation and duration
+                    currentSpinDuration = 0.7
                     withAnimation {
                         self.animatingSymbol = false
                     }
                     
                     // 2. Spin the reels with changing the symbols
-                    self.spinReels()
+                    var isForcedGameOver = false
+                    #if DEBUG
+                    let force = ProcessInfo.processInfo.environment["UITEST_FORCE"]
+                    viewModel.spinReels(forceMode: force)
+                    if force == "game_over" { isForcedGameOver = true }
+                    #else
+                    viewModel.spinReels()
+                    #endif
+                    playSound(sound: "spin", type: "mp3")
+                    haptics.notificationOccurred(.success)
                     
                     // 3. Trigger the animation after changing the symbols
                     withAnimation {
@@ -448,13 +173,53 @@ struct SlotMachineView: View {
                     }
                     
                     // 4. Check Winning
-                    self.checkWinning()
+                    let result = viewModel.checkWinning()
+                    if result.transferJackpot || result.payout > 0 {
+                        playSound(sound: "win", type: "mp3")
+                        haptics.notificationOccurred(.success)
+                    }
+
+                    if result.transferJackpot {
+                        alertTitle = "Jackpot!"
+                        alertMessage = "Congratulations! You won \(currency(result.awardedJackpot))!"
+                        showAlert = true
+                        flashingWinningIndexes = result.winningLineIndexes
+                        // Start flashing
+                        withAnimation(Animation.easeInOut(duration: 0.35).repeatForever(autoreverses: true)) {
+                            flashPhase.toggle()
+                        }
+                    } else if result.payout > 0 {
+                        // Show standard win alert for non-jackpot wins
+                        alertTitle = "Congratulations!"
+                        alertMessage = "You won \(currency(result.awardedWin))!"
+                        showAlert = true
+                        flashingWinningIndexes = result.winningLineIndexes
+                        withAnimation(Animation.easeInOut(duration: 0.35).repeatForever(autoreverses: true)) {
+                            flashPhase.toggle()
+                        }
+                    } else if false { // placeholder for bonus UI if needed
+                        // In future, show bonus game activation
+                    }
                     
                     // 5. Increment Jackpot by 10% of bet
-                    incrementJackpotForSpin()
+                    viewModel.incrementJackpotForSpin(skipIfJackpotWon: result.transferJackpot)
                     
                     // 6. Game is Over
-                    self.isGameOver()
+                    if isForcedGameOver {
+                        viewModel.money = 0
+                    }
+                    if viewModel.money <= 0 {
+                        showAlert = true
+                        alertTitle = "Game Over"
+                        alertMessage = "You are out of money."
+                        playSound(sound: "game-over", type: "mp3")
+                        viewModel.resetGame()
+                    }
+
+                    // Re-enable spin after the animation completes
+                    DispatchQueue.main.asyncAfter(deadline: .now() + currentSpinDuration + 0.05) {
+                        isSpinDisabled = false
+                    }
                 }) {
                     Image("spin-button-1")
                         .resizable()
@@ -463,6 +228,7 @@ struct SlotMachineView: View {
                 }
                 .accessibilityIdentifier("spinButton")
                 .frame(maxWidth: .infinity)
+                .disabled(isSpinDisabled)
 
                 Spacer()
             }
@@ -474,9 +240,25 @@ struct SlotMachineView: View {
             Alert(
                 title: Text(alertTitle),
                 message: Text(alertMessage),
-                dismissButton: .default(Text("OK"))
+                dismissButton: .default(Text("OK"), action: {
+                    flashingWinningIndexes.removeAll()
+                    flashPhase = false
+                })
             )
         }
+        .onAppear {
+            // Ensure the reels are visible on first launch and play start sound
+            animatingSymbol = true
+            playSound(sound: "game-start", type: "mp3")
+        }
+    }
+
+    // MARK: - Helpers
+    private func currency(_ value: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale.current
+        return formatter.string(from: NSNumber(value: value)) ?? "$\(value)"
     }
 }
 
