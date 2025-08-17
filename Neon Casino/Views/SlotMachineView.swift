@@ -43,6 +43,7 @@ struct SlotMachineView: View {
         activeBet10 = (amount == 10)
         activeBet25 = (amount == 25)
         activeBet50 = (amount == 50)
+        UserDefaults.standard.set(amount, forKey: "BetAmount")
         playSound(sound: "bet-chip", type: "mp3")
         haptics.notificationOccurred(.success)
     }
@@ -149,7 +150,7 @@ struct SlotMachineView: View {
             showAlert = true
             alertTitle = "Game Over"
             alertMessage = "You are out of money."
-            money = 100
+            money = 1000
             setBetAmount(5)
             playSound(sound: "game-over", type: "mp3")
         }
@@ -157,10 +158,13 @@ struct SlotMachineView: View {
     
     // Progressive Jackpot increment: +10% of bet each spin
     func incrementJackpotForSpin() {
-        let increment = Int(round(Double(betAmount) * 0.10))
-        let newValue = jackpot + increment
-        jackpot = max(newValue, defaultJackpot)
-        UserDefaults.standard.set(jackpot, forKey: "Jackpot")
+        let currentStored = max(UserDefaults.standard.integer(forKey: "Jackpot"), defaultJackpot)
+        let storedBet = UserDefaults.standard.integer(forKey: "BetAmount")
+        let betUsed = storedBet > 0 ? storedBet : betAmount
+        let increment = Int(round(Double(betUsed) * 0.10))
+        let newValue = max(currentStored + increment, defaultJackpot)
+        jackpot = newValue
+        UserDefaults.standard.set(newValue, forKey: "Jackpot")
     }
     
     // New High Score
@@ -173,7 +177,7 @@ struct SlotMachineView: View {
     
     // Reset Game
     func resetGame() {
-        money = 100
+        money = 1000
         setBetAmount(5)
     }
     
@@ -183,6 +187,14 @@ struct SlotMachineView: View {
         guard newReels.count == 9 else { return }
         reels = newReels
     }
+
+    // Test-only helper to force bet without side effects
+    func forceBetAmountForTesting(_ amount: Int) {
+        betAmount = amount
+    }
+
+    // Test-only getter to read current money for assertions
+    func testingCurrentMoney() -> Int { money }
     #endif
     
     // MARK: - UI
