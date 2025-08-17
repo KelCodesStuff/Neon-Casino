@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class Slot_MachineUITestsLaunchTests: XCTestCase {
+final class NeonCasinoUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

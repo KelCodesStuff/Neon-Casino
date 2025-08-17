@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "1A0749B1-35F0-4E14-95FE-DA8F417D5AD0",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Neon Casino.xcodeproj",
+        "identifier" : "BA662F262A5339D0003377DD",
+        "name" : "Neon CasinoUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

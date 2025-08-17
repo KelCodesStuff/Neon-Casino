@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "F9878208-1403-4CB8-99C9-03D697126DD0",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Neon Casino.xcodeproj",
+      "identifier" : "BA662F072A5339CE003377DD",
+      "name" : "Neon Casino"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Neon Casino.xcodeproj",
+        "identifier" : "BA662F1C2A5339D0003377DD",
+        "name" : "Neon CasinoUnitTests"
+      }
+    }
+  ],
+  "version" : 1
+}
