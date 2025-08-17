@@ -61,7 +61,7 @@ final class NeonCasinoUnitTests: XCTestCase {
         // Given a known baseline jackpot and bet amount
         UserDefaults.standard.set(100_000, forKey: "Jackpot")
         var sut = SlotMachineView()
-        sut.setBetAmount(50) // 10% => 5
+        sut.setBetAmount(50)
 
         // When
         sut.incrementJackpotForSpin()
@@ -86,11 +86,14 @@ final class NeonCasinoUnitTests: XCTestCase {
         }
 
         // When
+        let moneyBefore = sut.testingCurrentMoney()
         sut.checkWinning()
 
         // Then jackpot should reset to default
         let persisted = UserDefaults.standard.integer(forKey: "Jackpot")
         XCTAssertEqual(persisted, defaultJackpot)
+        // And player's money increased by the awarded jackpot (150,000)
+        XCTAssertEqual(sut.testingCurrentMoney(), moneyBefore + 150_000)
     }
 
     func testJackpotNeverBelowDefault() throws {
