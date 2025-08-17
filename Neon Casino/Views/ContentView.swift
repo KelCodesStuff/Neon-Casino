@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = GameViewModel()
-    
     // MARK: - Properties
-    @State private var money = 1000
     @State private var showInfoView = false
-    @State private var showGameOverModal = false
 
     var body: some View {
         ZStack {
@@ -40,7 +36,6 @@ struct ContentView: View {
                 )
                 .padding()
                 .frame(maxWidth: 720)
-                .blur(radius:  showGameOverModal ? 5 : 0 , opaque: false)
         }
         .sheet(isPresented: $showInfoView) {
             InfoView()
