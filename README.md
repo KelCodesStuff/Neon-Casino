@@ -8,24 +8,33 @@
 
 ##
 
-Neon Slots+ is a cutting-edge casino game that brings the world of classic slot machines into the 21st century with a neon-infused twist. Featuring a sleek and futuristic interface, Neon Slots+ offers users a unique and captivating gaming experience.
+Neon Casino is a modern, SwiftUI-based slot machine game with a progressive jackpot, crisp neon visuals, and a focus on testability.
 
-Key features of Neon Slots+ include:
+### Gameplay overview
+- Progressive jackpot: Starts at $100,000 and increases by 10% of your bet on each non-jackpot spin. When won, it resets to $100,000.
+- Wins: Three-in-a-row (rows, columns, diagonals) pay based on symbol:
+  - Money: $500
+  - Jewel: $400
+  - Crown: $300
+  - Spade: $200
+  - Win: $50
+  - Any other symbol: $50
+- Jackpot: All nine reels show the Win symbol. The full jackpot amount is added to your current money.
+- Visual feedback: Winning lines flash and alert displays payouts.
 
-Neon Aesthetics: The app boasts stunning neon graphics and animations that create a visually immersive environment, enhancing the gaming experience.
+### Features
+- SwiftUI + MVVM: `SlotMachineView` renders from `GameViewModel` (`ObservableObject`), which encapsulates rules, state, and persistence.
+- Rules engine: `GameRules` is a pure evaluator for deterministic unit tests.
+- Persistence: `UserDefaults` stores jackpot, bet, and high score.
+- Sound + haptics: Simple `AVAudioPlayer` wrapper and notification haptics.
+- Deterministic UI testing: Launch with `UITEST_FORCE` to force outcomes (e.g., `jackpot`, `loss`, `win_horizontal`, `win_vertical`, diagonals).
 
-Variety of Slot Games: Neon Slots+ offers a diverse range of slot games, each with its theme and unique gameplay elements, ensuring hours of entertainment for users.
+### Building
+- Xcode 15+, iOS 16+ recommended
+- Open `Neon Casino.xcodeproj` and run the `Neon Casino` scheme
 
-In-App Challenges: Engage in exciting challenges and mini-games within the app to test your luck and skills.
+### License
+Neon Casino is available under the MIT license. See the `LICENSE.md` file for more info.
 
-Social Features: Connect with friends and other players through social features like leaderboards and competitions, adding a competitive edge to your slot-spinning experience.
-
-Regular Updates: The developer's commitment to excellence extends to regular updates and improvements, ensuring that Neon Slots+ continues to provide an enjoyable and cutting-edge gaming experience.
-
-Whether you're a fan of classic slots or someone intrigued by the fusion of modern aesthetics and gaming, Neon Slots+ is the perfect game to satisfy your entertainment cravings. Download it today and embark on a neon-lit journey through the world of slot machines like never before.
-
-## License
-
-Authenticator 2FA+ is available under the MIT license. See the LICENSE.md file for more info.
-
-## Acknowledgements
+### Acknowledgements
+ 
