@@ -11,11 +11,15 @@ import XCTest
 final class NeonCasinoUnitTests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // Ensure a clean baseline for persisted values used by the app logic
+        UserDefaults.standard.removeObject(forKey: "Jackpot")
+        UserDefaults.standard.removeObject(forKey: "BetAmount")
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        // Clean up any persisted changes from tests
+        UserDefaults.standard.removeObject(forKey: "Jackpot")
+        UserDefaults.standard.removeObject(forKey: "BetAmount")
     }
 
     func testEvaluateThreeMoneySymbolsTopRowPays500() throws {
@@ -59,54 +63,59 @@ final class NeonCasinoUnitTests: XCTestCase {
 
     func testJackpotIncrementsByTenPercentOfBet() throws {
         // Given a known baseline jackpot and bet amount
-        UserDefaults.standard.set(100_000, forKey: "Jackpot")
-        var sut = SlotMachineView()
-        sut.setBetAmount(50)
+        UserDefaults.standard.set(100_000, forKey: GameViewModel.Keys.jackpot)
+        let model = GameViewModel()
+        model.setBetAmount(50)
 
         // When
-        sut.incrementJackpotForSpin()
+        model.incrementJackpotForSpin(skipIfJackpotWon: false)
 
         // Then
-        let persisted = UserDefaults.standard.integer(forKey: "Jackpot")
+        let persisted = UserDefaults.standard.integer(forKey: GameViewModel.Keys.jackpot)
         XCTAssertEqual(persisted, 100_005)
+        XCTAssertEqual(model.jackpot, 100_005)
     }
 
     func testJackpotResetsToDefaultAfterWin() throws {
         // Given a grown jackpot and forced jackpot spin
         let defaultJackpot = 100_000
-        UserDefaults.standard.set(150_000, forKey: "Jackpot")
+        UserDefaults.standard.set(150_000, forKey: GameViewModel.Keys.jackpot)
 
-        var sut = SlotMachineView()
-        // Force jackpot line directly (no reliance on env snapshot)
-        if let winIndex = sut.symbols.firstIndex(of: .winSymbol) {
-            let x = (winIndex + 1) % sut.symbols.count
-            let y = (winIndex + 2) % sut.symbols.count
+        let model = GameViewModel()
+        // Force jackpot line directly
+        if let winIndex = model.symbols.firstIndex(of: .winSymbol) {
+            let x = (winIndex + 1) % model.symbols.count
+            let y = (winIndex + 2) % model.symbols.count
             let reels = [winIndex, winIndex, winIndex, x, y, x, y, x, y]
-            sut.forceReelsForTesting(reels)
+            model.forceReels(reels)
         }
 
         // When
-        let moneyBefore = sut.testingCurrentMoney()
-        sut.checkWinning()
+        let moneyBefore = model.money
+        let result = model.checkWinning()
 
         // Then jackpot should reset to default
-        let persisted = UserDefaults.standard.integer(forKey: "Jackpot")
+        let persisted = UserDefaults.standard.integer(forKey: GameViewModel.Keys.jackpot)
         XCTAssertEqual(persisted, defaultJackpot)
+        XCTAssertEqual(model.jackpot, defaultJackpot)
         // And player's money increased by the awarded jackpot (150,000)
-        XCTAssertEqual(sut.testingCurrentMoney(), moneyBefore + 150_000)
+        XCTAssertEqual(model.money, moneyBefore + 150_000)
+        XCTAssertTrue(result.transferJackpot)
+        XCTAssertEqual(result.awardedJackpot, 150_000)
     }
 
     func testJackpotNeverBelowDefault() throws {
         // Given an invalid low jackpot stored
-        UserDefaults.standard.set(0, forKey: "Jackpot")
-        var sut = SlotMachineView()
-        sut.setBetAmount(5) // 10% => 1 (rounded)
+        UserDefaults.standard.set(0, forKey: GameViewModel.Keys.jackpot)
+        let model = GameViewModel()
+        model.setBetAmount(5)
 
         // When
-        sut.incrementJackpotForSpin()
+        model.incrementJackpotForSpin(skipIfJackpotWon: false)
 
         // Then
-        let persisted = UserDefaults.standard.integer(forKey: "Jackpot")
+        let persisted = UserDefaults.standard.integer(forKey: GameViewModel.Keys.jackpot)
         XCTAssertEqual(persisted, 100_000)
+        XCTAssertEqual(model.jackpot, 100_000)
     }
 }
