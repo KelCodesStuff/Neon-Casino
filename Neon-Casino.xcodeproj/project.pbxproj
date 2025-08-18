@@ -84,6 +84,24 @@
 		BAB5B9E42A54CC330074DD76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Preview Assets.xcassets"; path = "Neon Casino/Preview Content/Preview Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BA93CBA02E53BA50003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"UITests/Neon-CasinoUITests.swift",
+				"UITests/Neon-CasinoUITestsLaunchTests.swift",
+			);
+			target = BA93CB7F2E53898C003D7BE7 /* Neon-CasinoUITests */;
+		};
+		BA93CBA12E53BA50003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUnitTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"UnitTests/Neon-CasinoUnitTests.swift",
+			);
+			target = BA93CB8E2E5389AC003D7BE7 /* Neon-CasinoUnitTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BA568D582E4FED95007D9B87 /* TestPlans */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -92,17 +110,11 @@
 		};
 		BA568E902E50E682007D9B87 /* Tests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BA93CBA02E53BA50003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUITests" target */,
+				BA93CBA12E53BA50003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUnitTests" target */,
+			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		BA93CB812E53898C003D7BE7 /* UITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = UITests;
-			sourceTree = "<group>";
-		};
-		BA93CB902E5389AC003D7BE7 /* UnitTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = UnitTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -160,8 +172,6 @@
 				BA568E902E50E682007D9B87 /* Tests */,
 				BA568E962E50E6E2007D9B87 /* LICENSE.md */,
 				BA568E972E50E6E2007D9B87 /* README.md */,
-				BA93CB812E53898C003D7BE7 /* UITests */,
-				BA93CB902E5389AC003D7BE7 /* UnitTests */,
 				BA662F092A5339CE003377DD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -277,9 +287,6 @@
 			dependencies = (
 				BA93CB872E53898C003D7BE7 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				BA93CB812E53898C003D7BE7 /* UITests */,
-			);
 			name = "Neon-CasinoUITests";
 			productName = "Neon-CasinoUITests";
 			productReference = BA93CB802E53898C003D7BE7 /* Neon-CasinoUITests.xctest */;
@@ -297,9 +304,6 @@
 			);
 			dependencies = (
 				BA93CB942E5389AC003D7BE7 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				BA93CB902E5389AC003D7BE7 /* UnitTests */,
 			);
 			name = "Neon-CasinoUnitTests";
 			productName = "Neon-CasinoUnitTests";

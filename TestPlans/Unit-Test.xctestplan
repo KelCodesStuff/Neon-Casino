@@ -12,7 +12,14 @@
     "testTimeoutsEnabled" : true
   },
   "testTargets" : [
-
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Neon-Casino.xcodeproj",
+        "identifier" : "BA93CB8E2E5389AC003D7BE7",
+        "name" : "Neon-CasinoUnitTests"
+      }
+    }
   ],
   "version" : 1
 }

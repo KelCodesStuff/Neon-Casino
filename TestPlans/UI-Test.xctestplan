@@ -15,7 +15,7 @@
     {
       "target" : {
         "containerPath" : "container:Neon-Casino.xcodeproj",
-        "identifier" : "BA0027472E53812700E4A6DC",
+        "identifier" : "BA93CB7F2E53898C003D7BE7",
         "name" : "Neon-CasinoUITests"
       }
     }
