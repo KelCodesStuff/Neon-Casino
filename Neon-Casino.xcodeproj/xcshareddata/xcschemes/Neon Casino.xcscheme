@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BA662F072A5339CE003377DD"
-               BuildableName = "Neon Casino.app"
-               BlueprintName = "Neon Casino"
-               ReferencedContainer = "container:Neon Casino.xcodeproj">
+               BuildableName = "Neon-Casino.app"
+               BlueprintName = "Neon-Casino"
+               ReferencedContainer = "container:Neon-Casino.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BA662F072A5339CE003377DD"
-            BuildableName = "Neon Casino.app"
-            BlueprintName = "Neon Casino"
-            ReferencedContainer = "container:Neon Casino.xcodeproj">
+            BuildableName = "Neon-Casino.app"
+            BlueprintName = "Neon-Casino"
+            ReferencedContainer = "container:Neon-Casino.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BA662F072A5339CE003377DD"
-            BuildableName = "Neon Casino.app"
-            BlueprintName = "Neon Casino"
-            ReferencedContainer = "container:Neon Casino.xcodeproj">
+            BuildableName = "Neon-Casino.app"
+            BlueprintName = "Neon-Casino"
+            ReferencedContainer = "container:Neon-Casino.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
