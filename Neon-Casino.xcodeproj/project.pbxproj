@@ -88,8 +88,8 @@
 		BA93CBA02E53BA50003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				"UITests/Neon-CasinoUILaunchTests.swift",
 				"UITests/Neon-CasinoUITests.swift",
-				"UITests/Neon-CasinoUITestsLaunchTests.swift",
 			);
 			target = BA93CB7F2E53898C003D7BE7 /* Neon-CasinoUITests */;
 		};
