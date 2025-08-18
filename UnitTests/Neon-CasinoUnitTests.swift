@@ -1,6 +1,6 @@
 //
-//  NeonCasinoUnitTests.swift
-//  NeonCasino UnitTests
+//  Neon-CasinoUnitTests.swift
+//  Neon-Casino
 //
 //  Created by Kelvin Reid on 7/3/23.
 //

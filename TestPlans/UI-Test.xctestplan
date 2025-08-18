@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "1A0749B1-35F0-4E14-95FE-DA8F417D5AD0",
+      "id" : "914F1B8B-B794-4711-8318-4D42C79F2761",
       "name" : "Configuration 1",
       "options" : {
 
@@ -15,7 +15,7 @@
     {
       "target" : {
         "containerPath" : "container:Neon-Casino.xcodeproj",
-        "identifier" : "BA662F262A5339D0003377DD",
+        "identifier" : "BA0027472E53812700E4A6DC",
         "name" : "Neon-CasinoUITests"
       }
     }

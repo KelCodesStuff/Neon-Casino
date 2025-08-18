@@ -27,9 +27,29 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BA662F1C2A5339D0003377DD"
+               BlueprintIdentifier = "BA0027562E53814800E4A6DC"
                BuildableName = "Neon-CasinoUnitTests.xctest"
                BlueprintName = "Neon-CasinoUnitTests"
+               ReferencedContainer = "container:Neon-Casino.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BA0027472E53812700E4A6DC"
+               BuildableName = "Neon-CasinoUITests.xctest"
+               BlueprintName = "Neon-CasinoUITests"
+               ReferencedContainer = "container:Neon-Casino.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BA0027472E53812700E4A6DC"
+               BuildableName = "Neon-CasinoUITests.xctest"
+               BlueprintName = "Neon-CasinoUITests"
                ReferencedContainer = "container:Neon-Casino.xcodeproj">
             </BuildableReference>
          </TestableReference>

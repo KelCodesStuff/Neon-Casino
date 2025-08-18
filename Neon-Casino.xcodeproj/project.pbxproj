@@ -35,19 +35,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BA662F1E2A5339D0003377DD /* PBXContainerItemProxy */ = {
+		BA93CB862E53898C003D7BE7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BA662F002A5339CE003377DD /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BA662F072A5339CE003377DD;
-			remoteInfo = "Slot Machine";
+			remoteInfo = "Neon-Casino";
 		};
-		BA662F282A5339D0003377DD /* PBXContainerItemProxy */ = {
+		BA93CB932E5389AC003D7BE7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BA662F002A5339CE003377DD /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BA662F072A5339CE003377DD;
-			remoteInfo = "Slot Machine";
+			remoteInfo = "Neon-Casino";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -62,10 +62,10 @@
 		BA5794102A589A9600113D31 /* game-over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-over.mp3"; sourceTree = "<group>"; };
 		BA61010C2B6EB92000B9AE2E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = "Neon Casino/SupportFiles/LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
 		BA662F082A5339CE003377DD /* Neon-Casino.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Neon-Casino.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA662F1D2A5339D0003377DD /* Neon-CasinoUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Neon-CasinoUnitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA662F272A5339D0003377DD /* Neon-CasinoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Neon-CasinoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D766B2A54CD68009CE4E0 /* Slot_Machine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Slot_Machine.xcdatamodel; sourceTree = "<group>"; };
 		BA7D766C2A54CD68009CE4E0 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		BA93CB802E53898C003D7BE7 /* Neon-CasinoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Neon-CasinoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA93CB8F2E5389AC003D7BE7 /* Neon-CasinoUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Neon-CasinoUnitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB5B9C22A54CBD00074DD76 /* bet-chip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "bet-chip.mp3"; path = "Neon Casino/Assets/bet-chip.mp3"; sourceTree = SOURCE_ROOT; };
 		BAB5B9C32A54CBD00074DD76 /* game-start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "game-start.mp3"; path = "Neon Casino/Assets/game-start.mp3"; sourceTree = SOURCE_ROOT; };
 		BAB5B9C52A54CBD00074DD76 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = win.mp3; path = "Neon Casino/Assets/win.mp3"; sourceTree = SOURCE_ROOT; };
@@ -84,24 +84,6 @@
 		BAB5B9E42A54CC330074DD76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Preview Assets.xcassets"; path = "Neon Casino/Preview Content/Preview Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BA568E932E50E699007D9B87 /* Exceptions for "Tests" folder in "Neon-CasinoUITests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				UI/NeonCasinoUITests.swift,
-				UI/NeonCasinoUITestsLaunchTests.swift,
-			);
-			target = BA662F262A5339D0003377DD /* Neon-CasinoUITests */;
-		};
-		BA568E942E50E69D007D9B87 /* Exceptions for "Tests" folder in "Neon-CasinoUnitTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Unit/NeonCasinoUnitTests.swift,
-			);
-			target = BA662F1C2A5339D0003377DD /* Neon-CasinoUnitTests */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BA568D582E4FED95007D9B87 /* TestPlans */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -110,11 +92,17 @@
 		};
 		BA568E902E50E682007D9B87 /* Tests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				BA568E942E50E69D007D9B87 /* Exceptions for "Tests" folder in "Neon-CasinoUnitTests" target */,
-				BA568E932E50E699007D9B87 /* Exceptions for "Tests" folder in "Neon-CasinoUITests" target */,
-			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		BA93CB812E53898C003D7BE7 /* UITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		BA93CB902E5389AC003D7BE7 /* UnitTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = UnitTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -125,12 +113,12 @@
 			files = (
 			);
 		};
-		BA662F1A2A5339D0003377DD /* Frameworks */ = {
+		BA93CB7D2E53898C003D7BE7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
 			);
 		};
-		BA662F242A5339D0003377DD /* Frameworks */ = {
+		BA93CB8C2E5389AC003D7BE7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
 			);
@@ -172,6 +160,8 @@
 				BA568E902E50E682007D9B87 /* Tests */,
 				BA568E962E50E6E2007D9B87 /* LICENSE.md */,
 				BA568E972E50E6E2007D9B87 /* README.md */,
+				BA93CB812E53898C003D7BE7 /* UITests */,
+				BA93CB902E5389AC003D7BE7 /* UnitTests */,
 				BA662F092A5339CE003377DD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -180,8 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				BA662F082A5339CE003377DD /* Neon-Casino.app */,
-				BA662F1D2A5339D0003377DD /* Neon-CasinoUnitTests.xctest */,
-				BA662F272A5339D0003377DD /* Neon-CasinoUITests.xctest */,
+				BA93CB802E53898C003D7BE7 /* Neon-CasinoUITests.xctest */,
+				BA93CB8F2E5389AC003D7BE7 /* Neon-CasinoUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -274,41 +264,47 @@
 			productReference = BA662F082A5339CE003377DD /* Neon-Casino.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BA662F1C2A5339D0003377DD /* Neon-CasinoUnitTests */ = {
+		BA93CB7F2E53898C003D7BE7 /* Neon-CasinoUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA662F342A5339D0003377DD /* Build configuration list for PBXNativeTarget "Neon-CasinoUnitTests" */;
+			buildConfigurationList = BA93CB882E53898C003D7BE7 /* Build configuration list for PBXNativeTarget "Neon-CasinoUITests" */;
 			buildPhases = (
-				BA662F192A5339D0003377DD /* Sources */,
-				BA662F1A2A5339D0003377DD /* Frameworks */,
-				BA662F1B2A5339D0003377DD /* Resources */,
+				BA93CB7C2E53898C003D7BE7 /* Sources */,
+				BA93CB7D2E53898C003D7BE7 /* Frameworks */,
+				BA93CB7E2E53898C003D7BE7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BA662F1F2A5339D0003377DD /* PBXTargetDependency */,
+				BA93CB872E53898C003D7BE7 /* PBXTargetDependency */,
 			);
-			name = "Neon-CasinoUnitTests";
-			productName = "Slot MachineTests";
-			productReference = BA662F1D2A5339D0003377DD /* Neon-CasinoUnitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		BA662F262A5339D0003377DD /* Neon-CasinoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BA662F372A5339D0003377DD /* Build configuration list for PBXNativeTarget "Neon-CasinoUITests" */;
-			buildPhases = (
-				BA662F232A5339D0003377DD /* Sources */,
-				BA662F242A5339D0003377DD /* Frameworks */,
-				BA662F252A5339D0003377DD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BA662F292A5339D0003377DD /* PBXTargetDependency */,
+			fileSystemSynchronizedGroups = (
+				BA93CB812E53898C003D7BE7 /* UITests */,
 			);
 			name = "Neon-CasinoUITests";
-			productName = "Slot MachineUITests";
-			productReference = BA662F272A5339D0003377DD /* Neon-CasinoUITests.xctest */;
+			productName = "Neon-CasinoUITests";
+			productReference = BA93CB802E53898C003D7BE7 /* Neon-CasinoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		BA93CB8E2E5389AC003D7BE7 /* Neon-CasinoUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA93CB952E5389AC003D7BE7 /* Build configuration list for PBXNativeTarget "Neon-CasinoUnitTests" */;
+			buildPhases = (
+				BA93CB8B2E5389AC003D7BE7 /* Sources */,
+				BA93CB8C2E5389AC003D7BE7 /* Frameworks */,
+				BA93CB8D2E5389AC003D7BE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA93CB942E5389AC003D7BE7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BA93CB902E5389AC003D7BE7 /* UnitTests */,
+			);
+			name = "Neon-CasinoUnitTests";
+			productName = "Neon-CasinoUnitTests";
+			productReference = BA93CB8F2E5389AC003D7BE7 /* Neon-CasinoUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -317,19 +313,19 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1520;
 				ORGANIZATIONNAME = "OneVR LLC";
 				TargetAttributes = {
 					BA662F072A5339CE003377DD = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
-					BA662F1C2A5339D0003377DD = {
-						CreatedOnToolsVersion = 14.3.1;
+					BA93CB7F2E53898C003D7BE7 = {
+						CreatedOnToolsVersion = 16.4;
 						TestTargetID = BA662F072A5339CE003377DD;
 					};
-					BA662F262A5339D0003377DD = {
-						CreatedOnToolsVersion = 14.3.1;
+					BA93CB8E2E5389AC003D7BE7 = {
+						CreatedOnToolsVersion = 16.4;
 						TestTargetID = BA662F072A5339CE003377DD;
 					};
 				};
@@ -348,8 +344,8 @@
 			projectRoot = "";
 			targets = (
 				BA662F072A5339CE003377DD /* Neon-Casino */,
-				BA662F1C2A5339D0003377DD /* Neon-CasinoUnitTests */,
-				BA662F262A5339D0003377DD /* Neon-CasinoUITests */,
+				BA93CB7F2E53898C003D7BE7 /* Neon-CasinoUITests */,
+				BA93CB8E2E5389AC003D7BE7 /* Neon-CasinoUnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -371,12 +367,12 @@
 				BAB5B9CA2A54CBD00074DD76 /* bet-chip.mp3 in Resources */,
 			);
 		};
-		BA662F1B2A5339D0003377DD /* Resources */ = {
+		BA93CB7E2E53898C003D7BE7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
 			);
 		};
-		BA662F252A5339D0003377DD /* Resources */ = {
+		BA93CB8D2E5389AC003D7BE7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
 			);
@@ -403,12 +399,12 @@
 				BA7D766E2A54CD68009CE4E0 /* Persistence.swift in Sources */,
 			);
 		};
-		BA662F192A5339D0003377DD /* Sources */ = {
+		BA93CB7C2E53898C003D7BE7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
 			);
 		};
-		BA662F232A5339D0003377DD /* Sources */ = {
+		BA93CB8B2E5389AC003D7BE7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
 			);
@@ -416,15 +412,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BA662F1F2A5339D0003377DD /* PBXTargetDependency */ = {
+		BA93CB872E53898C003D7BE7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BA662F072A5339CE003377DD /* Neon-Casino */;
-			targetProxy = BA662F1E2A5339D0003377DD /* PBXContainerItemProxy */;
+			targetProxy = BA93CB862E53898C003D7BE7 /* PBXContainerItemProxy */;
 		};
-		BA662F292A5339D0003377DD /* PBXTargetDependency */ = {
+		BA93CB942E5389AC003D7BE7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BA662F072A5339CE003377DD /* Neon-Casino */;
-			targetProxy = BA662F282A5339D0003377DD /* PBXContainerItemProxy */;
+			targetProxy = BA93CB932E5389AC003D7BE7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -619,79 +615,91 @@
 			};
 			name = Release;
 		};
-		BA662F352A5339D0003377DD /* Debug configuration for PBXNativeTarget "Neon-CasinoUnitTests" */ = {
+		BA93CB892E53898C003D7BE7 /* Debug configuration for PBXNativeTarget "Neon-CasinoUITests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CT2P7VWHVS;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.OneVR.NeonSlots;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.OneVR.Neon-CasinoUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Neon-Casino.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Neon-Casino";
+				TEST_TARGET_NAME = "Neon-Casino";
 			};
 			name = Debug;
 		};
-		BA662F362A5339D0003377DD /* Release configuration for PBXNativeTarget "Neon-CasinoUnitTests" */ = {
+		BA93CB8A2E53898C003D7BE7 /* Release configuration for PBXNativeTarget "Neon-CasinoUITests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CT2P7VWHVS;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.OneVR.NeonSlots;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.OneVR.Neon-CasinoUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Neon-Casino.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Neon-Casino";
+				TEST_TARGET_NAME = "Neon-Casino";
 			};
 			name = Release;
 		};
-		BA662F382A5339D0003377DD /* Debug configuration for PBXNativeTarget "Neon-CasinoUITests" */ = {
+		BA93CB962E5389AC003D7BE7 /* Debug configuration for PBXNativeTarget "Neon-CasinoUnitTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CT2P7VWHVS;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.OneVR.NeonSlots;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.OneVR.Neon-CasinoUnitTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Neon Casino";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Neon-Casino.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Neon-Casino";
 			};
 			name = Debug;
 		};
-		BA662F392A5339D0003377DD /* Release configuration for PBXNativeTarget "Neon-CasinoUITests" */ = {
+		BA93CB972E5389AC003D7BE7 /* Release configuration for PBXNativeTarget "Neon-CasinoUnitTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CT2P7VWHVS;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.OneVR.NeonSlots;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.OneVR.Neon-CasinoUnitTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Neon Casino";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Neon-Casino.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Neon-Casino";
 			};
 			name = Release;
 		};
@@ -714,19 +722,19 @@
 			);
 			defaultConfigurationName = Release;
 		};
-		BA662F342A5339D0003377DD /* Build configuration list for PBXNativeTarget "Neon-CasinoUnitTests" */ = {
+		BA93CB882E53898C003D7BE7 /* Build configuration list for PBXNativeTarget "Neon-CasinoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA662F352A5339D0003377DD /* Debug configuration for PBXNativeTarget "Neon-CasinoUnitTests" */,
-				BA662F362A5339D0003377DD /* Release configuration for PBXNativeTarget "Neon-CasinoUnitTests" */,
+				BA93CB892E53898C003D7BE7 /* Debug configuration for PBXNativeTarget "Neon-CasinoUITests" */,
+				BA93CB8A2E53898C003D7BE7 /* Release configuration for PBXNativeTarget "Neon-CasinoUITests" */,
 			);
 			defaultConfigurationName = Release;
 		};
-		BA662F372A5339D0003377DD /* Build configuration list for PBXNativeTarget "Neon-CasinoUITests" */ = {
+		BA93CB952E5389AC003D7BE7 /* Build configuration list for PBXNativeTarget "Neon-CasinoUnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA662F382A5339D0003377DD /* Debug configuration for PBXNativeTarget "Neon-CasinoUITests" */,
-				BA662F392A5339D0003377DD /* Release configuration for PBXNativeTarget "Neon-CasinoUITests" */,
+				BA93CB962E5389AC003D7BE7 /* Debug configuration for PBXNativeTarget "Neon-CasinoUnitTests" */,
+				BA93CB972E5389AC003D7BE7 /* Release configuration for PBXNativeTarget "Neon-CasinoUnitTests" */,
 			);
 			defaultConfigurationName = Release;
 		};

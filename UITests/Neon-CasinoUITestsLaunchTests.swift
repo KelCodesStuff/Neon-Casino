@@ -1,6 +1,6 @@
 //
-//  Slot_MachineUITestsLaunchTests.swift
-//  Slot MachineUITests
+//  Neon-CasinoUILaunchTests.swift
+//  Neon-Casino
 //
 //  Created by Kelvin Reid on 7/3/23.
 //
