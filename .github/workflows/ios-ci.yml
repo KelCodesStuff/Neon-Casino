@@ -26,7 +26,7 @@ jobs:
       - name: Select Xcode Version
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '16.0.0'  # Specify Xcode version for consistency
+          xcode-version: '16.2.0'  # Specify Xcode version for consistency
 
       # Cache Swift Package Manager dependencies to speed up builds
       - name: Cache SPM Packages
@@ -72,7 +72,7 @@ jobs:
       - name: Select Xcode Version
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '16.1.0'
+          xcode-version: '16.2.0'
 
       # Reuse cached dependencies from build job
       - name: Cache SPM Packages
