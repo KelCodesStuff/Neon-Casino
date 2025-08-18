@@ -1,6 +1,6 @@
 //
-//  NeonCasinoUITests.swift
-//  NeonCasino UITests
+//  Neon-CasinoUITests.swift
+//  Neon-Casino
 //
 //  Created by Kelvin Reid on 7/3/23.
 //
@@ -16,8 +16,10 @@ struct SlotMachinePage {
     let app: XCUIApplication
 
     var spinButton: XCUIElement { app.buttons["spinButton"] }
+    
     var moneyLabel: XCUIElement { app.staticTexts["moneyValueLabel"] }
     var jackpotLabel: XCUIElement { app.staticTexts["jackpotValueLabel"] }
+    
     var jackpotAlert: XCUIElement { app.alerts["Jackpot!"] }
     var winAlert: XCUIElement { app.alerts["Congratulations!"] }
     var gameOverAlert: XCUIElement { app.alerts["Game Over"] }

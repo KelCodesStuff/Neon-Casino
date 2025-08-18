@@ -1,26 +1,23 @@
 {
   "configurations" : [
     {
-      "id" : "F9878208-1403-4CB8-99C9-03D697126DD0",
-      "name" : "Test Scheme Action",
+      "id" : "26D73CB5-4E57-42FC-8F2B-9A95304734B8",
+      "name" : "Configuration 1",
       "options" : {
 
       }
     }
   ],
   "defaultOptions" : {
-    "targetForVariableExpansion" : {
-      "containerPath" : "container:Neon Casino.xcodeproj",
-      "identifier" : "BA662F072A5339CE003377DD",
-      "name" : "Neon Casino"
-    }
+    "testTimeoutsEnabled" : true
   },
   "testTargets" : [
     {
+      "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:Neon Casino.xcodeproj",
-        "identifier" : "BA662F1C2A5339D0003377DD",
-        "name" : "Neon CasinoUnitTests"
+        "containerPath" : "container:Neon-Casino.xcodeproj",
+        "identifier" : "BA93CB8E2E5389AC003D7BE7",
+        "name" : "Neon-CasinoUnitTests"
       }
     }
   ],
