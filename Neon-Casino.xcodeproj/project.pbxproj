@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -85,7 +85,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BA568E932E50E699007D9B87 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		BA568E932E50E699007D9B87 /* Exceptions for "Tests" folder in "Neon-CasinoUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				UI/NeonCasinoUITests.swift,
@@ -93,7 +93,7 @@
 			);
 			target = BA662F262A5339D0003377DD /* Neon-CasinoUITests */;
 		};
-		BA568E942E50E69D007D9B87 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		BA568E942E50E69D007D9B87 /* Exceptions for "Tests" folder in "Neon-CasinoUnitTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Unit/NeonCasinoUnitTests.swift,
@@ -103,31 +103,37 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		BA568D582E4FED95007D9B87 /* TestPlans */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TestPlans; sourceTree = "<group>"; };
-		BA568E902E50E682007D9B87 /* Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (BA568E942E50E69D007D9B87 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, BA568E932E50E699007D9B87 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Tests; sourceTree = "<group>"; };
+		BA568D582E4FED95007D9B87 /* TestPlans */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TestPlans;
+			sourceTree = "<group>";
+		};
+		BA568E902E50E682007D9B87 /* Tests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BA568E942E50E69D007D9B87 /* Exceptions for "Tests" folder in "Neon-CasinoUnitTests" target */,
+				BA568E932E50E699007D9B87 /* Exceptions for "Tests" folder in "Neon-CasinoUITests" target */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BA662F052A5339CE003377DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BA662F1A2A5339D0003377DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BA662F242A5339D0003377DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -263,8 +269,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = "Neon-Casino";
 			productName = "Slot Machine";
 			productReference = BA662F082A5339CE003377DD /* Neon-Casino.app */;
@@ -331,7 +335,6 @@
 				};
 			};
 			buildConfigurationList = BA662F032A5339CE003377DD /* Build configuration list for PBXProject "Neon-Casino" */;
-			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -339,6 +342,7 @@
 				Base,
 			);
 			mainGroup = BA662EFF2A5339CE003377DD;
+			preferredProjectObjectVersion = 90;
 			productRefGroup = BA662F092A5339CE003377DD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -353,7 +357,6 @@
 /* Begin PBXResourcesBuildPhase section */
 		BA662F062A5339CE003377DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				BAB5B9E52A54CC330074DD76 /* Preview Assets.xcassets in Resources */,
 				BAB5B9E32A54CC160074DD76 /* Assets.xcassets in Resources */,
@@ -367,28 +370,22 @@
 				BA61010D2B6EB92000B9AE2E /* LaunchScreen.storyboard in Resources */,
 				BAB5B9CA2A54CBD00074DD76 /* bet-chip.mp3 in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BA662F1B2A5339D0003377DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BA662F252A5339D0003377DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BA662F042A5339CE003377DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				BA7D766D2A54CD68009CE4E0 /* NeonCasino.xcdatamodeld in Sources */,
 				BA5794072A576CB400113D31 /* GameViewModel.swift in Sources */,
@@ -405,21 +402,16 @@
 				BA5794012A576ACF00113D31 /* SlotMachineView.swift in Sources */,
 				BA7D766E2A54CD68009CE4E0 /* Persistence.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BA662F192A5339D0003377DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BA662F232A5339D0003377DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -437,7 +429,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		BA662F2F2A5339D0003377DD /* Debug */ = {
+		BA662F2F2A5339D0003377DD /* Debug configuration for PBXProject "Neon-Casino" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -498,7 +490,7 @@
 			};
 			name = Debug;
 		};
-		BA662F302A5339D0003377DD /* Release */ = {
+		BA662F302A5339D0003377DD /* Release configuration for PBXProject "Neon-Casino" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -553,7 +545,7 @@
 			};
 			name = Release;
 		};
-		BA662F322A5339D0003377DD /* Debug */ = {
+		BA662F322A5339D0003377DD /* Debug configuration for PBXNativeTarget "Neon-Casino" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -572,7 +564,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -590,7 +582,7 @@
 			};
 			name = Debug;
 		};
-		BA662F332A5339D0003377DD /* Release */ = {
+		BA662F332A5339D0003377DD /* Release configuration for PBXNativeTarget "Neon-Casino" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -609,7 +601,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -627,7 +619,7 @@
 			};
 			name = Release;
 		};
-		BA662F352A5339D0003377DD /* Debug */ = {
+		BA662F352A5339D0003377DD /* Debug configuration for PBXNativeTarget "Neon-CasinoUnitTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -647,7 +639,7 @@
 			};
 			name = Debug;
 		};
-		BA662F362A5339D0003377DD /* Release */ = {
+		BA662F362A5339D0003377DD /* Release configuration for PBXNativeTarget "Neon-CasinoUnitTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -667,7 +659,7 @@
 			};
 			name = Release;
 		};
-		BA662F382A5339D0003377DD /* Debug */ = {
+		BA662F382A5339D0003377DD /* Debug configuration for PBXNativeTarget "Neon-CasinoUITests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -685,7 +677,7 @@
 			};
 			name = Debug;
 		};
-		BA662F392A5339D0003377DD /* Release */ = {
+		BA662F392A5339D0003377DD /* Release configuration for PBXNativeTarget "Neon-CasinoUITests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -709,37 +701,33 @@
 		BA662F032A5339CE003377DD /* Build configuration list for PBXProject "Neon-Casino" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA662F2F2A5339D0003377DD /* Debug */,
-				BA662F302A5339D0003377DD /* Release */,
+				BA662F2F2A5339D0003377DD /* Debug configuration for PBXProject "Neon-Casino" */,
+				BA662F302A5339D0003377DD /* Release configuration for PBXProject "Neon-Casino" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		BA662F312A5339D0003377DD /* Build configuration list for PBXNativeTarget "Neon-Casino" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA662F322A5339D0003377DD /* Debug */,
-				BA662F332A5339D0003377DD /* Release */,
+				BA662F322A5339D0003377DD /* Debug configuration for PBXNativeTarget "Neon-Casino" */,
+				BA662F332A5339D0003377DD /* Release configuration for PBXNativeTarget "Neon-Casino" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		BA662F342A5339D0003377DD /* Build configuration list for PBXNativeTarget "Neon-CasinoUnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA662F352A5339D0003377DD /* Debug */,
-				BA662F362A5339D0003377DD /* Release */,
+				BA662F352A5339D0003377DD /* Debug configuration for PBXNativeTarget "Neon-CasinoUnitTests" */,
+				BA662F362A5339D0003377DD /* Release configuration for PBXNativeTarget "Neon-CasinoUnitTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		BA662F372A5339D0003377DD /* Build configuration list for PBXNativeTarget "Neon-CasinoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA662F382A5339D0003377DD /* Debug */,
-				BA662F392A5339D0003377DD /* Release */,
+				BA662F382A5339D0003377DD /* Debug configuration for PBXNativeTarget "Neon-CasinoUITests" */,
+				BA662F392A5339D0003377DD /* Release configuration for PBXNativeTarget "Neon-CasinoUITests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
