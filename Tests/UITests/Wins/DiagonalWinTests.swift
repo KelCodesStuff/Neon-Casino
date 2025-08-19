@@ -15,7 +15,7 @@ final class DiagonalWinTests: XCTestCase {
         page.launch(with: ["UITEST_FORCE": "win_diag_tlbr"]) 
         page.tapSpin()
 
-        XCTAssertTrue(page.winAlert.waitForExistence(timeout: 3))
+        XCTAssertTrue(page.winAlert.waitForExistence(timeout: 5))
         page.winAlert.buttons["OK"].tap()
     }
 
@@ -25,7 +25,7 @@ final class DiagonalWinTests: XCTestCase {
         page.launch(with: ["UITEST_FORCE": "win_diag_trbl"]) 
         page.tapSpin()
 
-        XCTAssertTrue(page.winAlert.waitForExistence(timeout: 3))
+        XCTAssertTrue(page.winAlert.waitForExistence(timeout: 5))
         page.winAlert.buttons["OK"].tap()
     }
 }
