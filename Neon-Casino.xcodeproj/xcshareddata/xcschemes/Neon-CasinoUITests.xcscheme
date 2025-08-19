@@ -19,7 +19,7 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BA0027472E53812700E4A6DC"
+               BlueprintIdentifier = "BA93CB7F2E53898C003D7BE7"
                BuildableName = "Neon-CasinoUITests.xctest"
                BlueprintName = "Neon-CasinoUITests"
                ReferencedContainer = "container:Neon-Casino.xcodeproj">
