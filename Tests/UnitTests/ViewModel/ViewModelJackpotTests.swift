@@ -5,7 +5,7 @@
 //  Created by Kelvin Reid on 8/19/25.
 //
 
-//  Purpose: Verifies view-model awardedWin equals payout × bet and reporting is correct.
+//  Purpose: Verifies jackpot award and resets jackpot.
 import XCTest
 @testable import Neon_Casino
 
