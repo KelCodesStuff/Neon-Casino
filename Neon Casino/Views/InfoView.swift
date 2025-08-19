@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
-import Foundation
 
 struct InfoView: View {
+    // Presents static app information and a dynamic pay table derived from
+    // the (GameRules). This ensures the UI stays in sync with
+    // the actual payout logic without manual edits.
     
     // MARK: - Principal Properties
     @Environment(\.presentationMode) var presentationMode
@@ -22,16 +24,13 @@ struct InfoView: View {
                 Section(header: Text("Payouts (bet multiplied by win)")) {
                     ForEach(payRows) { row in
                         HStack {
+                            // Show three of the symbol to indicate "3 in a row" condition
                             if let sym = row.symbol {
-                                Image(sym.rawValue)
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                Image(sym.rawValue)
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                Image(sym.rawValue)
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
+                                ForEach(0..<3, id: \.self) { _ in
+                                    Image(sym.rawValue)
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                }
                             } else {
                                 // Keep spacing consistent when no symbol is present
                                 Spacer().frame(width: 96)
@@ -49,12 +48,11 @@ struct InfoView: View {
                 }
                 Section(header: Text("Bonus")) {
                     HStack {
-                        Image(SymbolImages.questionSymbol.rawValue)
-                            .resizable().frame(width: 30, height: 30)
-                        Image(SymbolImages.questionSymbol.rawValue)
-                            .resizable().frame(width: 30, height: 30)
-                        Image(SymbolImages.questionSymbol.rawValue)
-                            .resizable().frame(width: 30, height: 30)
+                        // Visual cue that three question symbols (in a line) start the bonus
+                        ForEach(0..<3, id: \.self) { _ in
+                            Image(SymbolImages.questionSymbol.rawValue)
+                                .resizable().frame(width: 30, height: 30)
+                        }
                         Text("Three Question symbols activates bonus round")
                     }
                 }
@@ -99,9 +97,9 @@ struct InfoView: View {
     // MARK: - Pay rows
     struct PayRow: Identifiable {
         let id = UUID()
-        let symbol: SymbolImages?
-        let title: String
-        let amount: Int?
+        let symbol: SymbolImages?   // nil for the "Any other symbol" row
+        let title: String           // Localized display title
+        let amount: Int?            // Base payout (before bet multiplier), nil for non-payout rows
     }
 
     private var payRows: [PayRow] {
@@ -116,6 +114,7 @@ struct InfoView: View {
     }
 
     private func displayName(_ s: SymbolImages) -> String {
+        // Human-friendly names for the known symbols. Fallback to raw asset name for others
         switch s {
         case .moneySymbol: return "Money"
         case .jewelSymbol: return "Jewel"
@@ -126,14 +125,20 @@ struct InfoView: View {
         }
     }
 
-    private func currency(_ value: Int) -> String {
+    // Reusable currency formatter to avoid per-row allocations
+    private static let currencyFormatter: NumberFormatter = {
         let f = NumberFormatter()
         f.numberStyle = .currency
-        return f.string(from: NSNumber(value: value)) ?? "$\(value)"
+        return f
+    }()
+
+    private func currency(_ value: Int) -> String {
+        InfoView.currencyFormatter.string(from: NSNumber(value: value)) ?? "$\(value)"
     }
 
     // Helper view for key-value pairs
     private func KeyValueRow(_ key: String, value: String?) -> some View {
+        // Simple reusable row used in the Information section
         HStack {
             Text(key)
             Spacer()
