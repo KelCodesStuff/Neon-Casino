@@ -36,7 +36,7 @@ Neon Casino is a modern, SwiftUI-based slot machine game with a progressive jack
 ## Images
 
 
-Here are some screenshots of Authenticator+ in action:
+Here are some screenshots of Neon Casino in action:
 
 <div align="center">
   <img src="Images/launch-screen.png" alt="launch-screen" width="300">
