@@ -85,18 +85,29 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BA93CBA02E53BA50003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUITests" target */ = {
+		BA93CBF02E54EAF2003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"UITests/Neon-CasinoUILaunchTests.swift",
-				"UITests/Neon-CasinoUITests.swift",
+				UITests/GameOver/GameOverTests.swift,
+				UITests/Jackpot/JackpotTests.swift,
+				UITests/Launch/LaunchTests.swift,
+				UITests/Pages/SlotMachinePage.swift,
+				UITests/Wins/DiagonalWinTests.swift,
+				UITests/Wins/HorizontalWinTests.swift,
+				UITests/Wins/VerticalWinTests.swift,
 			);
 			target = BA93CB7F2E53898C003D7BE7 /* Neon-CasinoUITests */;
 		};
-		BA93CBA12E53BA50003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUnitTests" target */ = {
+		BA93CBF82E54EBA1003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUnitTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"UnitTests/Neon-CasinoUnitTests.swift",
+				UnitTests/GameRules/GameRulesBonusTests.swift,
+				UnitTests/GameRules/GameRulesJackpotTests.swift,
+				UnitTests/GameRules/GameRulesPayoutTests.swift,
+				UnitTests/Support/UserDefaultsTestHelpers.swift,
+				UnitTests/ViewModel/ViewModelJackpotTests.swift,
+				UnitTests/ViewModel/ViewModelPayoutTests.swift,
+				UnitTests/ViewModel/ViewModelProgressiveJackpotTests.swift,
 			);
 			target = BA93CB8E2E5389AC003D7BE7 /* Neon-CasinoUnitTests */;
 		};
@@ -111,8 +122,8 @@
 		BA568E902E50E682007D9B87 /* Tests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				BA93CBA02E53BA50003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUITests" target */,
-				BA93CBA12E53BA50003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUnitTests" target */,
+				BA93CBF02E54EAF2003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUITests" target */,
+				BA93CBF82E54EBA1003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUnitTests" target */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
