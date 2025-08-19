@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct InfoView: View {
     
@@ -18,66 +19,43 @@ struct InfoView: View {
             Spacer()
             Form {
                 // Pay table
-                Section(header: Text("Pay Table")) {
-                    HStack {
-                        Image("win-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Image("win-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Image("win-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Text("Jackpot")
+                Section(header: Text("Payouts (bet multiplied by win)")) {
+                    ForEach(payRows) { row in
+                        HStack {
+                            if let sym = row.symbol {
+                                Image(sym.rawValue)
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                Image(sym.rawValue)
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                Image(sym.rawValue)
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                            } else {
+                                // Keep spacing consistent when no symbol is present
+                                Spacer().frame(width: 96)
+                            }
+                            Text(row.title)
+                            Spacer()
+                            if let amt = row.amount {
+                                Text(currency(amt))
+                            }
+                        }
                     }
+                }
+                Section(header: Text("Jackpot")) {
+                    Text("All nine Win symbols = Progressive Jackpot awarded")
+                }
+                Section(header: Text("Bonus")) {
                     HStack {
-                        Image("money-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Image("money-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Image("money-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Text("500 money")
-                    }
-                    HStack {
-                        Image("jewel-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Image("jewel-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Image("jewel-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Text("400 money")
-                    }
-                    HStack {
-                        Image("crown-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Image("crown-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Image("crown-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Text("300 money")
-                    }
-                    HStack {
-                        Image("spade-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Image("spade-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Image("spade-symbol")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Text("200 money")
+                        Image(SymbolImages.questionSymbol.rawValue)
+                            .resizable().frame(width: 30, height: 30)
+                        Image(SymbolImages.questionSymbol.rawValue)
+                            .resizable().frame(width: 30, height: 30)
+                        Image(SymbolImages.questionSymbol.rawValue)
+                            .resizable().frame(width: 30, height: 30)
+                        Text("Three Question symbols activates bonus round")
                     }
                 }
                 // About
@@ -118,6 +96,42 @@ struct InfoView: View {
         })
     }
     
+    // MARK: - Pay rows
+    struct PayRow: Identifiable {
+        let id = UUID()
+        let symbol: SymbolImages?
+        let title: String
+        let amount: Int?
+    }
+
+    private var payRows: [PayRow] {
+        // Display order: money, jewel, crown, spade, win, other
+        let ordered: [SymbolImages] = [.moneySymbol, .jewelSymbol, .crownSymbol, .spadeSymbol, .winSymbol]
+        let rows = ordered.map { sym in
+            let base = GameRules.payouts[sym] ?? 50
+            return PayRow(symbol: sym, title: displayName(sym), amount: base)
+        }
+        let other = PayRow(symbol: nil, title: "Any other symbol", amount: 50)
+        return rows + [other]
+    }
+
+    private func displayName(_ s: SymbolImages) -> String {
+        switch s {
+        case .moneySymbol: return "Money"
+        case .jewelSymbol: return "Jewel"
+        case .crownSymbol: return "Crown"
+        case .spadeSymbol: return "Spade"
+        case .winSymbol: return "Win"
+        default: return s.rawValue
+        }
+    }
+
+    private func currency(_ value: Int) -> String {
+        let f = NumberFormatter()
+        f.numberStyle = .currency
+        return f.string(from: NSNumber(value: value)) ?? "$\(value)"
+    }
+
     // Helper view for key-value pairs
     private func KeyValueRow(_ key: String, value: String?) -> some View {
         HStack {
