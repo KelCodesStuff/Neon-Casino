@@ -8,10 +8,6 @@
 //  Purpose: Encapsulates locators and actions for the Slot Machine screen to keep UI tests readable and maintainable (Page Object Model).
 import XCTest
 
-struct BasePage {
-    let app: XCUIApplication
-}
-
 struct SlotMachinePage {
     let app: XCUIApplication
 
