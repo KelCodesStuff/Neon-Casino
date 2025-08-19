@@ -90,7 +90,6 @@
 			membershipExceptions = (
 				UITests/GameOver/GameOverTests.swift,
 				UITests/Jackpot/JackpotTests.swift,
-				UITests/Launch/LaunchTests.swift,
 				UITests/Pages/SlotMachinePage.swift,
 				UITests/Wins/DiagonalWinTests.swift,
 				UITests/Wins/HorizontalWinTests.swift,
