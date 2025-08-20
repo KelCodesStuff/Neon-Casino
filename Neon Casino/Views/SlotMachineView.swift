@@ -91,10 +91,7 @@ struct SlotMachineView: View {
                             .renderingMode(.original)
                             .modifier(BetButtonModifier())
                     }
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.green, lineWidth: viewModel.betAmount == 5 ? 3 : 0)
-                    )
+                    .modifier(BetButtonSelectionModifier(betAmount: 5, currentBetAmount: viewModel.betAmount))
                 }
                 Spacer()
                 
@@ -110,10 +107,7 @@ struct SlotMachineView: View {
                             .renderingMode(.original)
                             .modifier(BetButtonModifier())
                     }
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.green, lineWidth: viewModel.betAmount == 10 ? 3 : 0)
-                    )
+                    .modifier(BetButtonSelectionModifier(betAmount: 10, currentBetAmount: viewModel.betAmount))
                 }
                 Spacer()
                 
@@ -129,10 +123,7 @@ struct SlotMachineView: View {
                             .renderingMode(.original)
                             .modifier(BetButtonModifier())
                     }
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.green, lineWidth: viewModel.betAmount == 25 ? 3 : 0)
-                    )
+                    .modifier(BetButtonSelectionModifier(betAmount: 25, currentBetAmount: viewModel.betAmount))
                 }
                 Spacer()
                 
@@ -148,10 +139,7 @@ struct SlotMachineView: View {
                             .renderingMode(.original)
                             .modifier(BetButtonModifier())
                     }
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.green, lineWidth: viewModel.betAmount == 50 ? 3 : 0)
-                    )
+                    .modifier(BetButtonSelectionModifier(betAmount: 50, currentBetAmount: viewModel.betAmount))
                 }
                 Spacer()
             }
@@ -255,50 +243,15 @@ struct SlotMachineView: View {
     }
     
     private func stopReelsInSequence() {
-        // Get the final result first
-        var isForcedGameOver = false
-        var finalReels: [Int] = []
-        
+        // Get the final result from the view model (single source of truth)
         #if DEBUG
         let force = ProcessInfo.processInfo.environment["UITEST_FORCE"]
-        if let force = force {
-            // For UI tests, generate the forced result
-            if force == "win_money", let moneyIndex = viewModel.symbols.firstIndex(of: .moneySymbol) {
-                let x = (moneyIndex + 1) % viewModel.symbols.count
-                let y = (moneyIndex + 2) % viewModel.symbols.count
-                finalReels = [moneyIndex, moneyIndex, moneyIndex, x, y, x, y, x, y]
-            } else if force == "jackpot", let winIndex = viewModel.symbols.firstIndex(of: .winSymbol) {
-                finalReels = Array(repeating: winIndex, count: 9)
-            } else if force == "win_horizontal", let moneyIndex = viewModel.symbols.firstIndex(of: .moneySymbol) {
-                let x = (moneyIndex + 1) % viewModel.symbols.count
-                let y = (moneyIndex + 2) % viewModel.symbols.count
-                finalReels = [moneyIndex, moneyIndex, moneyIndex, x, y, x, y, x, y]
-            } else if force == "win_vertical", let moneyIndex = viewModel.symbols.firstIndex(of: .moneySymbol) {
-                let x = (moneyIndex + 1) % viewModel.symbols.count
-                let y = (moneyIndex + 2) % viewModel.symbols.count
-                finalReels = [moneyIndex, x, y, moneyIndex, y, x, moneyIndex, x, y]
-            } else if force == "win_diag_tlbr", let moneyIndex = viewModel.symbols.firstIndex(of: .moneySymbol) {
-                let x = (moneyIndex + 1) % viewModel.symbols.count
-                let y = (moneyIndex + 2) % viewModel.symbols.count
-                finalReels = [moneyIndex, x, y, x, moneyIndex, x, y, x, moneyIndex]
-            } else if force == "win_diag_trbl", let moneyIndex = viewModel.symbols.firstIndex(of: .moneySymbol) {
-                let x = (moneyIndex + 1) % viewModel.symbols.count
-                let y = (moneyIndex + 2) % viewModel.symbols.count
-                finalReels = [x, y, moneyIndex, x, moneyIndex, x, moneyIndex, x, y]
-            } else if force == "loss" {
-                finalReels = [0, 1, 2, 1, 2, 0, 2, 0, 1]
-            } else if force == "game_over" {
-                finalReels = [0, 1, 2, 1, 2, 0, 2, 0, 1]
-                isForcedGameOver = true
-            }
-        }
+        let finalReels = viewModel.generateFinalReels(forceMode: force)
+        let isForcedGameOver = force == "game_over"
+        #else
+        let finalReels = viewModel.generateFinalReels()
+        let isForcedGameOver = false
         #endif
-        
-        // If no forced result, generate random result
-        if finalReels.isEmpty {
-            let randomizer = ReelRandomizer()
-            finalReels = randomizer.spin(symbols: viewModel.symbols)
-        }
         
         // Stop reels column by column (left to right)
         let reelStops = [
@@ -396,5 +349,20 @@ struct SlotMachineView: View {
 struct SlotMachineView_Previews: PreviewProvider {
     static var previews: some View {
         SlotMachineView()
+    }
+}
+
+// MARK: - Custom ViewModifiers
+
+/// ViewModifier for highlighting selected bet buttons
+struct BetButtonSelectionModifier: ViewModifier {
+    let betAmount: Int
+    let currentBetAmount: Int
+    
+    func body(content: Content) -> some View {
+        content.overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.green, lineWidth: betAmount == currentBetAmount ? 3 : 0)
+        )
     }
 }
