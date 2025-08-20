@@ -170,7 +170,7 @@
 				UnitTests/GameRules/GameRulesBonusTests.swift,
 				UnitTests/GameRules/GameRulesJackpotTests.swift,
 				UnitTests/GameRules/GameRulesPayoutTests.swift,
-				UnitTests/Support/RTPReflector.swift,
+				UnitTests/Support/RTPSimulator.swift,
 				UnitTests/Support/UserDefaultsTestHelpers.swift,
 				UnitTests/ViewModel/ViewModelJackpotTests.swift,
 				UnitTests/ViewModel/ViewModelPayoutTests.swift,

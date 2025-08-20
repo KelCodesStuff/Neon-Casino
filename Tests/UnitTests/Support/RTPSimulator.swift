@@ -10,7 +10,7 @@ import XCTest
 
 // Simple Monte Carlo to estimate RTP given current reel strips and rules.
 // Not a formal statistical test, intended to help tune strip compositions.
-final class RTPReflector: XCTestCase {
+final class RTPSimulator: XCTestCase {
     func testEstimateRTP_10kSpins() throws {
         // Keep runs short in CI; increase locally for better precision
         let iterations = 10_000
