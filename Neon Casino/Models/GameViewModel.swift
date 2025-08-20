@@ -148,9 +148,8 @@ final class GameViewModel: ObservableObject {
             money += won
             // Collect winning line indexes from eval
             winningIndexes.append(contentsOf: eval.winningLineIndexes)
-        } else if !transferJackpot {
-            playerLoses()
         }
+        // Note: Bet is already deducted at the start of spin, so no need to deduct again here
 
         return WinResult(payout: payout,
                          transferJackpot: transferJackpot,
