@@ -56,7 +56,7 @@ final class GameViewModel: ObservableObject {
     }
     #endif
 
-    /// Spin reels either deterministically (for UI tests) or randomly.
+    /// Generate final reel result either deterministically (for UI tests) or randomly.
     ///
     /// Outcome rules:
     /// - In normal runs: each of the 9 reel positions is assigned a random
@@ -68,51 +68,52 @@ final class GameViewModel: ObservableObject {
     /// only affects payout scaling and progressive jackpot increments.
     
     /// - Parameter forceMode: Optional mode to create specific reel outcomes for automation.
-    func spinReels(forceMode: String? = nil) {
+    /// - Returns: Array of 9 symbol indices representing the final reel state
+    func generateFinalReels(forceMode: String? = nil) -> [Int] {
         #if DEBUG
         if let force = forceMode {
             if force == "win_money", let moneyIndex = symbols.firstIndex(of: .moneySymbol) {
                 let x = (moneyIndex + 1) % symbols.count
                 let y = (moneyIndex + 2) % symbols.count
-                reels = [moneyIndex, moneyIndex, moneyIndex, x, y, x, y, x, y]
-                return
+                return [moneyIndex, moneyIndex, moneyIndex, x, y, x, y, x, y]
             } else if force == "jackpot", let winIndex = symbols.firstIndex(of: .winSymbol) {
                 // Force all nine to win symbol to trigger jackpot per new rules
-                reels = Array(repeating: winIndex, count: 9)
-                return
+                return Array(repeating: winIndex, count: 9)
             } else if force == "win_horizontal", let moneyIndex = symbols.firstIndex(of: .moneySymbol) {
                 let x = (moneyIndex + 1) % symbols.count
                 let y = (moneyIndex + 2) % symbols.count
                 // Top row win only
-                reels = [moneyIndex, moneyIndex, moneyIndex, x, y, x, y, x, y]
-                return
+                return [moneyIndex, moneyIndex, moneyIndex, x, y, x, y, x, y]
             } else if force == "win_vertical", let moneyIndex = symbols.firstIndex(of: .moneySymbol) {
                 let x = (moneyIndex + 1) % symbols.count
                 let y = (moneyIndex + 2) % symbols.count
                 // First column win only (0,3,6)
-                reels = [moneyIndex, x, y, moneyIndex, y, x, moneyIndex, x, y]
-                return
+                return [moneyIndex, x, y, moneyIndex, y, x, moneyIndex, x, y]
             } else if force == "win_diag_tlbr", let moneyIndex = symbols.firstIndex(of: .moneySymbol) {
                 let x = (moneyIndex + 1) % symbols.count
                 let y = (moneyIndex + 2) % symbols.count
                 // Diagonal TL->BR (0,4,8)
-                reels = [moneyIndex, x, y, x, moneyIndex, x, y, x, moneyIndex]
-                return
+                return [moneyIndex, x, y, x, moneyIndex, x, y, x, moneyIndex]
             } else if force == "win_diag_trbl", let moneyIndex = symbols.firstIndex(of: .moneySymbol) {
                 let x = (moneyIndex + 1) % symbols.count
                 let y = (moneyIndex + 2) % symbols.count
                 // Diagonal TR->BL (2,4,6)
-                reels = [x, y, moneyIndex, x, moneyIndex, x, moneyIndex, x, y]
-                return
+                return [x, y, moneyIndex, x, moneyIndex, x, moneyIndex, x, y]
             } else if force == "loss" {
-                reels = [0, 1, 2, 1, 2, 0, 2, 0, 1]
-                return
+                return [0, 1, 2, 1, 2, 0, 2, 0, 1]
+            } else if force == "game_over" {
+                return [0, 1, 2, 1, 2, 0, 2, 0, 1]
             }
         }
         #endif
 
         // Normal spin: use reel strips + secure random stops to build 3x3 grid
-        reels = randomizer.spin(symbols: symbols)
+        return randomizer.spin(symbols: symbols)
+    }
+    
+    /// Spin reels and update the internal state (legacy method for backward compatibility)
+    func spinReels(forceMode: String? = nil) {
+        reels = generateFinalReels(forceMode: forceMode)
     }
 
     /// Encapsulates the outcome of a single spin evaluation
