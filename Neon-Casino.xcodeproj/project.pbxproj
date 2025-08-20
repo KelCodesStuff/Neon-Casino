@@ -114,10 +114,8 @@
 		BA115B052E552E0E00027680 /* win-1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "win-1.jpeg"; sourceTree = "<group>"; };
 		BA115B082E552E0E00027680 /* game-over.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game-over.png"; sourceTree = "<group>"; };
 		BA115B092E552E0E00027680 /* info-screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-screen.png"; sourceTree = "<group>"; };
-		BA115B0A2E552E0E00027680 /* jackpot-alert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jackpot-alert.png"; sourceTree = "<group>"; };
 		BA115B0B2E552E0E00027680 /* launch-screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch-screen.png"; sourceTree = "<group>"; };
 		BA115B0C2E552E0E00027680 /* main-screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-screen.png"; sourceTree = "<group>"; };
-		BA115B0D2E552E0E00027680 /* win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = win.png; sourceTree = "<group>"; };
 		BA115B102E55539800027680 /* ReelRandomizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelRandomizer.swift; sourceTree = "<group>"; };
 		BA2E26F02E4FE7A200616308 /* GameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRules.swift; sourceTree = "<group>"; };
 		BA568E962E50E6E2007D9B87 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
@@ -328,10 +326,8 @@
 				BA115B072E552E0E00027680 /* images-neon */,
 				BA115B082E552E0E00027680 /* game-over.png */,
 				BA115B092E552E0E00027680 /* info-screen.png */,
-				BA115B0A2E552E0E00027680 /* jackpot-alert.png */,
 				BA115B0B2E552E0E00027680 /* launch-screen.png */,
 				BA115B0C2E552E0E00027680 /* main-screen.png */,
-				BA115B0D2E552E0E00027680 /* win.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";

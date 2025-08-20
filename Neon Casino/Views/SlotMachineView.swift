@@ -24,34 +24,13 @@ struct SlotMachineView: View {
     
     // MARK: - UI
     var body: some View {
-        // Score fields
+        // Jackpot display
         VStack(alignment: .center, spacing: 10) {
             Text("JACKPOT")
                 .modifier(JackpotLabelModifier())
             Text(currency(viewModel.jackpot))
                 .modifier(ScoreNumberModifier())
                 .accessibilityIdentifier("jackpotValueLabel")
-            
-            HStack {
-                HStack {
-                    Text("money".uppercased())
-                        .modifier(ScoreLabelModifier())
-                        .multilineTextAlignment(.trailing)
-                    Text(currency(viewModel.money))
-                        .modifier(ScoreNumberModifier())
-                        .accessibilityIdentifier("moneyValueLabel")
-                }
-                .modifier(ScoreCapsuleModifier())
-                Spacer()
-                HStack {
-                    Text("\(viewModel.highScore)")
-                        .modifier(ScoreNumberModifier())
-                        .multilineTextAlignment(.leading)
-                    Text("High\nScore".uppercased())
-                        .modifier(ScoreLabelModifier())
-                }
-                .modifier(ScoreCapsuleModifier())
-            }
         }
         Spacer()
         
@@ -78,6 +57,20 @@ struct SlotMachineView: View {
             }
             Spacer()
             
+            // MARK: - Money Display
+            HStack {
+                Text("money".uppercased())
+                    .modifier(ScoreLabelModifier())
+                    .multilineTextAlignment(.trailing)
+                Text(currency(viewModel.money))
+                    .modifier(ScoreNumberModifier())
+                    .accessibilityIdentifier("moneyValueLabel")
+            }
+            .modifier(ScoreCapsuleModifier())
+            
+            Spacer()
+                .frame(height: 20)
+            
             // MARK: - Wager Buttons
             HStack {
                 Spacer()
@@ -94,6 +87,10 @@ struct SlotMachineView: View {
                             .renderingMode(.original)
                             .modifier(BetButtonModifier())
                     }
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.green, lineWidth: viewModel.betAmount == 5 ? 3 : 0)
+                    )
                 }
                 Spacer()
                 
@@ -109,6 +106,10 @@ struct SlotMachineView: View {
                             .renderingMode(.original)
                             .modifier(BetButtonModifier())
                     }
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.green, lineWidth: viewModel.betAmount == 10 ? 3 : 0)
+                    )
                 }
                 Spacer()
                 
@@ -124,6 +125,10 @@ struct SlotMachineView: View {
                             .renderingMode(.original)
                             .modifier(BetButtonModifier())
                     }
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.green, lineWidth: viewModel.betAmount == 25 ? 3 : 0)
+                    )
                 }
                 Spacer()
                 
@@ -139,6 +144,10 @@ struct SlotMachineView: View {
                             .renderingMode(.original)
                             .modifier(BetButtonModifier())
                     }
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.green, lineWidth: viewModel.betAmount == 50 ? 3 : 0)
+                    )
                 }
                 Spacer()
             }
