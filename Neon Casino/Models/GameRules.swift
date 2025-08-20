@@ -34,7 +34,7 @@ struct GameRules {
     ]
 
     /// Base payouts for three-in-a-row lines by symbol
-    /// (Lines not listed here receive the default payout of 50.)
+    /// (Lines not listed here receive the default payout of 25.)
     static let payouts: [SymbolImages: Int] = [
         .moneySymbol: 500,
         .jewelSymbol: 400,
@@ -78,7 +78,7 @@ struct GameRules {
                     // no payout for question combos per spec
                     winningLineIndexes.append(contentsOf: combo)
                 } else {
-                    let payout = payouts[symbol] ?? 50 // default payout for any other symbol
+                    let payout = payouts[symbol] ?? 25 // default payout for any other symbol
                     totalPayout += payout
                     winningLineIndexes.append(contentsOf: combo)
                 }
