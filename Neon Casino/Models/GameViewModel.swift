@@ -12,7 +12,6 @@ import SwiftUI
 final class GameViewModel: ObservableObject {
     /// UserDefaults keys
     enum Keys {
-        static let highScore = "HighScore"
         static let jackpot = "Jackpot"
         static let betAmount = "BetAmount"
     }
@@ -25,7 +24,6 @@ final class GameViewModel: ObservableObject {
     private let randomizer = ReelRandomizer()
 
     // MARK: - Published State
-    @Published var highScore: Int          // Highest money reached locally
     @Published var jackpot: Int            // Progressive jackpot
     @Published var money: Int              // Player balance
     @Published var betAmount: Int          // Current bet amount
@@ -34,11 +32,9 @@ final class GameViewModel: ObservableObject {
     // MARK: - Init
     /// Initialize game state from persistence (where applicable)
     init() {
-        let storedHigh = UserDefaults.standard.integer(forKey: Keys.highScore)
         let storedJackpot = UserDefaults.standard.object(forKey: Keys.jackpot) as? Int ?? defaultJackpot
         let storedBet = UserDefaults.standard.integer(forKey: Keys.betAmount)
 
-        self.highScore = storedHigh
         self.jackpot = max(storedJackpot, defaultJackpot)
         self.money = 1000
         self.betAmount = storedBet > 0 ? storedBet : 5
@@ -128,7 +124,7 @@ final class GameViewModel: ObservableObject {
         let winningLineIndexes: [Int] // indexes (0-8) of all winning cells (jackpot or regular)
     }
 
-    /// Evaluate reels using rules and apply balance/jackpot/high score updates.
+    /// Evaluate reels using rules and apply balance/jackpot updates.
     func checkWinning() -> WinResult {
         let eval = GameRules.evaluate(reels: reels, symbols: symbols)
         var payout = eval.totalPayout
@@ -150,10 +146,6 @@ final class GameViewModel: ObservableObject {
         if payout > 0 {
             let won = payout * betAmount
             money += won
-            if money > highScore {
-                highScore = money
-                UserDefaults.standard.set(highScore, forKey: Keys.highScore)
-            }
             // Collect winning line indexes from eval
             winningIndexes.append(contentsOf: eval.winningLineIndexes)
         } else if !transferJackpot {
