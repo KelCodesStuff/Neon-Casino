@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA115B112E55539800027680 /* ReelRandomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA115B102E55539800027680 /* ReelRandomizer.swift */; };
 		BA2E26F12E4FE7A200616308 /* GameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2E26F02E4FE7A200616308 /* GameRules.swift */; };
 		BA5794012A576ACF00113D31 /* SlotMachineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5794002A576ACF00113D31 /* SlotMachineView.swift */; };
 		BA5794052A576B2800113D31 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5794042A576B2800113D31 /* BackgroundView.swift */; };
@@ -117,6 +118,7 @@
 		BA115B0B2E552E0E00027680 /* launch-screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch-screen.png"; sourceTree = "<group>"; };
 		BA115B0C2E552E0E00027680 /* main-screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-screen.png"; sourceTree = "<group>"; };
 		BA115B0D2E552E0E00027680 /* win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = win.png; sourceTree = "<group>"; };
+		BA115B102E55539800027680 /* ReelRandomizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelRandomizer.swift; sourceTree = "<group>"; };
 		BA2E26F02E4FE7A200616308 /* GameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRules.swift; sourceTree = "<group>"; };
 		BA568E962E50E6E2007D9B87 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		BA568E972E50E6E2007D9B87 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				UnitTests/GameRules/GameRulesBonusTests.swift,
 				UnitTests/GameRules/GameRulesJackpotTests.swift,
 				UnitTests/GameRules/GameRulesPayoutTests.swift,
+				UnitTests/Support/RTPSimulator.swift,
 				UnitTests/Support/UserDefaultsTestHelpers.swift,
 				UnitTests/ViewModel/ViewModelJackpotTests.swift,
 				UnitTests/ViewModel/ViewModelPayoutTests.swift,
@@ -336,6 +339,7 @@
 		BA5793FE2A576A0D00113D31 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BA115B102E55539800027680 /* ReelRandomizer.swift */,
 				BA2E26F02E4FE7A200616308 /* GameRules.swift */,
 				BA5794062A576CB400113D31 /* GameViewModel.swift */,
 			);
@@ -587,6 +591,7 @@
 				BA5794072A576CB400113D31 /* GameViewModel.swift in Sources */,
 				BAB5B9D82A54CBF50074DD76 /* ContentView.swift in Sources */,
 				BAB5B9E22A54CC160074DD76 /* Slot_MachineApp.swift in Sources */,
+				BA115B112E55539800027680 /* ReelRandomizer.swift in Sources */,
 				BAB5B9D62A54CBF50074DD76 /* LogoView.swift in Sources */,
 				BAB5B9DF2A54CC090074DD76 /* PlaySound.swift in Sources */,
 				BAB5B9DE2A54CC090074DD76 /* Modifiers.swift in Sources */,

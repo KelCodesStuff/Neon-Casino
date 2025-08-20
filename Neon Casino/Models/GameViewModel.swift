@@ -22,6 +22,7 @@ final class GameViewModel: ObservableObject {
     let defaultJackpot: Int = 100_000
     /// Ordered list of available symbols. Indices in `reels` map into this array
     let symbols: [SymbolImages] = [.barSymbol, .bellSymbol, .cherrySymbol, .cloverSymbol, .clubSymbol, .crownSymbol, .diamondSymbol, .fruitSymbol, .grapesSymbol, .heartSymbol, .horseshoeSymbol, .jewelSymbol, .lemonSymbol, .moneySymbol, .questionSymbol, .sevenSymbol, .spadeSymbol, .starSymbol, .strawberrySymbol, .watermelonSymbol, .winSymbol]
+    private let randomizer = ReelRandomizer()
 
     // MARK: - Published State
     @Published var highScore: Int          // Highest money reached locally
@@ -60,6 +61,16 @@ final class GameViewModel: ObservableObject {
     #endif
 
     /// Spin reels either deterministically (for UI tests) or randomly.
+    ///
+    /// Outcome rules:
+    /// - In normal runs: each of the 9 reel positions is assigned a random
+    ///   symbol index in `0 ..< symbols.count`.
+    /// - In UI tests (DEBUG): if the environment variable `UITEST_FORCE` is set,
+    ///   a specific deterministic layout is produced (e.g. win_horizontal,
+    ///   win_vertical, win_diag_tlbr, win_diag_trbl, jackpot, loss, etc.).
+    /// This function solely determines the symbols shown after a spin; bet size
+    /// only affects payout scaling and progressive jackpot increments.
+    
     /// - Parameter forceMode: Optional mode to create specific reel outcomes for automation.
     func spinReels(forceMode: String? = nil) {
         #if DEBUG
@@ -104,7 +115,8 @@ final class GameViewModel: ObservableObject {
         }
         #endif
 
-        reels = reels.map { _ in Int.random(in: 0..<(symbols.count)) }
+        // Normal spin: use reel strips + secure random stops to build 3x3 grid
+        reels = randomizer.spin(symbols: symbols)
     }
 
     /// Encapsulates the outcome of a single spin evaluation
