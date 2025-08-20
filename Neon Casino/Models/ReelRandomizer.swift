@@ -22,7 +22,11 @@ import Security
 struct SecureRandomNumberGenerator: RandomNumberGenerator {
     func next() -> UInt64 {
         var bytes: [UInt8] = Array(repeating: 0, count: MemoryLayout<UInt64>.size)
-        _ = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
+        let status = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
+        guard status == errSecSuccess else {
+            // Fallback to system random if secure random fails
+            fatalError("SecRandomCopyBytes failed with status: \(status)")
+        }
         return bytes.withUnsafeBytes { $0.load(as: UInt64.self) }
     }
 }
@@ -58,7 +62,8 @@ struct ReelRandomizer {
             var bag: [SymbolImages] = []
             for (sym, count) in w where count > 0 { bag += Array(repeating: sym, count: count) }
             // Shuffle using cryptographically secure random number generator
-            return bag.shuffled(using: &SecureRandomNumberGenerator())
+            var secureRNG = SecureRandomNumberGenerator()
+            return bag.shuffled(using: &secureRNG)
         }
 
         let leftW = weights(win: 1, money: 2, jewel: 2, crown: 3, spade: 4, common: 6)
@@ -74,9 +79,11 @@ struct ReelRandomizer {
     // Mapping columns: left(0,3,6), middle(1,4,7), right(2,5,8)
     func spin(symbols: [SymbolImages]) -> [Int] {
         var grid = Array(repeating: 0, count: 9)
+        var secureRNG = SecureRandomNumberGenerator()
+        
         for (reelIndex, strip) in reelStrips.enumerated() {
             guard !strip.isEmpty else { continue }
-            let stop = Int.random(in: 0..<strip.count, using: &SecureRandomNumberGenerator())
+            let stop = Int.random(in: 0..<strip.count, using: &secureRNG)
             // Top/Mid/Bottom symbols for this reel (wrap around)
             let top = strip[stop]
             let mid = strip[(stop + 1) % strip.count]
