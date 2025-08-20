@@ -10,7 +10,7 @@ import UIKit
 
 struct SlotMachineView: View {
     @StateObject private var viewModel = GameViewModel()
-
+    
     let haptics = UINotificationFeedbackGenerator()
     
     @State private var animatingSymbol = false
@@ -22,6 +22,9 @@ struct SlotMachineView: View {
     @State private var flashingWinningIndexes: [Int] = []
     @State private var flashPhase: Bool = false
     @State private var isGameOver = false
+    @State private var isCycling = false
+    @State private var cyclingSymbols: [Int] = Array(repeating: 0, count: 9)
+    @State private var stoppedReels: Set<Int> = []
     
     // MARK: - UI
     var body: some View {
@@ -37,16 +40,16 @@ struct SlotMachineView: View {
         
         VStack(alignment: .center, spacing: 0) {
             ForEach(0..<3, id: \.self) { row in
-                HStack {
+            HStack {
                     ForEach(0..<3, id: \.self) { col in
                         let index = row * 3 + col
-                        ZStack {
-                            ReelView()
-                            Image(viewModel.symbols[viewModel.reels[index]].rawValue)
-                                .resizable()
-                                .modifier(SymbolImageModifier())
-                                .opacity(animatingSymbol ? 1 : 0)
-                                .offset(y: animatingSymbol ? 0 : 50)
+                ZStack {
+                    ReelView()
+                            Image(viewModel.symbols[isCycling ? cyclingSymbols[index] : viewModel.reels[index]].rawValue)
+                        .resizable()
+                        .modifier(SymbolImageModifier())
+                        .opacity(animatingSymbol ? 1 : 0)
+                        .offset(y: animatingSymbol ? 0 : 50)
                                 .animation(.easeOut(duration: currentSpinDuration), value: animatingSymbol)
                         }
                         .overlay(
@@ -159,77 +162,9 @@ struct SlotMachineView: View {
                 Button(action: {
                     guard !isSpinDisabled else { return }
                     isSpinDisabled = true
-                    // 1. Set the default State: No animation and duration
-                    currentSpinDuration = 0.7
-                    withAnimation {
-                        self.animatingSymbol = false
-                    }
                     
-                    // 2. Spin the reels with changing the symbols
-                    var isForcedGameOver = false
-                    #if DEBUG
-                    let force = ProcessInfo.processInfo.environment["UITEST_FORCE"]
-                    viewModel.spinReels(forceMode: force)
-                    if force == "game_over" { isForcedGameOver = true }
-                    #else
-                    viewModel.spinReels()
-                    #endif
-                    playSound(sound: "spin", type: "mp3")
-                    haptics.notificationOccurred(.success)
-                    
-                    // 3. Trigger the animation after changing the symbols
-                    withAnimation {
-                        self.animatingSymbol = true
-                    }
-                    
-                    // 4. Check Winning
-                    let result = viewModel.checkWinning()
-                    if result.transferJackpot || result.payout > 0 {
-                        playSound(sound: "win", type: "mp3")
-                        haptics.notificationOccurred(.success)
-                    }
-
-                    if result.transferJackpot {
-                        alertTitle = "Jackpot!"
-                        alertMessage = "Congratulations! You won \(currency(result.awardedJackpot))!"
-                        showAlert = true
-                        flashingWinningIndexes = result.winningLineIndexes
-                        // Start flashing
-                        withAnimation(Animation.easeInOut(duration: 0.35).repeatForever(autoreverses: true)) {
-                            flashPhase.toggle()
-                        }
-                    } else if result.payout > 0 {
-                        // Show standard win alert for non-jackpot wins
-                        alertTitle = "Congratulations!"
-                        alertMessage = "You won \(currency(result.awardedWin))!"
-                        showAlert = true
-                        flashingWinningIndexes = result.winningLineIndexes
-                        withAnimation(Animation.easeInOut(duration: 0.35).repeatForever(autoreverses: true)) {
-                            flashPhase.toggle()
-                        }
-                    } else if false { // placeholder for bonus UI if needed
-                        // In future, show bonus game activation
-                    }
-                    
-                    // 5. Increment Jackpot by 10% of bet
-                    viewModel.incrementJackpotForSpin(skipIfJackpotWon: result.transferJackpot)
-                    
-                    // 6. Game is Over
-                    if isForcedGameOver {
-                        viewModel.money = 0
-                    }
-                    if viewModel.money <= 0 && !isGameOver {
-                        isGameOver = true
-                        showAlert = true
-                        alertTitle = "Game Over"
-                        alertMessage = "You are out of money!"
-                        playSound(sound: "game-over", type: "mp3")
-                    }
-
-                    // Re-enable spin after the animation completes
-                    DispatchQueue.main.asyncAfter(deadline: .now() + currentSpinDuration + 0.05) {
-                        isSpinDisabled = false
-                    }
+                    // Start cycling animation
+                    startCyclingAnimation()
                 }) {
                     Image("spin-button-1")
                         .resizable()
@@ -275,6 +210,185 @@ struct SlotMachineView: View {
         formatter.numberStyle = .currency
         formatter.locale = Locale.current
         return formatter.string(from: NSNumber(value: value)) ?? "$\(value)"
+    }
+    
+    private func startCyclingAnimation() {
+        // Deduct bet immediately
+        viewModel.money -= viewModel.betAmount
+        
+        // Reset animation state
+        isCycling = true
+        stoppedReels.removeAll()
+        
+        // Make symbols visible immediately for cycling
+        withAnimation {
+            self.animatingSymbol = true
+        }
+        
+        // Play spin sound and haptics
+        playSound(sound: "spin", type: "mp3")
+        haptics.notificationOccurred(.success)
+        
+        // Start cycling through random symbols
+        startSymbolCycling()
+        
+        // After 2 seconds, start stopping reels in sequence
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.stopReelsInSequence()
+        }
+    }
+    
+    private func startSymbolCycling() {
+        // Update cycling symbols with random values only for reels that haven't stopped
+        for i in 0..<9 {
+            if !stoppedReels.contains(i) {
+                cyclingSymbols[i] = Int.random(in: 0..<viewModel.symbols.count)
+            }
+        }
+        
+        // Continue cycling every 0.1 seconds until reels start stopping
+        if isCycling {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.startSymbolCycling()
+            }
+        }
+    }
+    
+    private func stopReelsInSequence() {
+        // Get the final result first
+        var isForcedGameOver = false
+        var finalReels: [Int] = []
+        
+        #if DEBUG
+        let force = ProcessInfo.processInfo.environment["UITEST_FORCE"]
+        if let force = force {
+            // For UI tests, generate the forced result
+            if force == "win_money", let moneyIndex = viewModel.symbols.firstIndex(of: .moneySymbol) {
+                let x = (moneyIndex + 1) % viewModel.symbols.count
+                let y = (moneyIndex + 2) % viewModel.symbols.count
+                finalReels = [moneyIndex, moneyIndex, moneyIndex, x, y, x, y, x, y]
+            } else if force == "jackpot", let winIndex = viewModel.symbols.firstIndex(of: .winSymbol) {
+                finalReels = Array(repeating: winIndex, count: 9)
+            } else if force == "win_horizontal", let moneyIndex = viewModel.symbols.firstIndex(of: .moneySymbol) {
+                let x = (moneyIndex + 1) % viewModel.symbols.count
+                let y = (moneyIndex + 2) % viewModel.symbols.count
+                finalReels = [moneyIndex, moneyIndex, moneyIndex, x, y, x, y, x, y]
+            } else if force == "win_vertical", let moneyIndex = viewModel.symbols.firstIndex(of: .moneySymbol) {
+                let x = (moneyIndex + 1) % viewModel.symbols.count
+                let y = (moneyIndex + 2) % viewModel.symbols.count
+                finalReels = [moneyIndex, x, y, moneyIndex, y, x, moneyIndex, x, y]
+            } else if force == "win_diag_tlbr", let moneyIndex = viewModel.symbols.firstIndex(of: .moneySymbol) {
+                let x = (moneyIndex + 1) % viewModel.symbols.count
+                let y = (moneyIndex + 2) % viewModel.symbols.count
+                finalReels = [moneyIndex, x, y, x, moneyIndex, x, y, x, moneyIndex]
+            } else if force == "win_diag_trbl", let moneyIndex = viewModel.symbols.firstIndex(of: .moneySymbol) {
+                let x = (moneyIndex + 1) % viewModel.symbols.count
+                let y = (moneyIndex + 2) % viewModel.symbols.count
+                finalReels = [x, y, moneyIndex, x, moneyIndex, x, moneyIndex, x, y]
+            } else if force == "loss" {
+                finalReels = [0, 1, 2, 1, 2, 0, 2, 0, 1]
+            } else if force == "game_over" {
+                finalReels = [0, 1, 2, 1, 2, 0, 2, 0, 1]
+                isForcedGameOver = true
+            }
+        }
+        #endif
+        
+        // If no forced result, generate random result
+        if finalReels.isEmpty {
+            let randomizer = ReelRandomizer()
+            finalReels = randomizer.spin(symbols: viewModel.symbols)
+        }
+        
+        // Stop reels column by column (left to right)
+        let reelStops = [
+            // First column (left)
+            (0, 0.0),   // Top-left
+            (3, 0.1),   // Middle-left
+            (6, 0.2),   // Bottom-left
+            // Second column (middle)
+            (1, 0.5),   // Top-middle
+            (4, 0.6),   // Center
+            (7, 0.7),   // Bottom-middle
+            // Third column (right)
+            (2, 1.0),   // Top-right
+            (5, 1.1),   // Middle-right
+            (8, 1.2)    // Bottom-right
+        ]
+        
+        for (reelIndex, delay) in reelStops {
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                self.stoppedReels.insert(reelIndex)
+                // Set the final symbol for this reel
+                self.cyclingSymbols[reelIndex] = finalReels[reelIndex]
+                
+                // If this is the last reel to stop
+                if reelIndex == 8 {
+                    self.finishSpin(finalReels: finalReels, isForcedGameOver: isForcedGameOver)
+                }
+            }
+        }
+    }
+    
+    private func finishSpin(finalReels: [Int], isForcedGameOver: Bool) {
+        // Set the final result in the view model
+        viewModel.reels = finalReels
+        
+        // Stop cycling and show final result
+        isCycling = false
+        stoppedReels.removeAll()
+        
+        // Trigger the final animation
+        withAnimation {
+            self.animatingSymbol = true
+        }
+        
+        // Check for wins
+        let result = viewModel.checkWinning()
+        if result.transferJackpot || result.payout > 0 {
+            playSound(sound: "win", type: "mp3")
+            haptics.notificationOccurred(.success)
+        }
+
+        if result.transferJackpot {
+            alertTitle = "Jackpot!"
+            alertMessage = "Congratulations! You won \(currency(result.awardedJackpot))!"
+            showAlert = true
+            flashingWinningIndexes = result.winningLineIndexes
+            withAnimation(Animation.easeInOut(duration: 0.35).repeatForever(autoreverses: true)) {
+                flashPhase.toggle()
+            }
+        } else if result.payout > 0 {
+            alertTitle = "Congratulations!"
+            alertMessage = "You won \(currency(result.awardedWin))!"
+            showAlert = true
+            flashingWinningIndexes = result.winningLineIndexes
+            withAnimation(Animation.easeInOut(duration: 0.35).repeatForever(autoreverses: true)) {
+                flashPhase.toggle()
+            }
+        }
+        
+        // Increment jackpot (skip if jackpot was just won)
+        viewModel.incrementJackpotForSpin(skipIfJackpotWon: result.transferJackpot)
+        
+        // Check for game over
+        if isForcedGameOver {
+            viewModel.money = 0
+        }
+        
+        // Check if player is out of money after this spin
+        if viewModel.money <= 0 && !isGameOver {
+            isGameOver = true
+            showAlert = true
+            alertTitle = "Game Over"
+            alertMessage = "You are out of money!"
+            playSound(sound: "game-over", type: "mp3")
+        }
+        
+        // Re-enable spin button
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            isSpinDisabled = false
+        }
     }
 }
 
