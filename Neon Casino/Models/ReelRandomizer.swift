@@ -74,8 +74,12 @@ struct ReelRandomizer {
             let bot = strip[(stop + 2) % strip.count]
 
             func map(_ sym: SymbolImages) -> Int {
-                // Fallback to 0 if not found; symbol set should always include all used symbols
-                return symbols.firstIndex(of: sym) ?? 0
+                guard let index = symbols.firstIndex(of: sym) else {
+                    // This should never happen if reel strips only contain symbols from the symbols array
+                    assertionFailure("Symbol \(sym) not found in symbols array. Check reel strip configuration.")
+                    return 0
+                }
+                return index
             }
 
             // Assign symbols to grid using pattern: reelIndex, reelIndex + 3, reelIndex + 6
