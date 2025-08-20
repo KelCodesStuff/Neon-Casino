@@ -83,6 +83,9 @@ struct ReelRandomizer {
         var grid = Array(repeating: 0, count: 9)
         var secureRNG = SecureRandomNumberGenerator()
         
+        // Create symbol-to-index mapping once for O(1) lookups
+        let symbolToIndex = Dictionary(uniqueKeysWithValues: symbols.enumerated().map { ($0.element, $0.offset) })
+        
         for (reelIndex, strip) in reelStrips.enumerated() {
             guard !strip.isEmpty else { continue }
             let stop = Int.random(in: 0..<strip.count, using: &secureRNG)
@@ -92,10 +95,15 @@ struct ReelRandomizer {
             let bot = strip[(stop + 2) % strip.count]
 
             func map(_ sym: SymbolImages) -> Int {
-                guard let index = symbols.firstIndex(of: sym) else {
+                guard let index = symbolToIndex[sym] else {
                     // This should never happen if reel strips only contain symbols from the symbols array
-                    assertionFailure("Symbol \(sym) not found in symbols array. Check reel strip configuration.")
+                    #if DEBUG
+                    fatalError("Symbol \(sym) not found in symbols array. Check reel strip configuration.")
+                    #else
+                    // In release builds, log the error and return a safe fallback
+                    print("ERROR: Symbol \(sym) not found in symbols array. Using fallback index 0.")
                     return 0
+                    #endif
                 }
                 return index
             }
