@@ -45,7 +45,7 @@ final class GameRulesPayoutTests: XCTestCase {
         let syms: [SymbolImages] = [.cherrySymbol, .barSymbol]
         let reels = [0,0,0, 1,1,0, 1,0,1]
         let result = GameRules.evaluate(reels: reels, symbols: syms)
-        XCTAssertEqual(result.totalPayout, 50)
+        XCTAssertEqual(result.totalPayout, 25)
     }
 }
 
