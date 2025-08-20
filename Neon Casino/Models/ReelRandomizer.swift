@@ -20,12 +20,14 @@ import Security
 
 /// Cryptographically secure random number generator for gambling applications
 struct SecureRandomNumberGenerator: RandomNumberGenerator {
+    private var systemRNG = SystemRandomNumberGenerator()
+    
     func next() -> UInt64 {
         var bytes: [UInt8] = Array(repeating: 0, count: MemoryLayout<UInt64>.size)
         let status = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
         guard status == errSecSuccess else {
             // Fallback to system random if secure random fails
-            fatalError("SecRandomCopyBytes failed with status: \(status)")
+            return systemRNG.next()
         }
         return bytes.withUnsafeBytes { $0.load(as: UInt64.self) }
     }
