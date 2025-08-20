@@ -78,22 +78,10 @@ struct ReelRandomizer {
                 return symbols.firstIndex(of: sym) ?? 0
             }
 
-            switch reelIndex {
-            case 0: // left column
-                grid[0] = map(top)
-                grid[3] = map(mid)
-                grid[6] = map(bot)
-            case 1: // middle column
-                grid[1] = map(top)
-                grid[4] = map(mid)
-                grid[7] = map(bot)
-            case 2: // right column
-                grid[2] = map(top)
-                grid[5] = map(mid)
-                grid[8] = map(bot)
-            default:
-                break
-            }
+            // Assign symbols to grid using pattern: reelIndex, reelIndex + 3, reelIndex + 6
+            grid[reelIndex] = map(top)     // top row
+            grid[reelIndex + 3] = map(mid) // middle row
+            grid[reelIndex + 6] = map(bot) // bottom row
         }
         return grid
     }
