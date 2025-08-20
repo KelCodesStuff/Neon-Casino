@@ -109,7 +109,7 @@ struct InfoView: View {
             let base = GameRules.payouts[sym] ?? 50
             return PayRow(symbol: sym, title: displayName(sym), amount: base)
         }
-        let other = PayRow(symbol: nil, title: "Any other symbol", amount: 50)
+        let other = PayRow(symbol: nil, title: "Any other symbol", amount: GameRules.defaultPayout)
         return rows + [other]
     }
 

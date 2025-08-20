@@ -12,7 +12,6 @@ import Foundation
 func clearGameDefaults() {
     UserDefaults.standard.removeObject(forKey: GameViewModel.Keys.jackpot)
     UserDefaults.standard.removeObject(forKey: GameViewModel.Keys.betAmount)
-    UserDefaults.standard.removeObject(forKey: GameViewModel.Keys.highScore)
 }
 
 

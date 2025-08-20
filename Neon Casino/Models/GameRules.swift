@@ -18,6 +18,8 @@ import Foundation
 /// - Jackpot: all nine cells show the win symbol. No line payouts are added when jackpot triggers
 /// - Bonus: a three-in-a-row of question symbols activates a bonus (no payout for that line)
 struct GameRules {
+    /// Default payout for any symbol not listed in the payouts dictionary
+    static let defaultPayout = 25
     /// All winning line combinations across a 3x3 grid
     static let winningCombinations: [[Int]] = [
         // Rows
@@ -34,7 +36,7 @@ struct GameRules {
     ]
 
     /// Base payouts for three-in-a-row lines by symbol
-    /// (Lines not listed here receive the default payout of 50.)
+    /// (Lines not listed here receive the default payout of \(GameRules.defaultPayout).)
     static let payouts: [SymbolImages: Int] = [
         .moneySymbol: 500,
         .jewelSymbol: 400,
@@ -78,7 +80,7 @@ struct GameRules {
                     // no payout for question combos per spec
                     winningLineIndexes.append(contentsOf: combo)
                 } else {
-                    let payout = payouts[symbol] ?? 50 // default payout for any other symbol
+                    let payout = payouts[symbol] ?? GameRules.defaultPayout // default payout for any other symbol
                     totalPayout += payout
                     winningLineIndexes.append(contentsOf: combo)
                 }

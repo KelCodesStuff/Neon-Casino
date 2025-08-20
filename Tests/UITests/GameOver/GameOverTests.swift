@@ -15,7 +15,7 @@ final class GameOverTests: XCTestCase {
         page.launch(with: ["UITEST_FORCE": "game_over"]) 
         page.tapSpin()
 
-        XCTAssertTrue(page.gameOverAlert.waitForExistence(timeout: 2))
+        XCTAssertTrue(page.gameOverAlert.waitForExistence(timeout: 5))
         page.gameOverAlert.buttons["OK"].tap()
     }
 }

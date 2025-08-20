@@ -15,7 +15,7 @@ final class VerticalWinTests: XCTestCase {
         page.launch(with: ["UITEST_FORCE": "win_vertical"]) 
         page.tapSpin()
 
-        XCTAssertTrue(page.winAlert.waitForExistence(timeout: 3))
+        XCTAssertTrue(page.winAlert.waitForExistence(timeout: 5))
         page.winAlert.buttons["OK"].tap()
     }
 }

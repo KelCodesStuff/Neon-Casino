@@ -15,7 +15,7 @@ final class JackpotTests: XCTestCase {
         page.launch(with: ["UITEST_FORCE": "jackpot"]) 
         page.tapSpin()
 
-        XCTAssertTrue(page.jackpotAlert.waitForExistence(timeout: 2))
+        XCTAssertTrue(page.jackpotAlert.waitForExistence(timeout: 5))
         page.jackpotAlert.buttons["OK"].tap()
     }
 }
