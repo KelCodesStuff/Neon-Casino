@@ -22,7 +22,7 @@ import Security
 struct SecureRandomNumberGenerator: RandomNumberGenerator {
     private var systemRNG = SystemRandomNumberGenerator()
     
-    func next() -> UInt64 {
+    mutating func next() -> UInt64 {
         var bytes: [UInt8] = Array(repeating: 0, count: MemoryLayout<UInt64>.size)
         let status = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
         guard status == errSecSuccess else {
