@@ -21,6 +21,7 @@ struct SlotMachineView: View {
     @State private var currentSpinDuration: Double = 0.7
     @State private var flashingWinningIndexes: [Int] = []
     @State private var flashPhase: Bool = false
+    @State private var isGameOver = false
     
     // MARK: - UI
     var body: some View {
@@ -217,12 +218,12 @@ struct SlotMachineView: View {
                     if isForcedGameOver {
                         viewModel.money = 0
                     }
-                    if viewModel.money <= 0 {
+                    if viewModel.money <= 0 && !isGameOver {
+                        isGameOver = true
                         showAlert = true
                         alertTitle = "Game Over"
-                        alertMessage = "You are out of money."
+                        alertMessage = "You are out of money!"
                         playSound(sound: "game-over", type: "mp3")
-                        viewModel.resetGame()
                     }
 
                     // Re-enable spin after the animation completes
@@ -252,6 +253,12 @@ struct SlotMachineView: View {
                 dismissButton: .default(Text("OK"), action: {
                     flashingWinningIndexes.removeAll()
                     flashPhase = false
+                    
+                    // Reset game only when game over alert is dismissed
+                    if isGameOver {
+                        viewModel.resetGame()
+                        isGameOver = false
+                    }
                 })
             )
         }
