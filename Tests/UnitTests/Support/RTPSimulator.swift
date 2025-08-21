@@ -11,11 +11,11 @@ import XCTest
 // Simple Monte Carlo to estimate RTP given current reel strips and rules.
 // Not a formal statistical test, intended to help tune strip compositions.
 final class RTPSimulator: XCTestCase {
-    func testEstimateRTP_10kSpins() throws {
+    func testEstimateRTP_100kSpins() throws {
         // Keep runs short in CI; increase locally for better precision
-        let iterations = 10_000
+        let iterations = 100_000
         let model = GameViewModel()
-        model.setBetAmount(10)
+        model.setBetAmount(5)
         var totalBet = 0
         var totalReturn = 0
 
@@ -29,8 +29,9 @@ final class RTPSimulator: XCTestCase {
         }
 
         let rtp = Double(totalReturn) / Double(totalBet)
+        let rtpPercentage = rtp * 100
         // Print for developer insight; avoid strict asserts to prevent CI flakes
-        print("Estimated RTP over \(iterations) spins: \(rtp)")
+        print("Estimated RTP over \(iterations) spins: \(String(format: "%.1f", rtpPercentage))%")
     }
 }
 

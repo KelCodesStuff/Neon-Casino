@@ -1,5 +1,5 @@
 //
-//  ViewModelProgressiveJackpotTests.swift
+//  ProgressiveJackpotTests.swift
 //  Neon-Casino
 //
 //  Created by Kelvin Reid on 8/19/25.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Neon_Casino
 
-final class ViewModelProgressiveJackpotTests: XCTestCase {
+final class ProgressiveJackpotTests: XCTestCase {
     override func setUpWithError() throws { clearGameDefaults() }
 
     func testJackpotIncrementsByTenPercentOfBet() throws {

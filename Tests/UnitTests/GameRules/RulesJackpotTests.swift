@@ -1,5 +1,5 @@
 //
-//  GameRulesJackpotTests.swift
+//  RulesJackpotTests.swift
 //  Neon-Casino
 //
 //  Created by Kelvin Reid on 8/19/25.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Neon_Casino
 
-final class GameRulesJackpotTests: XCTestCase {
+final class RulesJackpotTests: XCTestCase {
     override func setUpWithError() throws { clearGameDefaults() }
 
     func testJackpot_AllNineWinSymbols_TransfersJackpot() throws {

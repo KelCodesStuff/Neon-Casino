@@ -1,5 +1,5 @@
 //
-//  ViewModelJackpotTests.swift
+//  JackpotTests.swift
 //  Neon-Casino
 //
 //  Created by Kelvin Reid on 8/19/25.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Neon_Casino
 
-final class ViewModelJackpotTests: XCTestCase {
+final class JackpotTests: XCTestCase {
     override func setUpWithError() throws { clearGameDefaults() }
 
     func testJackpot_AwardsAndResets() throws {
