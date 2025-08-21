@@ -101,6 +101,13 @@ final class GameViewModel: ObservableObject {
                 return [x, y, moneyIndex, x, moneyIndex, x, moneyIndex, x, y]
             } else if force == "loss" {
                 return [0, 1, 2, 1, 2, 0, 2, 0, 1]
+            } else if force == "bonus", let questionIndex = symbols.firstIndex(of: .questionSymbol) {
+                // Use different symbols for other positions to avoid any winning combinations
+                let x = 0  // barSymbol
+                let y = 1  // bellSymbol
+                let z = 2  // cherrySymbol
+                // Top row bonus (three question symbols in a row)
+                return [questionIndex, questionIndex, questionIndex, x, y, z, x, y, z]
             } else if force == "game_over" {
                 return [0, 1, 2, 1, 2, 0, 2, 0, 1]
             }
@@ -120,6 +127,7 @@ final class GameViewModel: ObservableObject {
     struct WinResult {
         let payout: Int               // base payout (before bet multiplier)
         let transferJackpot: Bool
+        let bonusActivated: Bool      // true if question symbols triggered bonus
         let awardedJackpot: Int       // amount of jackpot awarded to money
         let awardedWin: Int           // payout * betAmount
         let winningLineIndexes: [Int] // indexes (0-8) of all winning cells (jackpot or regular)
@@ -128,7 +136,7 @@ final class GameViewModel: ObservableObject {
     /// Evaluate reels using rules and apply balance/jackpot updates.
     func checkWinning() -> WinResult {
         let eval = GameRules.evaluate(reels: reels, symbols: symbols)
-        var payout = eval.totalPayout
+        let payout = eval.totalPayout
         let transferJackpot = eval.transferJackpot
         let bonusActivated = eval.bonusActivated
         var awarded = 0
@@ -154,6 +162,7 @@ final class GameViewModel: ObservableObject {
 
         return WinResult(payout: payout,
                          transferJackpot: transferJackpot,
+                         bonusActivated: bonusActivated,
                          awardedJackpot: awarded,
                          awardedWin: payout * betAmount,
                          winningLineIndexes: winningIndexes)
