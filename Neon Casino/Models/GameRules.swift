@@ -38,11 +38,26 @@ struct GameRules {
     /// Base payouts for three-in-a-row lines by symbol
     /// (Lines not listed here receive the default payout of \(GameRules.defaultPayout).)
     static let payouts: [SymbolImages: Int] = [
-        .moneySymbol: 500,
-        .jewelSymbol: 400,
-        .crownSymbol: 300,
-        .spadeSymbol: 200,
-        .winSymbol: 50
+        .moneySymbol: 200,
+        .sevenSymbol: 150,
+        .barSymbol: 120,
+        .winSymbol: 40,
+        .jewelSymbol: 40,
+        .crownSymbol: 40,
+        .spadeSymbol: 20,
+        .clubSymbol: 20,
+        .diamondSymbol: 20,
+        .heartSymbol: 20,
+        .starSymbol: 4,
+        .cloverSymbol: 4,
+        .horseshoeSymbol: 4,
+        .bellSymbol: 4,
+        .cherrySymbol: 2,
+        .fruitSymbol: 2,
+        .grapesSymbol: 2,
+        .lemonSymbol: 2,
+        .strawberrySymbol: 2,
+        .watermelonSymbol: 2,
     ]
 
     /// Evaluate a 3x3 reel layout for wins, jackpot, and bonus activation.
