@@ -21,30 +21,73 @@ struct InfoView: View {
             Spacer()
             Form {
                 // Pay table
-                Section(header: Text("Payouts (bet multiplied by win)")) {
+                Section(header: Text("Payouts (bet x multiplier)")) {
                     ForEach(payRows) { row in
-                        HStack {
-                            // Show three of the symbol to indicate "3 in a row" condition
-                            if let sym = row.symbol {
-                                ForEach(0..<3, id: \.self) { _ in
-                                    Image(sym.rawValue)
-                                        .resizable()
-                                        .frame(width: 30, height: 30)
-                                }
-                            } else {
-                                // Keep spacing consistent when no symbol is present
-                                Spacer().frame(width: 96)
+                        if row.isCategoryHeader {
+                            // Category header styling
+                            HStack {
+                                Text(row.title)
+                                    .font(.system(.headline, design: .rounded))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.primary)
+                                    .padding(.top, 8)
+                                    .padding(.bottom, 4)
+                                Spacer()
                             }
-                            Text(row.title)
-                            Spacer()
-                            if let amt = row.amount {
-                                Text(currency(amt))
+                        } else {
+                            // Regular symbol row
+                            HStack {
+                                // Show three of the symbol to indicate "3 in a row" condition
+                                if let sym = row.symbol {
+                                    ForEach(0..<3, id: \.self) { _ in
+                                        Image(sym.rawValue)
+                                            .resizable()
+                                            .frame(width: 30, height: 30)
+                                    }
+                                } else {
+                                    // Keep spacing consistent when no symbol is present
+                                    Spacer().frame(width: 96)
+                                }
+                                Text(row.title)
+                                Spacer()
+                                if let amt = row.amount {
+                                    Text("×\(amt)")
+                                        .font(.system(.body, design: .rounded))
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.green)
+                                }
                             }
                         }
                     }
                 }
                 Section(header: Text("Jackpot")) {
-                    Text("All nine Win symbols = Progressive Jackpot awarded")
+                    HStack {
+                        // Show nine win symbols in 3x3 grid to indicate jackpot condition
+                        VStack(spacing: 2) {
+                            HStack(spacing: 2) {
+                                ForEach(0..<3, id: \.self) { _ in
+                                    Image(SymbolImages.winSymbol.rawValue)
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                }
+                            }
+                            HStack(spacing: 2) {
+                                ForEach(0..<3, id: \.self) { _ in
+                                    Image(SymbolImages.winSymbol.rawValue)
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                }
+                            }
+                            HStack(spacing: 2) {
+                                ForEach(0..<3, id: \.self) { _ in
+                                    Image(SymbolImages.winSymbol.rawValue)
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                }
+                            }
+                        }
+                        Text("Jackpot awarded")
+                    }
                 }
                 Section(header: Text("Bonus")) {
                     HStack {
@@ -97,31 +140,77 @@ struct InfoView: View {
     // MARK: - Pay rows
     struct PayRow: Identifiable {
         let id = UUID()
-        let symbol: SymbolImages?   // nil for the "Any other symbol" row
+        let symbol: SymbolImages?   // nil for category headers
         let title: String           // Localized display title
-        let amount: Int?            // Base payout (before bet multiplier), nil for non-payout rows
+        let amount: Int?            // Base payout (before bet multiplier), nil for category headers
+        let isCategoryHeader: Bool  // true for category labels like "High-Value Symbols:"
     }
 
     private var payRows: [PayRow] {
-        // Display order: money, jewel, crown, spade, win, other
-        let ordered: [SymbolImages] = [.moneySymbol, .jewelSymbol, .crownSymbol, .spadeSymbol, .winSymbol]
-        let rows = ordered.map { sym in
-            let base = GameRules.payouts[sym] ?? 50
-            return PayRow(symbol: sym, title: displayName(sym), amount: base)
-        }
-        let other = PayRow(symbol: nil, title: "Any other symbol", amount: GameRules.defaultPayout)
-        return rows + [other]
+        var rows: [PayRow] = []
+        
+        // High-Value Symbols (200-120x)
+        rows.append(PayRow(symbol: nil, title: "High-Value Symbols:", amount: nil, isCategoryHeader: true))
+        rows.append(PayRow(symbol: .moneySymbol, title: displayName(.moneySymbol), amount: GameRules.payouts[.moneySymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .sevenSymbol, title: displayName(.sevenSymbol), amount: GameRules.payouts[.sevenSymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .barSymbol, title: displayName(.barSymbol), amount: GameRules.payouts[.barSymbol], isCategoryHeader: false))
+        
+        // Medium-Value Symbols (40x)
+        rows.append(PayRow(symbol: nil, title: "Medium-Value Symbols:", amount: nil, isCategoryHeader: true))
+        rows.append(PayRow(symbol: .winSymbol, title: displayName(.winSymbol), amount: GameRules.payouts[.winSymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .jewelSymbol, title: displayName(.jewelSymbol), amount: GameRules.payouts[.jewelSymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .crownSymbol, title: displayName(.crownSymbol), amount: GameRules.payouts[.crownSymbol], isCategoryHeader: false))
+        
+        // Card Symbols (20x)
+        rows.append(PayRow(symbol: nil, title: "Card Symbols:", amount: nil, isCategoryHeader: true))
+        rows.append(PayRow(symbol: .spadeSymbol, title: displayName(.spadeSymbol), amount: GameRules.payouts[.spadeSymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .clubSymbol, title: displayName(.clubSymbol), amount: GameRules.payouts[.clubSymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .diamondSymbol, title: displayName(.diamondSymbol), amount: GameRules.payouts[.diamondSymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .heartSymbol, title: displayName(.heartSymbol), amount: GameRules.payouts[.heartSymbol], isCategoryHeader: false))
+        
+        // Lucky Symbols (4x)
+        rows.append(PayRow(symbol: nil, title: "Lucky Symbols:", amount: nil, isCategoryHeader: true))
+        rows.append(PayRow(symbol: .starSymbol, title: displayName(.starSymbol), amount: GameRules.payouts[.starSymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .cloverSymbol, title: displayName(.cloverSymbol), amount: GameRules.payouts[.cloverSymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .horseshoeSymbol, title: displayName(.horseshoeSymbol), amount: GameRules.payouts[.horseshoeSymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .bellSymbol, title: displayName(.bellSymbol), amount: GameRules.payouts[.bellSymbol], isCategoryHeader: false))
+        
+        // Fruit Symbols (2x)
+        rows.append(PayRow(symbol: nil, title: "Fruit Symbols:", amount: nil, isCategoryHeader: true))
+        rows.append(PayRow(symbol: .cherrySymbol, title: displayName(.cherrySymbol), amount: GameRules.payouts[.cherrySymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .fruitSymbol, title: displayName(.fruitSymbol), amount: GameRules.payouts[.fruitSymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .grapesSymbol, title: displayName(.grapesSymbol), amount: GameRules.payouts[.grapesSymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .lemonSymbol, title: displayName(.lemonSymbol), amount: GameRules.payouts[.lemonSymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .strawberrySymbol, title: displayName(.strawberrySymbol), amount: GameRules.payouts[.strawberrySymbol], isCategoryHeader: false))
+        rows.append(PayRow(symbol: .watermelonSymbol, title: displayName(.watermelonSymbol), amount: GameRules.payouts[.watermelonSymbol], isCategoryHeader: false))
+        
+        return rows
     }
 
     private func displayName(_ s: SymbolImages) -> String {
-        // Human-friendly names for the known symbols. Fallback to raw asset name for others
+        // Human-friendly names for all symbols
         switch s {
         case .moneySymbol: return "Money"
+        case .sevenSymbol: return "Seven"
+        case .barSymbol: return "Bar"
+        case .winSymbol: return "Win"
         case .jewelSymbol: return "Jewel"
         case .crownSymbol: return "Crown"
         case .spadeSymbol: return "Spade"
-        case .winSymbol: return "Win"
-        default: return s.rawValue
+        case .clubSymbol: return "Club"
+        case .diamondSymbol: return "Diamond"
+        case .heartSymbol: return "Heart"
+        case .starSymbol: return "Star"
+        case .cloverSymbol: return "Clover"
+        case .horseshoeSymbol: return "Horseshoe"
+        case .bellSymbol: return "Bell"
+        case .cherrySymbol: return "Cherry"
+        case .fruitSymbol: return "Fruit"
+        case .grapesSymbol: return "Grapes"
+        case .lemonSymbol: return "Lemon"
+        case .strawberrySymbol: return "Strawberry"
+        case .watermelonSymbol: return "Watermelon"
+        case .questionSymbol: return "Question"
         }
     }
 
