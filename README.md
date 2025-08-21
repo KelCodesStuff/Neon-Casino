@@ -50,7 +50,7 @@ Neon Casino is a modern, SwiftUI-based slot machine game with a progressive jack
 - Watermelon: x2
 
 **Special Symbols:**
-- Question: Triggers bonus round)
+- Question: Triggers bonus round
 
 ### Special Features
 - **Jackpot**: All nine reels showing Win symbols awards the full progressive jackpot
