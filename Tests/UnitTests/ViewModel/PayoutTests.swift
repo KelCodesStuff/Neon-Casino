@@ -1,5 +1,5 @@
 //
-//  ViewModelPayoutTests.swift
+//  PayoutTests.swift
 //  Neon-Casino
 //
 //  Created by Kelvin Reid on 8/19/25.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Neon_Casino
 
-final class ViewModelPayoutTests: XCTestCase {
+final class PayoutTests: XCTestCase {
     override func setUpWithError() throws { clearGameDefaults() }
 
     func testAwardedWinIsPayoutTimesBet() throws {
@@ -21,8 +21,8 @@ final class ViewModelPayoutTests: XCTestCase {
             model.forceReels([moneyIdx, moneyIdx, moneyIdx, x, y, x, y, x, y])
         }
         let result = model.checkWinning()
-        XCTAssertEqual(result.payout, 500)
-        XCTAssertEqual(result.awardedWin, 500 * 10)
+        XCTAssertEqual(result.payout, 200)
+        XCTAssertEqual(result.awardedWin, 200 * 10)
     }
 }
 

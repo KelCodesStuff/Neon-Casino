@@ -26,6 +26,7 @@ struct SlotMachinePage {
     // Alerts
     var jackpotAlert: XCUIElement { app.alerts["Jackpot!"] }
     var winAlert: XCUIElement { app.alerts["Congratulations!"] }
+    var bonusAlert: XCUIElement { app.alerts["Bonus Round!"] }
     var gameOverAlert: XCUIElement { app.alerts["Game Over"] }
 
     // Actions

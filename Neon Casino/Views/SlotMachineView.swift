@@ -296,7 +296,7 @@ struct SlotMachineView: View {
             self.animatingSymbol = true
         }
         
-        // Check for wins
+        // Check for wins and bonus activation
         let result = viewModel.checkWinning()
         if result.transferJackpot || result.payout > 0 {
             playSound(sound: "win", type: "mp3")
@@ -314,6 +314,14 @@ struct SlotMachineView: View {
         } else if result.payout > 0 {
             alertTitle = "Congratulations!"
             alertMessage = "You won \(currency(result.awardedWin))!"
+            showAlert = true
+            flashingWinningIndexes = result.winningLineIndexes
+            withAnimation(Animation.easeInOut(duration: 0.35).repeatForever(autoreverses: true)) {
+                flashPhase.toggle()
+            }
+        } else if result.bonusActivated {
+            alertTitle = "Bonus Round!"
+            alertMessage = "You activated the bonus round!"
             showAlert = true
             flashingWinningIndexes = result.winningLineIndexes
             withAnimation(Animation.easeInOut(duration: 0.35).repeatForever(autoreverses: true)) {
