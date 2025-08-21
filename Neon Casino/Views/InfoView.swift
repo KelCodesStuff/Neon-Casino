@@ -64,25 +64,13 @@ struct InfoView: View {
                     HStack {
                         // Show nine win symbols in 3x3 grid to indicate jackpot condition
                         VStack(spacing: 2) {
-                            HStack(spacing: 2) {
-                                ForEach(0..<3, id: \.self) { _ in
-                                    Image(SymbolImages.winSymbol.rawValue)
-                                        .resizable()
-                                        .frame(width: 25, height: 25)
-                                }
-                            }
-                            HStack(spacing: 2) {
-                                ForEach(0..<3, id: \.self) { _ in
-                                    Image(SymbolImages.winSymbol.rawValue)
-                                        .resizable()
-                                        .frame(width: 25, height: 25)
-                                }
-                            }
-                            HStack(spacing: 2) {
-                                ForEach(0..<3, id: \.self) { _ in
-                                    Image(SymbolImages.winSymbol.rawValue)
-                                        .resizable()
-                                        .frame(width: 25, height: 25)
+                            ForEach(0..<3, id: \.self) { _ in
+                                HStack(spacing: 2) {
+                                    ForEach(0..<3, id: \.self) { _ in
+                                        Image(SymbolImages.winSymbol.rawValue)
+                                            .resizable()
+                                            .frame(width: 25, height: 25)
+                                    }
                                 }
                             }
                         }
@@ -149,40 +137,26 @@ struct InfoView: View {
     private var payRows: [PayRow] {
         var rows: [PayRow] = []
         
-        // High-Value Symbols (200-120x)
-        rows.append(PayRow(symbol: nil, title: "High-Value Symbols:", amount: nil, isCategoryHeader: true))
-        rows.append(PayRow(symbol: .moneySymbol, title: displayName(.moneySymbol), amount: GameRules.payouts[.moneySymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .sevenSymbol, title: displayName(.sevenSymbol), amount: GameRules.payouts[.sevenSymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .barSymbol, title: displayName(.barSymbol), amount: GameRules.payouts[.barSymbol], isCategoryHeader: false))
+        rows.append(contentsOf: createCategoryRows("High-Value Symbols:", symbols: [.moneySymbol, .sevenSymbol, .barSymbol]))
+        rows.append(contentsOf: createCategoryRows("Medium-Value Symbols:", symbols: [.winSymbol, .jewelSymbol, .crownSymbol]))
+        rows.append(contentsOf: createCategoryRows("Card Symbols:", symbols: [.spadeSymbol, .clubSymbol, .diamondSymbol, .heartSymbol]))
+        rows.append(contentsOf: createCategoryRows("Lucky Symbols:", symbols: [.starSymbol, .cloverSymbol, .horseshoeSymbol, .bellSymbol]))
+        rows.append(contentsOf: createCategoryRows("Fruit Symbols:", symbols: [.cherrySymbol, .fruitSymbol, .grapesSymbol, .lemonSymbol, .strawberrySymbol, .watermelonSymbol]))
         
-        // Medium-Value Symbols (40x)
-        rows.append(PayRow(symbol: nil, title: "Medium-Value Symbols:", amount: nil, isCategoryHeader: true))
-        rows.append(PayRow(symbol: .winSymbol, title: displayName(.winSymbol), amount: GameRules.payouts[.winSymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .jewelSymbol, title: displayName(.jewelSymbol), amount: GameRules.payouts[.jewelSymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .crownSymbol, title: displayName(.crownSymbol), amount: GameRules.payouts[.crownSymbol], isCategoryHeader: false))
+        return rows
+    }
+    
+    /// Helper function to create a category header and symbol rows
+    private func createCategoryRows(_ categoryTitle: String, symbols: [SymbolImages]) -> [PayRow] {
+        var rows: [PayRow] = []
         
-        // Card Symbols (20x)
-        rows.append(PayRow(symbol: nil, title: "Card Symbols:", amount: nil, isCategoryHeader: true))
-        rows.append(PayRow(symbol: .spadeSymbol, title: displayName(.spadeSymbol), amount: GameRules.payouts[.spadeSymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .clubSymbol, title: displayName(.clubSymbol), amount: GameRules.payouts[.clubSymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .diamondSymbol, title: displayName(.diamondSymbol), amount: GameRules.payouts[.diamondSymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .heartSymbol, title: displayName(.heartSymbol), amount: GameRules.payouts[.heartSymbol], isCategoryHeader: false))
+        // Add category header
+        rows.append(PayRow(symbol: nil, title: categoryTitle, amount: nil, isCategoryHeader: true))
         
-        // Lucky Symbols (4x)
-        rows.append(PayRow(symbol: nil, title: "Lucky Symbols:", amount: nil, isCategoryHeader: true))
-        rows.append(PayRow(symbol: .starSymbol, title: displayName(.starSymbol), amount: GameRules.payouts[.starSymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .cloverSymbol, title: displayName(.cloverSymbol), amount: GameRules.payouts[.cloverSymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .horseshoeSymbol, title: displayName(.horseshoeSymbol), amount: GameRules.payouts[.horseshoeSymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .bellSymbol, title: displayName(.bellSymbol), amount: GameRules.payouts[.bellSymbol], isCategoryHeader: false))
-        
-        // Fruit Symbols (2x)
-        rows.append(PayRow(symbol: nil, title: "Fruit Symbols:", amount: nil, isCategoryHeader: true))
-        rows.append(PayRow(symbol: .cherrySymbol, title: displayName(.cherrySymbol), amount: GameRules.payouts[.cherrySymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .fruitSymbol, title: displayName(.fruitSymbol), amount: GameRules.payouts[.fruitSymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .grapesSymbol, title: displayName(.grapesSymbol), amount: GameRules.payouts[.grapesSymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .lemonSymbol, title: displayName(.lemonSymbol), amount: GameRules.payouts[.lemonSymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .strawberrySymbol, title: displayName(.strawberrySymbol), amount: GameRules.payouts[.strawberrySymbol], isCategoryHeader: false))
-        rows.append(PayRow(symbol: .watermelonSymbol, title: displayName(.watermelonSymbol), amount: GameRules.payouts[.watermelonSymbol], isCategoryHeader: false))
+        // Add symbol rows
+        rows.append(contentsOf: symbols.map { symbol in
+            PayRow(symbol: symbol, title: displayName(symbol), amount: GameRules.payouts[symbol], isCategoryHeader: false)
+        })
         
         return rows
     }
