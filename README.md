@@ -47,15 +47,26 @@ Neon Casino is a modern, SwiftUI-based slot machine game with a progressive jack
 - Xcode 15+, iOS 16+ recommended
 - Open `Neon-Casino.xcodeproj` and run the `Neon-Casino` scheme
 
-## Images
-
-Here are some screenshots of Neon Casino in action:
-
+## Preview
 <div align="center">
-  <img src="Images/launch-screen.png" alt="launch-screen" width="300">
-  <img src="Images/main-screen.png" alt="main-screen" width="300">
-  <img src="Images/info-screen.png" alt="info-screen" width="300">
-  <img src="Images/game-over.png" alt="game-over" width="300">
+  <h3>Screenshots</h3>
+  <table>
+    <tr>
+      <td><img src="Images/launch-screen.png" alt="Launch Screen" width="300"></td>
+      <td><img src="Images/main-screen.png" alt="Main Screen" width="300"></td>
+    </tr>
+    <tr>
+      <td><img src="Images/info-screen.png" alt="Info Screen" width="300"></td>
+      <td><img src="Images/game-over.png" alt="Game Over" width="300"></td>
+    </tr>
+  </table>
+  <br/>
+  <h3>Video</h3>
+  <a href="https://youtube.com/shorts/3fkjIISIKW8" target="_blank">
+    <img src="https://i.ytimg.com/vi/3fkjIISIKW8/hqdefault.jpg" alt="YouTube Video" width="560">
+  </a>
+  <br/>
+  <br/>
 </div>
 
 ## License
