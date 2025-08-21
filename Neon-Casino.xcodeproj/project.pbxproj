@@ -153,6 +153,7 @@
 		BA93CBF02E54EAF2003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				UITests/Bonus/BonusTests.swift,
 				UITests/GameOver/GameOverTests.swift,
 				UITests/Jackpot/JackpotTests.swift,
 				UITests/Pages/SlotMachinePage.swift,
@@ -165,14 +166,14 @@
 		BA93CBF82E54EBA1003D7BE7 /* Exceptions for "Tests" folder in "Neon-CasinoUnitTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				UnitTests/GameRules/GameRulesBonusTests.swift,
-				UnitTests/GameRules/GameRulesJackpotTests.swift,
-				UnitTests/GameRules/GameRulesPayoutTests.swift,
+				UnitTests/GameRules/RulesBonusTests.swift,
+				UnitTests/GameRules/RulesJackpotTests.swift,
+				UnitTests/GameRules/RulesPayoutTests.swift,
 				UnitTests/Support/RTPSimulator.swift,
 				UnitTests/Support/UserDefaultsTestHelpers.swift,
-				UnitTests/ViewModel/ViewModelJackpotTests.swift,
-				UnitTests/ViewModel/ViewModelPayoutTests.swift,
-				UnitTests/ViewModel/ViewModelProgressiveJackpotTests.swift,
+				UnitTests/ViewModel/JackpotTests.swift,
+				UnitTests/ViewModel/PayoutTests.swift,
+				UnitTests/ViewModel/ProgressiveJackpotTests.swift,
 			);
 			target = BA93CB8E2E5389AC003D7BE7 /* Neon-CasinoUnitTests */;
 		};
