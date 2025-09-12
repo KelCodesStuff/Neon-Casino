@@ -103,9 +103,8 @@ final class RNGEdgeCaseTests: XCTestCase {
         XCTAssertTrue(gridSymbols.contains(.cherrySymbol))
     }
     
-    // Verify the ReelRandomizer class handles concurrent spins correctly
-    func testConcurrentSpins() throws {
-        // Test that multiple concurrent spins don't interfere with each other
+    // Verify the ReelRandomizer class produces different results over multiple spins
+    func testMultipleSpinsProduceDifferentResults() throws {
         let randomizer = ReelRandomizer()
         let symbols: [SymbolImages] = [.barSymbol, .bellSymbol, .cherrySymbol, .cloverSymbol, .clubSymbol, .crownSymbol, .diamondSymbol, .fruitSymbol, .grapesSymbol, .heartSymbol, .horseshoeSymbol, .jewelSymbol, .lemonSymbol, .moneySymbol, .questionSymbol, .sevenSymbol, .spadeSymbol, .starSymbol, .strawberrySymbol, .watermelonSymbol, .winSymbol]
         
