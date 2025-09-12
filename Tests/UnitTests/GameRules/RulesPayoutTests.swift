@@ -98,7 +98,7 @@ final class RulesPayoutTests: XCTestCase {
     func testJewelSymbol_Diagonal() throws {
         let reels = createReelGrid(
             topRow:    [1, 0, 0],      // Jewel in top-left
-            middleRow: [1, 1, 0],   // Jewel in center
+            middleRow: [0, 1, 0],   // Jewel in center
             bottomRow: [0, 0, 1]    // Jewel in bottom-right
         )
         
@@ -218,7 +218,7 @@ final class RulesPayoutTests: XCTestCase {
         let result = GameRules.evaluate(reels: reels, symbols: symbols)
         
         // Should detect both winning lines
-        XCTAssertGreaterThan(result.totalPayout, 0, "Multiple winning lines should result in payout")
+        XCTAssertEqual(result.totalPayout, 400, "Multiple winning lines should result in a combined payout of 400")
         XCTAssertFalse(result.transferJackpot, "Multiple wins should not transfer jackpot")
         XCTAssertFalse(result.bonusActivated, "Multiple wins should not activate bonus")
         XCTAssertEqual(result.winningLineIndexes.count, 6, "Should detect 6 winning positions (2 rows)")
