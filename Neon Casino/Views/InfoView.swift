@@ -120,9 +120,6 @@ struct InfoView: View {
             .padding(.trailing, 20)
             .accentColor(Color.secondary), alignment: .topTrailing
         )
-        .onAppear(perform: {
-            playSound(sound: "background-music", type: "mp3")
-        })
     }
     
     // MARK: - Pay rows
@@ -138,7 +135,7 @@ struct InfoView: View {
         var rows: [PayRow] = []
         
         rows.append(contentsOf: createCategoryRows("High-Value Symbols:", symbols: [.moneySymbol, .sevenSymbol, .barSymbol]))
-        rows.append(contentsOf: createCategoryRows("Medium-Value Symbols:", symbols: [.winSymbol, .jewelSymbol, .crownSymbol]))
+        rows.append(contentsOf: createCategoryRows("Value Symbols:", symbols: [.winSymbol, .jewelSymbol, .crownSymbol]))
         rows.append(contentsOf: createCategoryRows("Card Symbols:", symbols: [.spadeSymbol, .clubSymbol, .diamondSymbol, .heartSymbol]))
         rows.append(contentsOf: createCategoryRows("Lucky Symbols:", symbols: [.starSymbol, .cloverSymbol, .horseshoeSymbol, .bellSymbol]))
         rows.append(contentsOf: createCategoryRows("Fruit Symbols:", symbols: [.cherrySymbol, .fruitSymbol, .grapesSymbol, .lemonSymbol, .strawberrySymbol, .watermelonSymbol]))
