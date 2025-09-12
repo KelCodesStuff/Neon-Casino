@@ -5,9 +5,9 @@
 //  Created by Kelvin Reid on 8/19/25.
 //
 
-//  Purpose: Verifies both diagonal three-in-a-row cases trigger a win alert.
 import XCTest
 
+// Verifies that a diagonal win (top left to bottom right) shows the win alert
 final class DiagonalWinTests: XCTestCase {
     func testDiagonalTopLeftToBottomRightShowsWinAlert() throws {
         let app = XCUIApplication()
@@ -19,6 +19,7 @@ final class DiagonalWinTests: XCTestCase {
         page.winAlert.buttons["OK"].tap()
     }
 
+    // Verifies that a diagonal win (top right to bottom left) shows the win alert
     func testDiagonalTopRightToBottomLeftShowsWinAlert() throws {
         let app = XCUIApplication()
         let page = SlotMachinePage(app: app)

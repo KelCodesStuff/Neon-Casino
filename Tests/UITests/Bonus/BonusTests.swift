@@ -5,9 +5,9 @@
 //  Created by Kelvin Reid on 8/21/25.
 //
 
-//  Purpose: Verifies that the bonus trigger (three question symbols in a row) shows the bonus alert with correct message.
 import XCTest
 
+// Verifies that the bonus trigger (three question symbols in a row) shows the bonus alert with correct message
 final class BonusTests: XCTestCase {
     func testBonusRound_ShowsCorrectAlert() throws {
         let app = XCUIApplication()
