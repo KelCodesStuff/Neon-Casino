@@ -5,13 +5,13 @@
 //  Created by Kelvin Reid on 8/19/25.
 //
 
-//  Purpose: Verifies jackpot award and resets jackpot.
 import XCTest
 @testable import Neon_Casino
 
 final class JackpotTests: XCTestCase {
     override func setUpWithError() throws { clearGameDefaults() }
 
+    // Verify the jackpot awards and resets
     func testJackpot_AwardsAndResets() throws {
         UserDefaults.standard.set(150_000, forKey: GameViewModel.Keys.jackpot)
         let model = GameViewModel()

@@ -5,13 +5,13 @@
 //  Created by Kelvin Reid on 8/19/25.
 //
 
-//  Purpose: Verifies jackpot conditions at the rules level (all nine win symbols).
 import XCTest
 @testable import Neon_Casino
 
 final class RulesJackpotTests: XCTestCase {
     override func setUpWithError() throws { clearGameDefaults() }
 
+    // Verify that all nine win symbols trigger the jackpot
     func testJackpot_AllNineWinSymbols_TransfersJackpot() throws {
         let syms: [SymbolImages] = [.winSymbol]
         let reels = Array(repeating: 0, count: 9)

@@ -5,9 +5,9 @@
 //  Created by Kelvin Reid on 8/19/25.
 //
 
-//  Purpose: Encapsulates locators and actions for the Slot Machine screen to keep UI tests readable and maintainable (Page Object Model).
 import XCTest
 
+// Encapsulates locators and actions for the Slot Machine screen to keep UI tests readable and maintainable (Page Object Model)
 struct SlotMachinePage {
     let app: XCUIApplication
 

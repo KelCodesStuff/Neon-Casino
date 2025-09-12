@@ -5,9 +5,9 @@
 //  Created by Kelvin Reid on 8/19/25.
 //
 
-//  Purpose: Verifies a vertical three-in-a-row triggers a win alert.
 import XCTest
 
+// Verifies that a vertical win (left column) shows the win alert
 final class VerticalWinTests: XCTestCase {
     func testVerticalThreeInARowShowsWinAlert() throws {
         let app = XCUIApplication()

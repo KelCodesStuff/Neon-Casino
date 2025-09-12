@@ -5,9 +5,9 @@
 //  Created by Kelvin Reid on 8/19/25.
 //
 
-//  Purpose: Verifies that forcing game over shows the game over alert.
 import XCTest
 
+// Verifies that forcing game over shows the game over alert
 final class GameOverTests: XCTestCase {
     func testForceGameOverShowsAlert() throws {
         let app = XCUIApplication()
