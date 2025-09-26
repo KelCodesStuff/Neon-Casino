@@ -1,14 +1,10 @@
 # Neon Casino
 
-[![Build and Test](https://github.com/KelCodesStuff/Neon-Casino/actions/workflows/ios-ci.yml/badge.svg)](https://github.com/KelCodesStuff/Neon-Casino/actions/workflows/ios-ci.yml)
-
-[![TestFlight](https://img.shields.io/badge/Join%20The%20TestFlight-blue)](https://testflight.apple.com/join/)
-
-![Platforms](https://img.shields.io/badge/Platform%20Compatibility-iOS%2016+%20|%20iPadOS%2016+-red?logo=apple&?color=red)
-
-##
-
 Neon Casino is a modern, SwiftUI-based slot machine game with a progressive jackpot, neon visuals, and a focus on testability.
+
+[![Build and Test](https://github.com/KelCodesStuff/Neon-Casino/actions/workflows/ios-ci.yml/badge.svg)](https://github.com/KelCodesStuff/Neon-Casino/actions/workflows/ios-ci.yml)
+![Platforms](https://img.shields.io/badge/Platform%20Compatibility-iOS%2016+%20|%20iPadOS%2016+-red?logo=apple&?color=red)
+[![TestFlight](https://img.shields.io/badge/Join%20The%20TestFlight-blue)](https://testflight.apple.com/join/)
 
 ## Gameplay Overview
 
